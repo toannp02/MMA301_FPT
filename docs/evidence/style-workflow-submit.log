@@ -1,0 +1,14 @@
+(node:19356) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using workflow file from F:\AI_terminal\AR_mma\.eas\workflows\view-room-preview.yml
+
+Compressing project files and uploading to EAS. Learn more: https://expo.fyi/eas-build-archive
+- Compressing project files
+- Uploading project archive to EAS (0 / 1.9 MB)
+√ Uploaded project archive to EAS 13s
+- Uploading eas.json to EAS (0 / 223 B)
+√ Uploaded eas.json to EAS 
+- Uploading package.json to EAS (0 / 2.5 KB)
+√ Uploaded package.json to EAS 
+
+See logs: https://expo.dev/accounts/nguyenphutoan1/projects/artspace-ar/workflows/01a17e3e-9f2e-7260-841e-e96fbcee7c8b

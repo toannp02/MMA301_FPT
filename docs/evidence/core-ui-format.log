@@ -1,0 +1,17 @@
+src/ui/theme.ts 96ms (unchanged)
+src/ui/components.tsx 67ms
+src/ui/screens/GalleryScreen.tsx 48ms
+src/ui/screens/ArtworkDetailScreen.tsx 22ms
+src/ui/screens/Preview2DScreen.tsx 143ms
+src/ui/screens/ImportArtworkScreen.tsx 33ms
+src/infra/pickArtworkImage.ts 14ms
+app/(tabs)/_layout.tsx 3ms (unchanged)
+app/_layout.tsx 8ms (unchanged)
+app.config.ts 3ms (unchanged)
+apps/iphone-expo-go/src/Preview2DCameraScreen.tsx 7ms
+apps/iphone-expo-go/app.config.js 28ms
+tests/integration/preview2d.test.tsx 50ms
+tests/integration/import-artwork.test.tsx 21ms
+tests/integration/expo-go-preview.test.tsx 8ms
+tests/integration/favorite.test.tsx 18ms
+tests/features/ar-permission.test.tsx 9ms

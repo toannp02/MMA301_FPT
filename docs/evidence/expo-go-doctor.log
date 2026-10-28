@@ -1,0 +1,7 @@
+
+> artspace-iphone-expo-go@1.0.0 doctor
+> npx expo-doctor@1.21.5
+
+Running 20 checks on your project...
+20/20 checks passed. No issues detected!
+EXIT_CODE=0

@@ -1,0 +1,10 @@
+Collecting imageio-ffmpeg
+  Using cached imageio_ffmpeg-0.6.0-py3-none-win_amd64.whl.metadata (1.5 kB)
+Using cached imageio_ffmpeg-0.6.0-py3-none-win_amd64.whl (31.2 MB)
+Installing collected packages: imageio-ffmpeg
+Successfully installed imageio-ffmpeg-0.6.0
+WARNING: Target directory F:\AI_terminal\AR_mma\artifacts\video-tools\imageio_ffmpeg already exists. Specify --upgrade to force replacement.
+WARNING: Target directory F:\AI_terminal\AR_mma\artifacts\video-tools\imageio_ffmpeg-0.6.0.dist-info already exists. Specify --upgrade to force replacement.
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip

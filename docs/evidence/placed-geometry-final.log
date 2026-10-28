@@ -1,0 +1,32 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/features/studio.test.ts
+
+PASS tests/features/studio.test.ts (6.516 s)
+  √ perspective maps all four corners and inverse recovers wall coordinates (24 ms)
+  √ crossed, off-photo, degenerate and non-finite wall corners are rejected (38 ms)
+  √ affine texture triangles preserve each source vertex (2 ms)
+  √ rotated oversized artwork stays on wall at 0 degrees (8 ms)
+  √ rotated oversized artwork stays on wall at 20 degrees (5 ms)
+  √ rotated oversized artwork stays on wall at 45 degrees (2 ms)
+  √ rotated oversized artwork stays on wall at 90 degrees (2 ms)
+  √ rotated oversized artwork stays on wall at -45 degrees (2 ms)
+  √ rotated oversized artwork stays on wall at 180 degrees (2 ms)
+  √ single layout is bounded and generates unique slots (4 ms)
+  √ pair layout is bounded and generates unique slots (4 ms)
+  √ stack layout is bounded and generates unique slots (4 ms)
+  √ row layout is bounded and generates unique slots (18 ms)
+  √ column layout is bounded and generates unique slots (19 ms)
+  √ grid layout is bounded and generates unique slots (17 ms)
+  √ default colour matrix preserves RGB and alpha (2 ms)
+  √ export reuses image definitions and escapes source strings (12 ms)
+  √ manual foreground mask persists valid strokes and exports a luminance mask (2 ms)
+  √ repeated identical layout events preserve editor and texture identity (1 ms)
+  √ removed selected slots recover to a surviving piece (1 ms)
+  √ layout spacing retains physical frame widths when artwork is fitted (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       21 passed, 21 total
+Snapshots:   0 total
+Time:        7.849 s
+Ran all test suites matching /tests\\features\\studio.test.ts/i.

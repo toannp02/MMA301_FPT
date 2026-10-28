@@ -1,0 +1,78 @@
+{
+  "pass": true,
+  "sdkVersion": "58.0.0",
+  "expoGoPreview": true,
+  "bundleBytes": 8656014,
+  "sources": 1456,
+  "viroSources": [],
+  "react": [
+    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react/index.js"
+  ],
+  "reactNative": [
+    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react-native/index.js"
+  ],
+  "imageChecks": [
+    {
+      "id": "art-01",
+      "status": 200,
+      "bytes": 14686
+    },
+    {
+      "id": "art-02",
+      "status": 200,
+      "bytes": 14539
+    },
+    {
+      "id": "art-03",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-04",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-05",
+      "status": 200,
+      "bytes": 14699
+    },
+    {
+      "id": "art-06",
+      "status": 200,
+      "bytes": 14372
+    },
+    {
+      "id": "art-07",
+      "status": 200,
+      "bytes": 14656
+    },
+    {
+      "id": "art-08",
+      "status": 200,
+      "bytes": 14653
+    },
+    {
+      "id": "art-09",
+      "status": 200,
+      "bytes": 14745
+    },
+    {
+      "id": "art-10",
+      "status": 200,
+      "bytes": 14341
+    },
+    {
+      "id": "art-11",
+      "status": 200,
+      "bytes": 14574
+    },
+    {
+      "id": "art-12",
+      "status": 200,
+      "bytes": 14589
+    }
+  ],
+  "launchStatus": 200,
+  "launchBytes": 7831010
+}

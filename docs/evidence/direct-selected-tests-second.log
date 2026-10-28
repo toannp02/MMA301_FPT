@@ -1,0 +1,558 @@
+FAIL tests/integration/view-on-room-flow.test.tsx (7.02 s)
+  ● native editor applies selected artwork and saves Light controls only on Save
+
+    Unable to find an element with text: /New artwork.*drag to position/
+
+    <View>
+      <View>
+        <View
+          accessibilityLabel="My walls"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+        >
+          <Text>
+            My walls
+          </Text>
+        </View>
+        <View>
+          <Text>
+            My room
+             •
+          </Text>
+          <Text>
+            Photo preview - set wall size for scale
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Save"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+        >
+          <Text>
+            Save
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Room canvas. Tap artwork to edit"
+        accessibilityRole="imagebutton"
+        accessible={true}
+        pointerEvents="auto"
+        testID="studio-surface"
+      />
+      <RCTScrollView
+        pointerEvents="auto"
+      >
+        <View>
+          <Text>
+            Tap artwork to edit; tap it again or the background to deselect. Pinch what you touch to zoom.
+          </Text>
+          <View>
+            <View
+              accessibilityLabel="Art"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Art
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Layouts"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Layouts
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Style"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Style
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Wall"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Wall
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="My artworks"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                My artworks
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Discover"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Discover
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Add artwork"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Add artwork
+              </Text>
+            </View>
+          </View>
+          <Text>
+            Tap a painting to edit
+             ·
+             
+            drag to position or pull a corner to resize
+          </Text>
+          <RCTScrollView>
+            <View>
+              <View
+                accessibilityLabel="Place New artwork"
+                accessibilityRole="button"
+                accessible={true}
+              >
+                <ViewManagerAdapter_ExpoImage
+                  accessibilityLabel="Artwork preview"
+                  placeholder={[]}
+                />
+                <Text>
+                  New artwork
+                </Text>
+              </View>
+            </View>
+          </RCTScrollView>
+          <View>
+            <View
+              accessibilityLabel="Search / filter artworks"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Search / filter artworks
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="Inspect artwork"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Inspect artwork
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Add another piece"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Add another piece
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="Show original"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Show original
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Export / share PNG"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Export / share PNG
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+
+      113 |   await view.findByTestId("studio-surface");
+      114 |   fireEvent(view.getByTestId("studio-surface"),"accessibilityAction",{nativeEvent:{actionName:"select:room1_art0"}});
+    > 115 |   await view.findByText(/New artwork.*drag to position/);
+          |              ^
+      116 |   expect(x.save).not.toHaveBeenCalled();
+      117 |   fireEvent.press(view.getByLabelText("Style"));
+      118 |   fireEvent.press(view.getByLabelText("Light"));
+
+      at Object.findByText (tests/integration/view-on-room-flow.test.tsx:115:14)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+  ● dimensions, image/light and visual frame edits persist while room zoom stays view-only
+
+    Unable to find an element with text: /New artwork.*drag to position/
+
+    <View>
+      <View>
+        <View
+          accessibilityLabel="My walls"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+        >
+          <Text>
+            My walls
+          </Text>
+        </View>
+        <View>
+          <Text>
+            My room
+             •
+          </Text>
+          <Text>
+            Photo preview - set wall size for scale
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Save"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+        >
+          <Text>
+            Save
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Room canvas. Tap artwork to edit"
+        accessibilityRole="imagebutton"
+        accessible={true}
+        pointerEvents="auto"
+        testID="studio-surface"
+      />
+      <RCTScrollView
+        pointerEvents="auto"
+      >
+        <View>
+          <Text>
+            Tap artwork to edit; tap it again or the background to deselect. Pinch what you touch to zoom.
+          </Text>
+          <View>
+            <View
+              accessibilityLabel="Art"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Art
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Layouts"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Layouts
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Style"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Style
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Wall"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Wall
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="My artworks"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                My artworks
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Discover"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Discover
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Add artwork"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Add artwork
+              </Text>
+            </View>
+          </View>
+          <Text>
+            Tap a painting to edit
+             ·
+             
+            drag to position or pull a corner to resize
+          </Text>
+          <RCTScrollView>
+            <View>
+              <View
+                accessibilityLabel="Place New artwork"
+                accessibilityRole="button"
+                accessible={true}
+              >
+                <ViewManagerAdapter_ExpoImage
+                  accessibilityLabel="Artwork preview"
+                  placeholder={[]}
+                />
+                <Text>
+                  New artwork
+                </Text>
+              </View>
+            </View>
+          </RCTScrollView>
+          <View>
+            <View
+              accessibilityLabel="Search / filter artworks"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Search / filter artworks
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="Inspect artwork"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Inspect artwork
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Add another piece"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Add another piece
+              </Text>
+            </View>
+          </View>
+          <View>
+            <View
+              accessibilityLabel="Show original"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Show original
+              </Text>
+            </View>
+            <View
+              accessibilityLabel="Export / share PNG"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+            >
+              <Text>
+                Export / share PNG
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+
+      139 |   await view.findByTestId("studio-surface");
+      140 |   fireEvent(view.getByTestId("studio-surface"),"accessibilityAction",{nativeEvent:{actionName:"select:room1_art0"}});
+    > 141 |   await view.findByText(/New artwork.*drag to position/);
+          |              ^
+      142 |   fireEvent.press(view.getByLabelText("Style"));
+      143 |   fireEvent.press(view.getByLabelText("Light"));
+      144 |   fireEvent(view.getByLabelText("Shadow angle (degrees)"), "valueChange", -22);
+
+      at Object.findByText (tests/integration/view-on-room-flow.test.tsx:141:14)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+PASS tests/integration/direct-manipulation.test.tsx
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       2 failed, 8 passed, 10 total
+Snapshots:   0 total
+Time:        7.539 s, estimated 10 s
+Ran all test suites matching /tests\\integration\\direct-manipulation.test.tsx|tests\\integration\\view-on-room-flow.test.tsx/i.

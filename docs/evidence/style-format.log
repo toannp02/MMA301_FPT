@@ -1,0 +1,10 @@
+src/features/studio/styleEditing.ts 146ms
+src/features/studio/rendering.ts 133ms
+src/domain/spaces.ts 113ms
+src/ui/studio/ArtworkDimensions.tsx 41ms
+src/ui/studio/FramePicker.tsx 20ms
+src/ui/studio/SpaceCanvas.tsx 105ms
+src/ui/screens/SpaceEditorScreen.tsx 484ms
+tests/features/style-editing.test.ts 33ms
+tests/integration/view-on-room-flow.test.tsx 84ms
+scripts/check-expo-go.mjs 206ms

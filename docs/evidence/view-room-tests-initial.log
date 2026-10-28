@@ -1,0 +1,30 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand
+
+PASS tests/integration/preview2d.test.tsx (9.383 s)
+PASS tests/integration/studio-reload-guard.test.tsx
+PASS tests/integration/import-artwork.test.tsx
+PASS tests/integration/expo-go-preview.test.tsx (5.508 s)
+PASS tests/integration/gallery-image-retry.test.tsx
+PASS tests/integration/guest.test.tsx
+PASS tests/integration/favorite.test.tsx
+PASS tests/features/ar-permission.test.tsx
+PASS tests/features/studio.test.ts
+PASS tests/features/ar-wall-placement.test.tsx
+PASS tests/features/capture.test.ts
+PASS tests/data/designs.test.ts
+PASS tests/features/ar-support.test.ts
+PASS tests/domain/logic.test.ts
+PASS tests/features/auth.test.ts
+PASS tests/data/personal-artworks.test.ts
+PASS tests/data/wall-spaces.test.ts
+PASS tests/domain/async.test.ts
+PASS tests/features/preview2d-geometry.test.ts
+PASS tests/features/discovery.test.ts
+
+Test Suites: 20 passed, 20 total
+Tests:       131 passed, 131 total
+Snapshots:   0 total
+Time:        26.484 s
+Ran all test suites.

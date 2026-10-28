@@ -1,0 +1,82 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/features/studio.test.ts tests/data/wall-spaces.test.ts
+
+PASS tests/features/studio.test.ts
+PASS tests/data/wall-spaces.test.ts
+  ● Console
+
+    console.warn
+      Saved-space write failed Error: disk
+          at Object.<anonymous> (F:\AI_terminal\AR_mma\tests\data\wall-spaces.test.ts:8:131)
+          at Generator.next (<anonymous>)
+          at asyncGeneratorStep (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+          at _next (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+          at F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:22:7
+          at new Promise (<anonymous>)
+          at Object.<anonymous> (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:14:12)
+          at Promise.then.completed (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\utils.js:231:10)
+          at _callCircusTest (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:316:40)
+          at _runTest (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:252:3)
+          at _runTestsForDescribeBlock (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:126:9)
+          at run (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:71:3)
+          at runAndTransformResultsToJestFormat (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+          at jestAdapter (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+          at runTestInternal (F:\AI_terminal\AR_mma\node_modules\jest-runner\build\runTest.js:367:16)
+          at runTest (F:\AI_terminal\AR_mma\node_modules\jest-runner\build\runTest.js:444:34)
+
+       96 |           return saved;
+       97 |         } catch (error) {
+    >  98 |           if (__DEV__) console.warn("Saved-space write failed", error);
+          |                                ^
+       99 |           await Promise.allSettled(
+      100 |             [...new Set(created)].map((asset) =>
+      101 |               this.images.remove(input.id, asset),
+
+      at warn (src/data/local/WallSpaceRepository.ts:98:32)
+          at Generator.throw (<anonymous>)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _throw (node_modules/@babel/runtime/helpers/asyncToGenerator.js:20:9)
+
+    console.warn
+      Saved-space write failed Error: disk
+          at Object.<anonymous> (F:\AI_terminal\AR_mma\tests\data\wall-spaces.test.ts:9:127)
+          at Generator.next (<anonymous>)
+          at asyncGeneratorStep (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+          at _next (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+          at F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:22:7
+          at new Promise (<anonymous>)
+          at Object.<anonymous> (F:\AI_terminal\AR_mma\node_modules\@babel\runtime\helpers\asyncToGenerator.js:14:12)
+          at Promise.then.completed (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\utils.js:231:10)
+          at _callCircusTest (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:316:40)
+          at _runTest (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:252:3)
+          at _runTestsForDescribeBlock (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:126:9)
+          at run (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\run.js:71:3)
+          at runAndTransformResultsToJestFormat (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+          at jestAdapter (F:\AI_terminal\AR_mma\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+          at runTestInternal (F:\AI_terminal\AR_mma\node_modules\jest-runner\build\runTest.js:367:16)
+          at runTest (F:\AI_terminal\AR_mma\node_modules\jest-runner\build\runTest.js:444:34)
+
+       96 |           return saved;
+       97 |         } catch (error) {
+    >  98 |           if (__DEV__) console.warn("Saved-space write failed", error);
+          |                                ^
+       99 |           await Promise.allSettled(
+      100 |             [...new Set(created)].map((asset) =>
+      101 |               this.images.remove(input.id, asset),
+
+      at warn (src/data/local/WallSpaceRepository.ts:98:32)
+          at Generator.throw (<anonymous>)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _throw (node_modules/@babel/runtime/helpers/asyncToGenerator.js:20:9)
+
+
+Test Suites: 2 passed, 2 total
+Tests:       25 passed, 25 total
+Snapshots:   0 total
+Time:        3.886 s
+Ran all test suites matching /tests\\features\\studio.test.ts|tests\\data\\wall-spaces.test.ts/i.

@@ -1,0 +1,14 @@
+src/ui/screens/SpaceEditorScreen.tsx 386ms
+src/ui/studio/useDirectManipulation.ts 19ms
+src/features/studio/directManipulation.ts 8ms
+src/features/studio/rendering.ts 67ms
+src/features/studio/editorState.ts 5ms
+src/features/studio/styleEditing.ts 12ms
+src/domain/spaces.ts 40ms (unchanged)
+src/ui/studio/SpaceCanvas.tsx 21ms
+tests/features/direct-hit-depth.test.ts 12ms
+tests/features/style-editing.test.ts 15ms
+tests/features/studio.test.ts 103ms
+tests/integration/direct-manipulation.test.tsx 33ms
+tests/integration/view-on-room-flow.test.tsx 77ms
+scripts/check-expo-go.mjs 116ms

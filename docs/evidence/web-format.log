@@ -1,0 +1,4 @@
+src/ui/screens/ARUnavailableScreen.tsx 83ms
+src/ui/screens/ARScreen.web.tsx 4ms (unchanged)
+src/ui/screens/ArtworkDetailScreen.tsx 33ms
+apps/iphone-expo-go/src/ARUnavailableScreen.tsx 2ms

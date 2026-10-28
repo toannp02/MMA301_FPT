@@ -1,0 +1,22 @@
+{
+  "changes": [
+    {
+      "source": ".gitignore",
+      "before": "3bbe91ac99cefc124d5ce6c72aebe866c4b2baac",
+      "after": "e51d9f2a07613ee2e2bc8880f270d95d438792b1"
+    },
+    {
+      "source": "node_modules/@react-native-masked-view/masked-view",
+      "before": "4e9c4c5b817bb58369d0b099d10edd24e8ece44f",
+      "after": "3b05f6e8002d7ec0d78e9369d2ad84de1f55e06e"
+    },
+    {
+      "source": "packageJson:scripts",
+      "before": "61f60eb996e06dea9bf369ea558b8ff2e45a5122",
+      "after": "9596b7a7f5d6fab1ba69f9fbe2540a11beb2c9a9"
+    }
+  ],
+  "newHash": "285d3654ee24b6a734d230cfc3694da5c80daf7f",
+  "decision": "Full native rebuild; do not repack across unmatched fingerprints.",
+  "oldHash": "d686c78f13871141ef141c3f1c1a52f6370dbb82"
+}

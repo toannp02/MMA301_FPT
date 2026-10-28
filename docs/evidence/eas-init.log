@@ -1,0 +1,22 @@
+(node:6984) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+- Creating @nguyenphutoan1/artspace-ar
+√ Created @nguyenphutoan1/artspace-ar: https://expo.dev/accounts/nguyenphutoan1/projects/artspace-ar
+
+Warning: Your project uses dynamic app configuration, and the EAS project ID can't automatically be added to it.
+https://docs.expo.dev/workflow/configuration/#dynamic-configuration-with-appconfigjs
+
+To complete the setup process, set "extra.eas.projectId" in your app.config.ts:
+
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "189b9e68-6e66-4aae-b46c-77d7ab9a588b"
+      }
+    }
+  }
+}
+
+Cannot automatically write to dynamic config at: app.config.ts
+    Error: project:init command failed.

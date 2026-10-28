@@ -1,0 +1,2 @@
+PASS: generated Android manifest retains CAMERA for native AR.
+PASS: generated photo/AR manifest does not request microphone access.

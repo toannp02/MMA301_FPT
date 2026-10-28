@@ -1,0 +1,8 @@
+{
+  "root": null,
+  "sdkVersion": "58.0.0",
+  "launchUrl": "http://127.0.0.1:8082/node_modules/expo-router/entry.bundle?platform=ios&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable",
+  "status": 200,
+  "preview": true,
+  "name": "ArtSpace · Expo Go"
+}

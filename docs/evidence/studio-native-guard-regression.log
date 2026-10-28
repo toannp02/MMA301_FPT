@@ -1,0 +1,16 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/integration/studio-reload-guard.test.tsx
+
+PASS tests/integration/studio-reload-guard.test.tsx
+  √ editing on ios never calls browser APIs on the native window (310 ms)
+  √ editing on android never calls browser APIs on the native window (11 ms)
+  √ native runtimes skip listeners even if a library provides event shims (6 ms)
+  √ web protects dirty designs, cleans up on save and unmount, and prevents reload (10 ms)
+  √ web without DOM event support fails gracefully (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        5.43 s
+Ran all test suites matching /tests\\integration\\studio-reload-guard.test.tsx/i.

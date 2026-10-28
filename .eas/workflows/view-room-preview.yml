@@ -1,0 +1,25 @@
+name: View on room photo studio
+# Local Android fingerprint verified against finished studio build 15a939d0.
+# Recompute before reuse after native/config/dependency changes.
+jobs:
+  source_build:
+    type: get-build
+    params:
+      platform: android
+      profile: preview
+      distribution: internal
+      fingerprint_hash: 6fb75628d3441f13dc27d34f39d80d8482bf9dce
+      wait_for_in_progress: true
+  repack_preview:
+    name: View on room APK
+    type: repack
+    needs: [source_build]
+    if: ${{ needs.source_build.outputs.build_id }}
+    environment: preview
+    params:
+      build_id: ${{ needs.source_build.outputs.build_id }}
+      profile: preview
+      js_bundle_only: true
+      embed_bundle_assets: true
+      repack_version: 0.10.4
+      message: Studio lighting, shadow direction and softness, dimensions, room-art zoom and visual frames

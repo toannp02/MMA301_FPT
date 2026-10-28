@@ -1,0 +1,51 @@
+
+> artspace-ar@1.0.0 lint
+> eslint .
+
+
+F:\AI_terminal\AR_mma\src\ui\studio\useDirectManipulation.ts
+  16:10  error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This value was memoized in source but not in compilation output.
+
+F:\AI_terminal\AR_mma\src\ui\studio\useDirectManipulation.ts:16:10
+  14 |   const optionsRef=useRef(o);
+  15 |   useEffect(()=>{optionsRef.current=o;},[o]);
+> 16 |   return useMemo(()=>PanResponder.create({
+     |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |     onStartShouldSetPanResponderCapture:()=>!optionsRef.current.disabled,
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     onMoveShouldSetPanResponderCapture:()=>!optionsRef.current.disabled,
+     …
+> 44 |     onPanResponderRelease:(_event,g)=>{const gesture=gestureRef.current,o=optionsRef.current;if(gesture&&!gesture.pinched&&Math.hypot(g.dx,g.dy)<=4)o.select(toggledSelection(gesture.selected,gesture.id));o.finish();gestureRef.current=null;},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |     onPanResponderTerminate:()=>{optionsRef.current.finish();gestureRef.current=null;},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |   }),[]);
+     | ^^^^^^^^^ Could not preserve existing memoization
+  47 | }
+  48 |                                                                                                              react-hooks/preserve-manual-memoization
+  16:42  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+F:\AI_terminal\AR_mma\src\ui\studio\useDirectManipulation.ts:16:42
+  14 |   const optionsRef=useRef(o);
+  15 |   useEffect(()=>{optionsRef.current=o;},[o]);
+> 16 |   return useMemo(()=>PanResponder.create({
+     |                                          ^
+> 17 |     onStartShouldSetPanResponderCapture:()=>!optionsRef.current.disabled,
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     onMoveShouldSetPanResponderCapture:()=>!optionsRef.current.disabled,
+     …
+> 44 |     onPanResponderRelease:(_event,g)=>{const gesture=gestureRef.current,o=optionsRef.current;if(gesture&&!gesture.pinched&&Math.hypot(g.dx,g.dy)<=4)o.select(toggledSelection(gesture.selected,gesture.id));o.finish();gestureRef.current=null;},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |     onPanResponderTerminate:()=>{optionsRef.current.finish();gestureRef.current=null;},
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |   }),[]);
+     | ^^^^ Passing a ref to a function may read its value during render
+  47 | }
+  48 |  react-hooks/refs
+
+✖ 2 problems (2 errors, 0 warnings)
+

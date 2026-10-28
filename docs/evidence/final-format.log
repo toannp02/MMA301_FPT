@@ -1,0 +1,5 @@
+src/ui/screens/ArtworkDetailScreen.tsx 89ms
+src/ui/screens/FavoritesScreen.tsx 20ms
+src/data/firebase/FirebaseAuthRepository.ts 28ms
+tests/integration/favorite.test.tsx 24ms
+firebase/tests/rules.test.mjs 53ms

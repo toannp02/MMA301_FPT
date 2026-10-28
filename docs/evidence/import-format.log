@@ -1,0 +1,23 @@
+src/domain/models.ts 75ms (unchanged)
+src/domain/repositories/index.ts 18ms
+src/domain/customArtworks.ts 18ms
+src/domain/validators.ts 26ms
+src/data/local/PersonalArtworkRepository.ts 41ms
+src/data/local/CombinedSavedDesignRepository.ts 11ms
+src/data/errors.ts 8ms
+src/bootstrap/repositories.ts 10ms
+src/infra/personalImages.ts 8ms
+src/infra/personalImages.web.ts 4ms
+src/infra/pickArtworkImage.ts 12ms
+src/ui/screens/ImportArtworkScreen.tsx 43ms
+src/ui/screens/GalleryScreen.tsx 16ms
+src/ui/screens/ArtworkDetailScreen.tsx 17ms
+src/ui/screens/ARUnavailableScreen.tsx 7ms
+src/ui/screens/ARScreen.tsx 16ms
+src/ui/screens/DesignScreens.tsx 23ms
+src/features/ar/arTypes.ts 4ms (unchanged)
+src/features/designs/designUseCases.ts 8ms
+app/import-artwork.tsx 1ms (unchanged)
+app/_layout.tsx 4ms
+apps/iphone-expo-go/app/import-artwork.tsx 1ms (unchanged)
+app.config.ts 3ms

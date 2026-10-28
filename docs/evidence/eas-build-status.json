@@ -1,0 +1,11 @@
+{
+  "id": "ffeec95e-2929-4021-ae8f-7096b8f13d92",
+  "status": "FINISHED",
+  "createdAt": "2026-10-27T04:25:53.363Z",
+  "updatedAt": "2026-10-27T04:45:22.389Z",
+  "artifacts": {
+    "buildUrl": "https://expo.dev/artifacts/eas/lFdB5Q9qELAgzKdL9dCO5tEeavgs2ZY8cTsYQsHArEU.apk",
+    "applicationArchiveUrl": "https://expo.dev/artifacts/eas/lFdB5Q9qELAgzKdL9dCO5tEeavgs2ZY8cTsYQsHArEU.apk"
+  },
+  "error": null
+}

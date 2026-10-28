@@ -1,0 +1,15 @@
+{
+  "bundleBytes": 3889064,
+  "importScreen": true,
+  "importNavigation": true,
+  "imagePickerNative": true,
+  "imageManipulatorNative": true,
+  "cameraPermission": true,
+  "microphonePermission": false,
+  "viroLibraries": [
+    "lib/arm64-v8a/libviro_arcore.so",
+    "lib/arm64-v8a/libviro_renderer.so",
+    "lib/armeabi-v7a/libviro_arcore.so",
+    "lib/armeabi-v7a/libviro_renderer.so"
+  ]
+}

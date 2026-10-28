@@ -1,0 +1,16 @@
+[
+  {
+    "platform": "ios",
+    "status": 200,
+    "bytes": 9631752,
+    "dev": true,
+    "hot": true
+  },
+  {
+    "platform": "android",
+    "status": 200,
+    "bytes": 10343147,
+    "dev": true,
+    "hot": true
+  }
+]

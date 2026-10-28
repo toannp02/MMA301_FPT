@@ -1,0 +1,24 @@
+name: Quality checks
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm ci
+      - run: node scripts/verify.mjs
+      - run: npm run setup:iphone
+      - run: npm run check:iphone
+      - run: npm --prefix apps/iphone-expo-go run doctor
+      - run: npm run test:rules
+      - run: npx expo prebuild --platform android --no-install
+      - run: node scripts/check-android-manifest.mjs
+      - run: npx expo export --platform android

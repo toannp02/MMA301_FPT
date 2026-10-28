@@ -1,0 +1,24 @@
+› Installing 6 SDK 57.0.0 compatible native modules using npm
+> npm install
+
+added 28 packages, and audited 1724 packages in 27s
+
+269 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (14 moderate, 9 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+Cannot automatically write to dynamic config at: app.config.ts
+Add the following to your Expo config
+
+{
+  "plugins": [
+    "expo-sharing"
+  ]
+}
+

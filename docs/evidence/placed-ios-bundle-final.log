@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "sdkVersion": "58.0.0",
+  "expoGoPreview": true,
+  "bundleBytes": 9297211,
+  "sources": 1620,
+  "viroSources": [],
+  "react": [
+    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react/index.js"
+  ],
+  "reactNative": [
+    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react-native/index.js"
+  ],
+  "cameraSources": 7,
+  "previewSources": [
+    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/src/Preview2DCameraScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/Preview2DScreen.tsx"
+  ],
+  "studioSources": [
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpaceEditorScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/ForegroundPainter.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/SpaceCanvas.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpacesScreen.tsx"
+  ],
+  "imageChecks": [
+    {
+      "id": "art-01",
+      "status": 200,
+      "bytes": 14686
+    },
+    {
+      "id": "art-02",
+      "status": 200,
+      "bytes": 14539
+    },
+    {
+      "id": "art-03",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-04",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-05",
+      "status": 200,
+      "bytes": 14699
+    },
+    {
+      "id": "art-06",
+      "status": 200,
+      "bytes": 14372
+    },
+    {
+      "id": "art-07",
+      "status": 200,
+      "bytes": 14656
+    },
+    {
+      "id": "art-08",
+      "status": 200,
+      "bytes": 14653
+    },
+    {
+      "id": "art-09",
+      "status": 200,
+      "bytes": 14745
+    },
+    {
+      "id": "art-10",
+      "status": 200,
+      "bytes": 14341
+    },
+    {
+      "id": "art-11",
+      "status": 200,
+      "bytes": 14574
+    },
+    {
+      "id": "art-12",
+      "status": 200,
+      "bytes": 14589
+    }
+  ],
+  "launchStatus": 200,
+  "launchBytes": 8376298
+}

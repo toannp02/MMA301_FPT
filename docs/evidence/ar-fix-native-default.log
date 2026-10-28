@@ -1,0 +1,9 @@
+      36: putfield      #7                  // Field mNeedsUpdate:Z
+      39: return
+
+  static {};
+    Code:
+       0: getstatic     #45                 // Field com/viro/core/ARPlaneAnchor$Alignment.HORIZONTAL:Lcom/viro/core/ARPlaneAnchor$Alignment;
+       3: putstatic     #15                 // Field DEFAULT_ALIGNMENT:Lcom/viro/core/ARPlaneAnchor$Alignment;
+       6: return
+}

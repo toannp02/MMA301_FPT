@@ -1,0 +1,10 @@
+
+FullName                             Length
+--------                             ------
+lib/arm64-v8a/libviro_arcore.so      406720
+lib/arm64-v8a/libviro_renderer.so   7312144
+lib/armeabi-v7a/libviro_arcore.so    250576
+lib/armeabi-v7a/libviro_renderer.so 5248748
+assets/index.android.bundle         3842512
+
+

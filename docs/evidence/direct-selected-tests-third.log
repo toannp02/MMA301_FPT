@@ -1,0 +1,9 @@
+PASS tests/integration/view-on-room-flow.test.tsx (5.419 s)
+PASS tests/features/direct-hit-depth.test.ts
+PASS tests/integration/direct-manipulation.test.tsx
+
+Test Suites: 3 passed, 3 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        6.146 s, estimated 7 s
+Ran all test suites matching /tests\\integration\\direct-manipulation.test.tsx|tests\\integration\\view-on-room-flow.test.tsx|tests\\features\\direct-hit-depth.test.ts/i.

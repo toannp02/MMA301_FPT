@@ -1,0 +1,519 @@
+{
+  "deliveryBuildId": "cff492fd-643f-4e12-a916-71d90e48f809",
+  "note": "Runtime source/config/assets snapshot at generation time. Build association must be verified separately; this manifest does not claim device acceptance.",
+  "sha256": "8b43d5cde402585188e428321e8c97384adda54f64117aba744e01f85a841dd9",
+  "files": [
+    {
+      "path": "app.config.ts",
+      "sha256": "b581afbadb22f6739b3d6c66d0a0f35ba3c7a5030b37d5b455d2c327b189ce15"
+    },
+    {
+      "path": "app/(tabs)/_layout.tsx",
+      "sha256": "8a345c9e31246a583749e5667fd18eae6cf996c44586fb43fda12a67025b6d51"
+    },
+    {
+      "path": "app/(tabs)/favorites.tsx",
+      "sha256": "4af0c454334b0e575d5c7862e1b81c2daba852a914ce857ee7b24c52911b0959"
+    },
+    {
+      "path": "app/(tabs)/index.tsx",
+      "sha256": "0e970bf20872df26c4fee5077f6f3e7c6d8f3777065bc0e8fc42fd97efd0031b"
+    },
+    {
+      "path": "app/(tabs)/profile.tsx",
+      "sha256": "7d2110396b47213b53fd41a2fe65ca789921bd5403989c45be31b4ec04669abd"
+    },
+    {
+      "path": "app/(tabs)/saved.tsx",
+      "sha256": "cd7362e4d180aad3be48dca3816255f4f02ad912af293e650831b7f1de4d2f70"
+    },
+    {
+      "path": "app/+not-found.tsx",
+      "sha256": "75aab0f2ea57d6be99aa7595d9507e61e8d6a0adbbcc5fb9631e3c0f228284ce"
+    },
+    {
+      "path": "app/_layout.tsx",
+      "sha256": "34fc29abdca80868a170b47bfd56ef8d0dada92b8d4ce45925bb27db0cde4306"
+    },
+    {
+      "path": "app/ar/[id].tsx",
+      "sha256": "ad780c0d3dbb3320be5d488b758f85c24617a78e32576cf4f469229009b8774f"
+    },
+    {
+      "path": "app/artwork/[id].tsx",
+      "sha256": "5128d0b2ac9e84060d88a5d057af6804379414f4758de2bc12fa8095b940c662"
+    },
+    {
+      "path": "app/capture-preview.tsx",
+      "sha256": "9f713731f134da3813f7d9d59f430d71884a15ed2fa9b26bde8cf40d733f6b9b"
+    },
+    {
+      "path": "app/design/[id].tsx",
+      "sha256": "b7d7e2494edf99ad99a5749297d1f3e2710f3efaa8676e9ea4d7a9cef1c208b2"
+    },
+    {
+      "path": "app/import-artwork.tsx",
+      "sha256": "f24c426166148a2a1ca171a864dd6190b2ad597acdc6aa23730c8af95024be9e"
+    },
+    {
+      "path": "app/login.tsx",
+      "sha256": "ee7947685754aa3c006a8e9f473d6ffc321ca6d324c0f19934e62c9fbb539727"
+    },
+    {
+      "path": "app/preview-2d/[id].tsx",
+      "sha256": "24e77aea0d538f6515207d6398f331a007ff66b987f64d512f6788ff9393e010"
+    },
+    {
+      "path": "app/register.tsx",
+      "sha256": "ac6acc48640c90526246f59adfc24dfa00d66e885302bb9c605abb0b59b08463"
+    },
+    {
+      "path": "app/saved-walls.tsx",
+      "sha256": "9a1fb1d60cd937875f8e1f00aada8e05a62521175418decc9b15404e3bb5c388"
+    },
+    {
+      "path": "app/space/[id].tsx",
+      "sha256": "5b7c7516b5a0ff852f958e1e78ed9906c555e87b15951169cc15cf6f821b9112"
+    },
+    {
+      "path": "app/spaces.tsx",
+      "sha256": "7dc2bb165646f6eb8c0f746a4d3f94917efd860e6228639f0044eb7783dea2da"
+    },
+    {
+      "path": "app/view-on-room/[id].tsx",
+      "sha256": "6ad63e41c710070baa64f3cc92552b397c7fc437ba33b1a522a27c8975e7a4ab"
+    },
+    {
+      "path": "assets/android-icon-background.png",
+      "sha256": "fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d"
+    },
+    {
+      "path": "assets/android-icon-foreground.png",
+      "sha256": "9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391"
+    },
+    {
+      "path": "assets/android-icon-monochrome.png",
+      "sha256": "6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83"
+    },
+    {
+      "path": "assets/artworks/LICENSE.md",
+      "sha256": "2e0237d624d77d41cf2085ee2689d27884872884c1e7cd23752ba813f9712043"
+    },
+    {
+      "path": "assets/artworks/art-01.png",
+      "sha256": "55e1cc0efa865d4268c066d1754bb2c56d026174e38f7abfae9285539867fa26"
+    },
+    {
+      "path": "assets/artworks/art-02.png",
+      "sha256": "70b80e0dc8edc30e5b16b036ee3eaf27502688b5f677d1a5c64f7e3908274520"
+    },
+    {
+      "path": "assets/artworks/art-03.png",
+      "sha256": "cc8640d145a5d0512becd8f4bbe226c45ac6378a527d69826ce045e69c01f2c2"
+    },
+    {
+      "path": "assets/artworks/art-04.png",
+      "sha256": "4711b29758b884307608351e81993ed09da4baee39e1b99a272bdd234b33587b"
+    },
+    {
+      "path": "assets/artworks/art-05.png",
+      "sha256": "4cc23e3eb12aca158d8b4cadd313d28deb9a8e48a9b85f93270127bad8007435"
+    },
+    {
+      "path": "assets/artworks/art-06.png",
+      "sha256": "9f10999ce1fcfbd81580ae547c636c1b77bbd0806f0d73e687d75ff6cf89cb1b"
+    },
+    {
+      "path": "assets/artworks/art-07.png",
+      "sha256": "328f663a725af9deac935bdeab1cd999f6831ee58e762cc4eb5929e502774e8b"
+    },
+    {
+      "path": "assets/artworks/art-08.png",
+      "sha256": "c207d586ee315a0c7928e3e4f1cf0d56342b1ffc4d6e838cbdb22d5944bdaf6e"
+    },
+    {
+      "path": "assets/artworks/art-09.png",
+      "sha256": "264a26dc0f924491c3356a04e4e85b5bdfa11ee655e388a333108242b81f5d9c"
+    },
+    {
+      "path": "assets/artworks/art-10.png",
+      "sha256": "ae3d0963d7f32fcbcaefc917d8acc9bb52918e233ea48aeec33dd2d2798af2e1"
+    },
+    {
+      "path": "assets/artworks/art-11.png",
+      "sha256": "ab775f5e272728aaf8f9f8a3d0ebe9ab979310de6ffc2f2dfd4c2d5b4f0cf3f6"
+    },
+    {
+      "path": "assets/artworks/art-12.png",
+      "sha256": "bc60916b4eb595c7996b9139dc3ccc7960d36d58631624069bfa3332240e64a2"
+    },
+    {
+      "path": "assets/favicon.png",
+      "sha256": "a4e030697a7571b3e95d31860e4da55d2f98e5e861e2b55e414f45a8556828ba"
+    },
+    {
+      "path": "assets/icon.png",
+      "sha256": "150abdcfc80d02f68a0c8a36582eadc900673dd2cc5317b6d3acbc9a2a0b9c56"
+    },
+    {
+      "path": "assets/rooms/bedroom.png",
+      "sha256": "27691197294a8d6c83db6dcc7e129839bea04e56cbb8f62fbcbd5dc55f4b8af7"
+    },
+    {
+      "path": "assets/rooms/gallery.png",
+      "sha256": "19aedd2f25ea82e890474da3548ca8d2c34054ecadb8dc72c94826758574717a"
+    },
+    {
+      "path": "assets/rooms/living.png",
+      "sha256": "22e9aab47ceadf6fbf2b79349c37ac0d423cd48a3642605b4dafe5db41d7d9ab"
+    },
+    {
+      "path": "assets/splash-icon.png",
+      "sha256": "150abdcfc80d02f68a0c8a36582eadc900673dd2cc5317b6d3acbc9a2a0b9c56"
+    },
+    {
+      "path": "eas.json",
+      "sha256": "216acc269a77310fd4024555ff136ab3d03b2375431ecf87013127d05d94bf55"
+    },
+    {
+      "path": "firebase.json",
+      "sha256": "dfa10ff65f85dc13e1dd7c1d632a5c87a753ea2d6dece46a252f2caba78f809c"
+    },
+    {
+      "path": "firebase/firestore.indexes.json",
+      "sha256": "02040af729e3fe3eeeb8a5b6e8c357f65b97078a14f884106377d7af7869dff0"
+    },
+    {
+      "path": "firebase/firestore.rules",
+      "sha256": "e685fb92712c084c678f814d3876bb75231824622341004768e2ae0fc1e612f1"
+    },
+    {
+      "path": "firebase/storage.rules",
+      "sha256": "39d5c371630674541d347c905e59634d92436217e1f1ef945118a9f68dcce542"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "4d1208f7f63b3456ab56f4dbb9e5d8e711ea86b7a8d071381d62e14d4a78ea12"
+    },
+    {
+      "path": "package.json",
+      "sha256": "670c75960ab06a08e13535399f93078ca0dead8377a575618f9fefa479b9918e"
+    },
+    {
+      "path": "src/bootstrap/AppProviders.tsx",
+      "sha256": "1f0d03a9f4b7306fcab56a52b7025f68986eb8d209dd80889c4c0d0969683448"
+    },
+    {
+      "path": "src/bootstrap/repositories.ts",
+      "sha256": "f1793903ad552ec9581c0ca2b5335961bb752037fdf3c3a85f8ba3f2d6f8e986"
+    },
+    {
+      "path": "src/config/env.ts",
+      "sha256": "ed101c417830889cfd4fa3e08d3b1a2e58c0c3d0ce7309adcbbf5d775dc0c05b"
+    },
+    {
+      "path": "src/config/runtime.ts",
+      "sha256": "d4ee49fdf86af24cd3ede148e0f95404b1164c6ed645d7dda337673b2a1059d9"
+    },
+    {
+      "path": "src/data/UnavailableAuthRepository.ts",
+      "sha256": "8437a7005996a5b41252d47450b77f4e41a2999e935eff762ebd7bc4cecc8f6d"
+    },
+    {
+      "path": "src/data/errors.ts",
+      "sha256": "c2f626870710736050bda9cd95df8fa7df4d0d8508649b4a72db77a557cbc42e"
+    },
+    {
+      "path": "src/data/firebase/FirebaseArtworkRepository.ts",
+      "sha256": "2d17e1d0717b6caba3298a6ef1e2f0e54ea4fc865a7a9f80416740fca8e4cddb"
+    },
+    {
+      "path": "src/data/firebase/FirebaseAuthRepository.ts",
+      "sha256": "3b91d665d8c6f1c4216c6e45a0df1a87bb35ba06dc8a9d9a5f4804f9d5a4249d"
+    },
+    {
+      "path": "src/data/firebase/FirebaseCaptureStorage.ts",
+      "sha256": "b51714a2187c69c79c6568832370aa5b53cbc48adda4fc112aebab82b6cccff1"
+    },
+    {
+      "path": "src/data/firebase/FirebaseFavoriteRepository.ts",
+      "sha256": "579d0e8070523fb9a6d3b9e05b0b5f211ae3a3ab906ecb169592598f2bc5266a"
+    },
+    {
+      "path": "src/data/firebase/FirebaseSavedDesignRepository.ts",
+      "sha256": "a21ff189556ffc4cd8600cf0e1f6751e2dad7890e611835fa3bbd234c13bd92b"
+    },
+    {
+      "path": "src/data/local/CombinedSavedDesignRepository.ts",
+      "sha256": "dc776604404e3809af0fe8202649f69575f2616d8d5a61687aaa703046ff6536"
+    },
+    {
+      "path": "src/data/local/LocalCaptureStorage.ts",
+      "sha256": "aecdfb405a0991627d44540af63a5b92638208c846d67400d4999e23d19582c6"
+    },
+    {
+      "path": "src/data/local/LocalSavedDesignRepository.ts",
+      "sha256": "bd8e280352919ac5751e8abf62efbeea3339e588dec5831186618a7486222724"
+    },
+    {
+      "path": "src/data/local/PersonalArtworkRepository.ts",
+      "sha256": "a7d9bd96d101eff58dcfb90cdc07d70d4199ebcb5bc59945f261024de6bd27ac"
+    },
+    {
+      "path": "src/data/local/WallSpaceRepository.ts",
+      "sha256": "1ec646d3bbcf3369ecf1db47bdf98b5ba37c882f9187976644b58b12942dafa4"
+    },
+    {
+      "path": "src/data/mappers/index.ts",
+      "sha256": "2cbf0324ec9cd6b27c05d2e9aafdb21f9dfc4bba72d04c4668424e887889f9a8"
+    },
+    {
+      "path": "src/data/mock/catalogue.ts",
+      "sha256": "6490a37bd89e3f92891ef55ceefd87124d1841affb3cb5dab29814d2ce08da21"
+    },
+    {
+      "path": "src/data/mock/rooms.ts",
+      "sha256": "aed9288c32260cfc3e6d1d0860b70114234425d324c97ac9953230d8ea8634a1"
+    },
+    {
+      "path": "src/domain/async.ts",
+      "sha256": "e9294e042ba69ef5efa65144f9931e633c215ab9943314a83640167df614af83"
+    },
+    {
+      "path": "src/domain/customArtworks.ts",
+      "sha256": "2793a3ae463e5872577143ea453bd00a63fcff91712fa58f5e44ed4ae8710499"
+    },
+    {
+      "path": "src/domain/models.ts",
+      "sha256": "fec2f3add471e8d1dce9ccfcc79e25b417e56311af07697471b47f2b0ffc6956"
+    },
+    {
+      "path": "src/domain/repositories/index.ts",
+      "sha256": "740c9d1f355abc389fdbc44c81511a7d7ceec1062079fe0a88a346c862c1fa93"
+    },
+    {
+      "path": "src/domain/spaces.ts",
+      "sha256": "4e4dde7dfadd7cf04f4f325563557a507d316473eaf726983547d5426a8f6566"
+    },
+    {
+      "path": "src/domain/validators.ts",
+      "sha256": "25210ec919b54bae3d02b45a9587f5ee61a426eae8541cf58d257840e2387422"
+    },
+    {
+      "path": "src/features/ar/ARScene.tsx",
+      "sha256": "70616e9265eab3dfe7f053d3be2d49fdfa209a474066ed11803eccdd674310f9"
+    },
+    {
+      "path": "src/features/ar/ARViewer.tsx",
+      "sha256": "c740f03c231403f6a40831aeb4ea58e44c0b28f8f100dc714e9666aa579e386c"
+    },
+    {
+      "path": "src/features/ar/WallPlaneSelector.tsx",
+      "sha256": "9cd686669491e79c0056876ad92d5809b46855b7d5a21b10f905a8a9c4e95e64"
+    },
+    {
+      "path": "src/features/ar/arAssetResolver.ts",
+      "sha256": "8844dda75788ee79f7404b552a94f98494c92aaf7ba3350f63def8e753b98784"
+    },
+    {
+      "path": "src/features/ar/arCapture.ts",
+      "sha256": "5b1e9f4703f1497263f99e63012396ff1ef96bb80bdc7b82a54f4ecac5831f34"
+    },
+    {
+      "path": "src/features/ar/arSupport.ts",
+      "sha256": "e5513464d72070b9d838ed40490ca19f85b2f4d0cea2c5f52755599f5ff1bb54"
+    },
+    {
+      "path": "src/features/ar/arTypes.ts",
+      "sha256": "9664a1a31d9d2ab7d54a196da6fe38f71f065164a4c8aa03b79475b1b473ef03"
+    },
+    {
+      "path": "src/features/auth/authUseCases.ts",
+      "sha256": "3fad58c541bda26af0ef473180eaafa63d3905b0a5da5849b6fca2f22a5f1a2e"
+    },
+    {
+      "path": "src/features/designs/designUseCases.ts",
+      "sha256": "fb6d37f807059e438c8208c60c0dfadc8d1d5dc26a1ea321c5244fc414b22e5d"
+    },
+    {
+      "path": "src/features/preview2d/geometry.ts",
+      "sha256": "a6cd92044bdf0fee663b5c3a925b14751377615735e8dc3ed80d96787ac2fbf8"
+    },
+    {
+      "path": "src/features/studio/createSpace.ts",
+      "sha256": "874adef7ef9d00f397f0333e4e2440d8201dafab5ccada3234b458a7703edf6c"
+    },
+    {
+      "path": "src/features/studio/discovery.ts",
+      "sha256": "c4c1c44501bf2db4d9e1024d45bc5cb419ee50211f7d17158ffa07a0d8b443da"
+    },
+    {
+      "path": "src/features/studio/editorState.ts",
+      "sha256": "11e86c81541cc20be96a51716a5f64112677d3b00934ce77e6f3cab53aa67521"
+    },
+    {
+      "path": "src/features/studio/geometry.ts",
+      "sha256": "bc230bcb434b9a06d47c44b236b3c5741813c126afa72954b5c62442e9dbb364"
+    },
+    {
+      "path": "src/features/studio/maskPng.ts",
+      "sha256": "67c0e5792f5935f50fdbe477c1ab99bb2ceea73360d5c3d5a8d92fa65b5cc777"
+    },
+    {
+      "path": "src/features/studio/photoAssist.ts",
+      "sha256": "b2164ada3c13bc05592c042b3ae365e36a11837c29b7a727326bb8d4c8454c12"
+    },
+    {
+      "path": "src/features/studio/placeArtwork.ts",
+      "sha256": "037e89362f1026c410fc6b1eb52e9be2c82af3f7de983a75d4da3738b774a0ae"
+    },
+    {
+      "path": "src/features/studio/rendering.ts",
+      "sha256": "d0ad1b1631ab66e0315558885c43c95896589aab2c8b702057f247614990352d"
+    },
+    {
+      "path": "src/features/useResource.ts",
+      "sha256": "dcd2cceb41cb22c907d58f1e6a1d223c21ee94b9faa8658da4d7174ef69f1246"
+    },
+    {
+      "path": "src/infra/analyzeRoomPhoto.ts",
+      "sha256": "aca99fcf1cfe30c6dc5a65bc0732e647a957bda4e9ad3b4e2d4d297caf28d3c8"
+    },
+    {
+      "path": "src/infra/exportSpace.ts",
+      "sha256": "d0196b05cdbd2d2d34e118a23b5be9d5c05014b9954e59f3772afb3db78fe4f1"
+    },
+    {
+      "path": "src/infra/exportSpace.web.ts",
+      "sha256": "8028d7c93ea890ade2b31b8f0f8f4367b6049d57ecfd7526600120285c8c3333"
+    },
+    {
+      "path": "src/infra/firebase/auth-native.d.ts",
+      "sha256": "b01f6b917cb2ad993ed25ac38d404c3cc3f91aa65272ce16392dfcd494537f57"
+    },
+    {
+      "path": "src/infra/firebase/client.ts",
+      "sha256": "7f56969dc3c17af650688b4dc69f6a08a28eb9ee496409e9fb4beaab954eeba0"
+    },
+    {
+      "path": "src/infra/personalImages.ts",
+      "sha256": "5918c296bff2c0ae80b6b3f554fe12dc4c184846f262e201bff4d7a2ad71c030"
+    },
+    {
+      "path": "src/infra/personalImages.web.ts",
+      "sha256": "b779c608c56f1e85e719e4d6c96fd82b8bd6e86e20717ee9eeffcee68bfb44f3"
+    },
+    {
+      "path": "src/infra/pickArtworkImage.ts",
+      "sha256": "68d558820fcc9fe6987803bbee2b4694d781d2bf6a7d9ddf89a904f031d0d500"
+    },
+    {
+      "path": "src/infra/spaceImages.ts",
+      "sha256": "51b96ca6628b8d9213b307ca1059c3206b81d5179eeae2075fb64ca2983109a1"
+    },
+    {
+      "path": "src/infra/spaceImages.web.ts",
+      "sha256": "927306fcb13d3442882f8aafd7b16902f3d383b6334250086f6fc3fec991dd09"
+    },
+    {
+      "path": "src/ui/components.tsx",
+      "sha256": "b9d19d067439c33c01ac83aa64380a9dffd430cdcc700f9152a691533d30aa4e"
+    },
+    {
+      "path": "src/ui/screens/ARScreen.tsx",
+      "sha256": "e62264d632ae6f6093e3f58c4c21418e0d65ec10718a206fd16bd10712f2fb7f"
+    },
+    {
+      "path": "src/ui/screens/ARScreen.web.tsx",
+      "sha256": "f0f18b82d4b3bae650a203509a2bb12a910322c42e423efacff989f569067b1c"
+    },
+    {
+      "path": "src/ui/screens/ARUnavailableScreen.tsx",
+      "sha256": "8efa52925fec44092a728bcc2999d270087923976bcd974df4442a06cd4a401f"
+    },
+    {
+      "path": "src/ui/screens/ArtworkDetailScreen.tsx",
+      "sha256": "9c8603d8af4fb1a099958de34c007e242725a82f2b75a0f6c65fa57ee9a55bf6"
+    },
+    {
+      "path": "src/ui/screens/AuthScreen.tsx",
+      "sha256": "2855df90408b6d0c2956c44e4e5400c32f5c7100f25e89f51f333b6cf1b810a7"
+    },
+    {
+      "path": "src/ui/screens/DesignScreens.tsx",
+      "sha256": "9e3e134a7ea334074d07adc7e65b46435e3738b4c5f5206a7dbcae7b7a89b76f"
+    },
+    {
+      "path": "src/ui/screens/FavoritesScreen.tsx",
+      "sha256": "80bd470b42cb8644e9e9a8364aff533351d3b88c09ef70c5f5a4806c9eb6318d"
+    },
+    {
+      "path": "src/ui/screens/GalleryScreen.tsx",
+      "sha256": "cb96d9a11a7c81a9d1f57a085a39969add87aae6023136e925231f55d62e0a4d"
+    },
+    {
+      "path": "src/ui/screens/ImportArtworkScreen.tsx",
+      "sha256": "517f8d5ac3750d3107a5083442f171e3ee1c94f4044e842fde911c99586a8e48"
+    },
+    {
+      "path": "src/ui/screens/Preview2DCameraScreen.tsx",
+      "sha256": "664913f0f49c56e79441c8ec4574b3f2a88127cb6d4e87a025019bcd727b34eb"
+    },
+    {
+      "path": "src/ui/screens/Preview2DScreen.tsx",
+      "sha256": "d8a59ba64453dbfb80aef86dd899b968685c81ada8ba881cb1f55df951237883"
+    },
+    {
+      "path": "src/ui/screens/ProfileScreen.tsx",
+      "sha256": "9edae4c54c727544deff8787b69246ae2eea7ec30774b151eba4173f30f3f9e9"
+    },
+    {
+      "path": "src/ui/screens/SpaceEditorScreen.tsx",
+      "sha256": "1ed9d718ee3453eb335e6f480188c366ab9aa4d0cb9fe3294ec734f3bd6d8c2c"
+    },
+    {
+      "path": "src/ui/screens/SpacesScreen.tsx",
+      "sha256": "a8961b112604dbbf55bdb3ee7476c291ce2318047aa3b2d12a0f5b2fd0b72e9d"
+    },
+    {
+      "path": "src/ui/screens/ViewOnRoomScreen.tsx",
+      "sha256": "40608ac82bfeafb8b4f1e0637219223ff99a22a85a4c4e696f52fdee64b85333"
+    },
+    {
+      "path": "src/ui/studio/ArtworkFilters.tsx",
+      "sha256": "6c8bd1ae3b64d3434544a7dbf30f2a2cb9bf24c67c6e63902816336f617fc914"
+    },
+    {
+      "path": "src/ui/studio/ForegroundPainter.tsx",
+      "sha256": "7f5cc406ef702f3be4d20ad24c2c192b564d636e30393cd413ef680f71818dfb"
+    },
+    {
+      "path": "src/ui/studio/LayoutPicker.tsx",
+      "sha256": "d7ca2973d57dc36513790a7076f55b0be762b8cbcb3236618a08718fe230fa1b"
+    },
+    {
+      "path": "src/ui/studio/LibraryNavigation.tsx",
+      "sha256": "8f4a098b3e85bf8fcaaad31aba48891d7503f0be7173ccfbdbfbac060780f27c"
+    },
+    {
+      "path": "src/ui/studio/SpaceCanvas.tsx",
+      "sha256": "3eab661b8ef71a701317e0fa30a2fb218395a476e9f2b8fbc43dcaae6542e413"
+    },
+    {
+      "path": "src/ui/studio/StudioDragArea.tsx",
+      "sha256": "e3441059e988a92f06dda679e13f72eed6641ad101f28fc58aaeda85778fb71c"
+    },
+    {
+      "path": "src/ui/studio/useUnsavedReloadGuard.ts",
+      "sha256": "6a0d75a08c0fa52d7e12067607f403670a6cf51e8f6b169ac15a1f814393ceda"
+    },
+    {
+      "path": "src/ui/theme.ts",
+      "sha256": "71bb0b04ecfb61c7e708076afee5964796112780082fa0e97c9d9a1cf981c7d2"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "a7f325026058a9c81960c24aa41e601ceae017d4944cc65225381239f225569f"
+    }
+  ]
+}

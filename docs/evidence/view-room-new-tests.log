@@ -1,0 +1,13 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/features/photo-assist.test.ts tests/features/view-on-room.test.ts tests/integration/view-on-room-flow.test.tsx
+
+PASS tests/integration/view-on-room-flow.test.tsx (28.674 s)
+PASS tests/features/view-on-room.test.ts
+PASS tests/features/photo-assist.test.ts
+
+Test Suites: 3 passed, 3 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        30.282 s
+Ran all test suites matching /tests\\features\\photo-assist.test.ts|tests\\features\\view-on-room.test.ts|tests\\integration\\view-on-room-flow.test.tsx/i.

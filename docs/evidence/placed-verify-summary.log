@@ -1,0 +1,5 @@
+typecheck: PASS
+lint: FAIL
+unit-tests: PASS
+doctor: PASS
+dependency-check: PASS

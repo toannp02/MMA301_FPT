@@ -35,6 +35,17 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+coverage/
+*-debug.log
+*.log
+!docs/evidence/*.log
+.env
+service-account*.json
+*.keystore
+.security-analysis.local.md
+.eas-status.local.json
+.firebase-projects.local.json
+artifacts/
 
 # generated native folders
 /ios

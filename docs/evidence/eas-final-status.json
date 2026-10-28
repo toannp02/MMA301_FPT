@@ -1,0 +1,10 @@
+{
+  "id": "2a3fc186-e2b3-4481-98dd-6b19481cf7ef",
+  "status": "FINISHED",
+  "artifacts": {
+    "buildUrl": "https://expo.dev/artifacts/eas/QgIKMjYVZp78fAMZe3-apK6JWgLx5v18SlJeuYjx-bg.apk",
+    "applicationArchiveUrl": "https://expo.dev/artifacts/eas/QgIKMjYVZp78fAMZe3-apK6JWgLx5v18SlJeuYjx-bg.apk"
+  },
+  "error": null,
+  "nativeFingerprint": "285d3654ee24b6a734d230cfc3694da5c80daf7f"
+}

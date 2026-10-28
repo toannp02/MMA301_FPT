@@ -1,0 +1,11 @@
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14976:13
+    at async request (file:///F:/AI_terminal/AR_mma/scripts/check-expo-go.mjs:5:20)
+    at async file:///F:/AI_terminal/AR_mma/scripts/check-expo-go.mjs:27:26 {
+  [cause]: Error: read ECONNRESET
+      at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+    errno: -4077,
+    code: 'ECONNRESET',
+    syscall: 'read'
+  }
+}

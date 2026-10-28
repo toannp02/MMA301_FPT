@@ -1,0 +1,4 @@
+src/ui/screens/ArtworkDetailScreen.tsx 121ms
+src/ui/screens/ImportArtworkScreen.tsx 48ms
+src/ui/screens/DesignScreens.tsx 36ms
+src/data/errors.ts 11ms

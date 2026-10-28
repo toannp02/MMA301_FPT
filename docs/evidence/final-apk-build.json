@@ -1,0 +1,12 @@
+{
+  "id": "68b6812f-5158-4bdc-ad19-33ec96c76b25",
+  "status": "FINISHED",
+  "createdAt": "2026-10-27T05:15:20.43Z",
+  "updatedAt": "2026-10-27T05:17:29.129Z",
+  "artifacts": {
+    "buildUrl": "https://expo.dev/artifacts/eas/JKvA-rzDSrP5GXXCno6b2AzMlJcfwqJDA9BThIOBqcc.apk",
+    "applicationArchiveUrl": "https://expo.dev/artifacts/eas/JKvA-rzDSrP5GXXCno6b2AzMlJcfwqJDA9BThIOBqcc.apk"
+  },
+  "error": null,
+  "nativeFingerprint": "285d3654ee24b6a734d230cfc3694da5c80daf7f"
+}

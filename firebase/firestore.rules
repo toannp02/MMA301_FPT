@@ -1,0 +1,55 @@
+rules_version = '2';
+// Assumed model: published artworks and categories are public catalogue.
+// users: email <=254, displayName 2..60, avatarUrl null, createdAt/updatedAt timestamps.
+// favorites: artworkId matches path, createdAt timestamp (immutable).
+// savedDesigns: catalogue ID, catalog source, owner-scoped image path; positive cm <=1000,
+// scale 0.5..2, frame enum and immutable timestamp. No client role fields.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function parentExists(uid) { return exists(/databases/$(database)/documents/users/$(uid)); }
+    function validUser(d) {
+      return d.keys().hasAll(['email','displayName','avatarUrl','createdAt','updatedAt'])
+        && d.keys().hasOnly(['email','displayName','avatarUrl','createdAt','updatedAt'])
+        && d.email is string && d.email.size() <= 254 && d.email == request.auth.token.email
+        && d.displayName is string && d.displayName.size() >= 2 && d.displayName.size() <= 60
+        && d.avatarUrl == null && d.createdAt is timestamp && d.updatedAt is timestamp;
+    }
+    function published(id) { return id is string && id.size() <= 128 && get(/databases/$(database)/documents/artworks/$(id)).data.status == 'published'; }
+    function validFavorite(d, id) {
+      return d.keys().hasAll(['artworkId','createdAt']) && d.keys().hasOnly(['artworkId','createdAt'])
+        && d.artworkId == id && d.createdAt is timestamp && published(id);
+    }
+    function validDesign(d, uid, id) {
+      return d.keys().hasAll(['artworkId','sourceKind','imageStoragePath','widthCm','heightCm','scaleFactor','frameStyle','createdAt'])
+        && d.keys().hasOnly(['artworkId','sourceKind','imageStoragePath','widthCm','heightCm','scaleFactor','frameStyle','createdAt'])
+        && d.sourceKind == 'catalog' && published(d.artworkId)
+        && d.imageStoragePath == 'designs/' + uid + '/' + id + '.jpg'
+        && d.widthCm is number && d.widthCm > 0 && d.widthCm <= 1000
+        && d.heightCm is number && d.heightCm > 0 && d.heightCm <= 1000
+        && d.scaleFactor is number && d.scaleFactor >= 0.5 && d.scaleFactor <= 2
+        && d.frameStyle in ['none','black','white'] && d.createdAt is timestamp
+        && d.createdAt <= request.time;
+    }
+    match /artworks/{id} { allow read: if resource.data.status == 'published'; allow write: if false; }
+    match /categories/{id} { allow read: if true; allow write: if false; }
+    match /users/{uid} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validUser(request.resource.data) && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
+      allow update: if owner(uid) && validUser(request.resource.data) && request.resource.data.createdAt == resource.data.createdAt && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+      match /favorites/{id} {
+        allow read, delete: if owner(uid);
+        allow create: if owner(uid) && parentExists(uid) && validFavorite(request.resource.data, id) && request.resource.data.createdAt == request.time;
+        allow update: if owner(uid) && parentExists(uid) && validFavorite(request.resource.data, id) && request.resource.data == resource.data;
+      }
+      match /savedDesigns/{id} {
+        allow read, delete: if owner(uid);
+        allow create: if owner(uid) && parentExists(uid) && validDesign(request.resource.data, uid, id);
+        // Capture metadata is immutable. Retried identical creates remain idempotent.
+        allow update: if owner(uid) && parentExists(uid) && validDesign(request.resource.data, uid, id) && request.resource.data == resource.data;
+      }
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

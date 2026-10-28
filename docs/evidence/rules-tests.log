@@ -1,0 +1,103 @@
+
+> artspace-ar@1.0.0 test:rules
+> firebase emulators:exec --project demo-artspace-ar --only firestore,storage "node --test firebase/tests/rules.test.mjs"
+
+(node:17068) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+i  emulators: Starting emulators: firestore, storage
+i  emulators: Detected demo project ID "demo-artspace-ar", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail.
+i  firestore: Firestore Emulator logging to firestore-debug.log
++  firestore: Firestore Emulator was started in standard edition.
++  firestore: Firestore Emulator UI websocket is running on 9150.
+!  Unexpected rules runtime error: WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/C:/Users/toann/.cache/firebase/emulators/cloud-storage-rules-runtime-v1.1.3.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+
+i  Running script: node --test firebase/tests/rules.test.mjs
+TAP version 13
+# Subtest: concurrent profile repair preserves the immutable creation timestamp
+ok 1 - concurrent profile repair preserves the immutable creation timestamp
+  ---
+  duration_ms: 2365.57
+  type: 'test'
+  ...
+# Subtest: guest published query allowed, unfiltered and hidden denied
+ok 2 - guest published query allowed, unfiltered and hidden denied
+  ---
+  duration_ms: 140.3733
+  type: 'test'
+  ...
+# [2026-10-27T05:05:35.433Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8511a error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L34, false for 'create' @ L53, false for 'update' @ L34, false for 'update' @ L53
+# [2026-10-27T05:05:35.472Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8511b error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L43, false for 'create' @ L53, false for 'update' @ L44, false for 'update' @ L53
+# Subtest: catalogue writes and guest favorites denied
+ok 3 - catalogue writes and guest favorites denied
+  ---
+  duration_ms: 81.336
+  type: 'test'
+  ...
+# [2026-10-27T05:05:35.582Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8511c error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L39:24 for 'update' @ L39, false for 'update' @ L53, false for 'update' @ L39, false for 'update' @ L53
+# [2026-10-27T05:05:35.600Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8511e error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L39:24 for 'update' @ L39, false for 'update' @ L53, false for 'update' @ L39, false for 'update' @ L53
+# [2026-10-27T05:05:35.616Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8511f error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L39:24 for 'update' @ L39, false for 'update' @ L53, false for 'update' @ L39, false for 'update' @ L53
+# [2026-10-27T05:05:35.643Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85120 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L39:24 for 'update' @ L39, false for 'update' @ L53, false for 'update' @ L39, false for 'update' @ L53
+# [2026-10-27T05:05:35.657Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85121 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L39:24 for 'update' @ L39, false for 'update' @ L53, false for 'update' @ L39, false for 'update' @ L53
+# Subtest: profile ownership, schema, immutable timestamps and update validation
+ok 4 - profile ownership, schema, immutable timestamps and update validation
+  ---
+  duration_ms: 200.3048
+  type: 'test'
+  ...
+# [2026-10-27T05:05:35.791Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85125 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L43:26 for 'create' @ L43, false for 'create' @ L53, evaluation error at L44:26 for 'update' @ L44, false for 'update' @ L53, false for 'create' @ L43, false for 'create' @ L53
+# [2026-10-27T05:05:35.804Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85123 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L43:26 for 'create' @ L43, false for 'create' @ L53, evaluation error at L44:26 for 'update' @ L44, false for 'update' @ L53, false for 'create' @ L43, false for 'create' @ L53
+# Subtest: favorite owner isolation, parent requirement and published relationship
+ok 5 - favorite owner isolation, parent requirement and published relationship
+  ---
+  duration_ms: 131.9806
+  type: 'test'
+  ...
+# [2026-10-27T05:05:35.876Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85126 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L48, false for 'create' @ L53, false for 'update' @ L50, false for 'update' @ L53
+# [2026-10-27T05:05:35.892Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85128 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L50:26 for 'update' @ L50, false for 'update' @ L53, false for 'update' @ L50, false for 'update' @ L53
+# [2026-10-27T05:05:35.910Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d85129 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L50:26 for 'update' @ L50, false for 'update' @ L53, false for 'update' @ L50, false for 'update' @ L53
+# [2026-10-27T05:05:35.932Z]  @firebase/firestore: Firestore (12.14.0): GrpcConnection RPC 'Write' stream 0x76d8512a error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L50:26 for 'update' @ L50, false for 'update' @ L53, false for 'update' @ L50, false for 'update' @ L53
+# Subtest: design owner paths, invalid dimensions and immutable metadata
+ok 6 - design owner paths, invalid dimensions and immutable metadata
+  ---
+  duration_ms: 127.2521
+  type: 'test'
+  ...
+# Subtest: storage MIME, size, ownership and guest access
+ok 7 - storage MIME, size, ownership and guest access
+  ---
+  duration_ms: 387.8135
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3774.684
++  Script exited successfully (code 0)
+i  emulators: Shutting down emulators.
+i  firestore: Stopping Firestore Emulator
+!  Firestore Emulator has exited upon receiving signal: SIGINT
+i  storage: Stopping Storage Emulator
+i  hub: Stopping emulator hub
+i  logging: Stopping Logging Emulator
+EXIT_CODE=0

@@ -1,0 +1,11 @@
+- Clearing android
+√ Cleared android code
+- Creating native directory (./android)
+√ Created native directory
+- Updating package.json
+√ Updated package.json | no changes
+- Running prebuild
+- Running prebuild
+» android: userInterfaceStyle: Install expo-system-ui in your project to enable this feature.
+√ Finished prebuild
+EXIT_CODE=0

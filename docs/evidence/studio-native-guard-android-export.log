@@ -1,0 +1,57 @@
+Starting Metro Bundler
+
+Error while reading cache, falling back to a full crawl:
+ Error: Unable to deserialize cloned data.
+    at deserialize (node:v8:436:14)
+    at DiskCacheManager.read (F:\AI_terminal\AR_mma\node_modules\@expo\metro-file-map\build\cache\DiskCacheManager.js:55:41)
+    at async FileMap.read (F:\AI_terminal\AR_mma\node_modules\@expo\metro-file-map\build\index.js:371:20)
+    at async F:\AI_terminal\AR_mma\node_modules\@expo\metro-file-map\build\index.js:262:35
+    at async DependencyGraph.ready (F:\AI_terminal\AR_mma\node_modules\metro\src\node-haste\DependencyGraph.js:94:5)
+| (node:30256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+Android Bundled 24901ms node_modules\expo-router\entry.js (1697 modules)
+
+› Assets (47):
+assets\artworks\art-01.png (15KB)
+assets\artworks\art-02.png (15KB)
+assets\artworks\art-03.png (15KB)
+assets\artworks\art-04.png (15KB)
+assets\artworks\art-05.png (15KB)
+assets\artworks\art-06.png (14KB)
+assets\artworks\art-07.png (15KB)
+assets\artworks\art-08.png (15KB)
+assets\artworks\art-09.png (15KB)
+assets\artworks\art-10.png (14KB)
+assets\artworks\art-11.png (15KB)
+assets\artworks\art-12.png (15KB)
+assets\rooms\bedroom.png (7.1KB)
+assets\rooms\gallery.png (6.1KB)
+assets\rooms\living.png (8KB)
+node_modules\@expo-google-fonts\material-symbols\400Regular\MaterialSymbols_400Regular.ttf (972KB)
+node_modules\@reactvision\react-viro\dist\components\Resources\viro_blank.png (1.4KB)
+node_modules\@reactvision\react-viro\dist\components\Resources\viro_spinner_1_w.png (2.9KB)
+node_modules\@reactvision\react-viro\dist\components\Resources\viro_spinner_1.png (16KB)
+node_modules\@reactvision\react-viro\dist\components\Resources\viro_spinner_1a_w.png (3.2KB)
+node_modules\@reactvision\react-viro\dist\components\Resources\viro_spinner_1a.png (16KB)
+node_modules\expo-router\assets\arrow_down.png (9.5KB)
+node_modules\expo-router\assets\arrow_right.xml (307B)
+node_modules\expo-router\assets\checkmark.xml (312B)
+node_modules\expo-router\assets\error.png (469B)
+node_modules\expo-router\assets\file.png (138B)
+node_modules\expo-router\assets\forward.png (188B)
+node_modules\expo-router\assets\pkg.png (364B)
+node_modules\expo-router\assets\react-navigation\elements\back-icon-mask.png (653B)
+node_modules\expo-router\assets\react-navigation\elements\back-icon.png (4 variations | 152B)
+node_modules\expo-router\assets\react-navigation\elements\clear-icon.png (4 variations | 425B)
+node_modules\expo-router\assets\react-navigation\elements\close-icon.png (4 variations | 235B)
+node_modules\expo-router\assets\react-navigation\elements\search-icon.png (4 variations | 599B)
+node_modules\expo-router\assets\sitemap.png (465B)
+node_modules\expo-router\assets\unmatched.png (4.8KB)
+
+› android bundles (1):
+_expo/static/js/android/entry-4b66edb524a6408ae643b2d3af46f310.hbc (5.2MB)
+
+› Files (1):
+metadata.json (3.2KB)
+
+Exported: artifacts/studio-native-guard-android

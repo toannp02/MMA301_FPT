@@ -1,0 +1,32 @@
+› Installing 3 other packages using npm
+› Using 58.0.20 instead of ~58.0.20 for expo, ~58.0.12 instead of ~58.0.12 for expo-file-system, and ~58.0.27 instead of ~58.0.27 for expo-router because these versions was explicitly provided. Packages excluded from dependency validation should be listed in expo.install.exclude in package.json. Learn more: https://docs.expo.dev/more/expo-cli/#configuring-dependency-validation
+> npm install
+
+changed 13 packages, and audited 655 packages in 53s
+
+56 packages are looking for funding
+  run `npm fund` for details
+
+7 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+› Running npx expo install under the updated expo version
+> expo install expo-file-system@~58.0.12 expo-router@~58.0.27
+› Installing 2 other packages using npm
+› Using ~58.0.12 instead of ~58.0.12 for expo-file-system and ~58.0.27 instead of ~58.0.27 for expo-router because these versions was explicitly provided. Packages excluded from dependency validation should be listed in expo.install.exclude in package.json. Learn more: https://docs.expo.dev/more/expo-cli/#configuring-dependency-validation
+> npm install
+
+changed 1 package, and audited 655 packages in 14s
+
+56 packages are looking for funding
+  run `npm fund` for details
+
+7 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.

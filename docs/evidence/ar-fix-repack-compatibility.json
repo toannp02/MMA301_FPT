@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-27T12:12:52.6669971Z",
+  "currentFingerprint": "e0d09ec1f2708dfd8bbc1762c96210b706e24ca7",
+  "baseFingerprint": "e0d09ec1f2708dfd8bbc1762c96210b706e24ca7",
+  "baseBuildId": "c1acfa9a-ec2d-4d72-bb83-614bc145d28b",
+  "compatible": true,
+  "reason": "Only runtime JavaScript changes; dependencies and native configuration unchanged."
+}

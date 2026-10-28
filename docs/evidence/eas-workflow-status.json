@@ -1,0 +1,46 @@
+{
+  "id": "01a17bc1-0a15-7c13-ba0a-992cc4742e6b",
+  "url": "https://expo.dev/accounts/nguyenphutoan1/projects/artspace-ar/workflows/01a17bc1-0a15-7c13-ba0a-992cc4742e6b",
+  "jobs": [
+    {
+      "status": "SUCCESS",
+      "errors": [],
+      "key": "source_build",
+      "type": "GET_BUILD",
+      "buildId": "2a3fc186-e2b3-4481-98dd-6b19481cf7ef",
+      "outputs": {
+        "profile": "preview",
+        "build_id": "2a3fc186-e2b3-4481-98dd-6b19481cf7ef",
+        "platform": "android",
+        "app_version": "1.0.0",
+        "sdk_version": "57.0.0",
+        "distribution": "internal",
+        "app_identifier": "com.artspacear.mma301",
+        "git_commit_hash": "e13f9a90525d73135fec7ae6044b613c303ff70d",
+        "fingerprint_hash": "285d3654ee24b6a734d230cfc3694da5c80daf7f",
+        "app_build_version": "1"
+      }
+    },
+    {
+      "status": "SUCCESS",
+      "errors": [],
+      "key": "repack_preview",
+      "type": "REPACK",
+      "buildId": "e8ee3625-321e-43d4-a6aa-a308ccbc3220",
+      "outputs": {
+        "profile": "preview",
+        "build_id": "e8ee3625-321e-43d4-a6aa-a308ccbc3220",
+        "platform": "android",
+        "app_version": "1.0.0",
+        "sdk_version": "57.0.0",
+        "distribution": "internal",
+        "app_identifier": "com.artspacear.mma301",
+        "git_commit_hash": "e13f9a90525d73135fec7ae6044b613c303ff70d",
+        "fingerprint_hash": "285d3654ee24b6a734d230cfc3694da5c80daf7f",
+        "app_build_version": "1"
+      }
+    }
+  ],
+  "status": "SUCCESS",
+  "errors": []
+}

@@ -1,0 +1,15 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/integration/view-on-room-flow.test.tsx
+
+PASS tests/integration/view-on-room-flow.test.tsx (8.12 s)
+  √ art details offer View on room with the selected artwork identity (765 ms)
+  √ room selection forwards artwork and room without overwriting stored design (77 ms)
+  √ native editor applies selected artwork and saves Light controls only on Save (405 ms)
+  √ Interiors add-room sheet exposes camera and photo library without permission on mount (89 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        8.759 s, estimated 10 s
+Ran all test suites matching /tests\\integration\\view-on-room-flow.test.tsx/i.

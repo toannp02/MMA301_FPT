@@ -1,0 +1,12 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/features/view-on-room.test.ts tests/integration/view-on-room-flow.test.tsx
+
+PASS tests/integration/view-on-room-flow.test.tsx (8.44 s)
+PASS tests/features/view-on-room.test.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        9.502 s, estimated 30 s
+Ran all test suites matching /tests\\features\\view-on-room.test.ts|tests\\integration\\view-on-room-flow.test.tsx/i.

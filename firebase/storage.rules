@@ -1,0 +1,20 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function image() {
+      return request.resource.size > 0 && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp)');
+    }
+    match /artworks/{artworkId}/{file} {
+      // Only seed published catalogue assets here; hiding a Firestore record does not revoke this public file.
+      allow read: if true; allow write: if false;
+    }
+    match /designs/{uid}/{file} {
+      allow read: if owner(uid);
+      allow create, update: if owner(uid) && file.matches('[a-zA-Z0-9_-]{1,128}\\.jpg') && image();
+      allow delete: if owner(uid);
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

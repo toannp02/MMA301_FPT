@@ -1,0 +1,23 @@
+FAIL tests/features/style-editing.test.ts
+  ● Test suite failed to run
+
+    Cannot find module '../../src/data/mock/artworks' from 'tests/features/style-editing.test.ts'
+
+      3 | import { frameProfiles, resizeArtwork, roomViewport } from "../../src/features/studio/styleEditing";
+      4 | import { sceneGraphic, sceneSVG, shadowLayers } from "../../src/features/studio/rendering";
+    > 5 | import { mockArtworks } from "../../src/data/mock/artworks";
+        | ^
+      6 |
+      7 | function fixture(){const space=newSpace("style-room","Room",{uri:"file:///room.jpg",width:1200,height:900});space.pieces=[makePiece(mockArtworks[0],"piece1")];return space;}
+      8 |
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+      at Object.require (tests/features/style-editing.test.ts:5:1)
+
+PASS tests/integration/view-on-room-flow.test.tsx (6.91 s)
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        10.695 s
+Ran all test suites matching /tests\\features\\style-editing.test.ts|tests\\integration\\view-on-room-flow.test.tsx/i.
