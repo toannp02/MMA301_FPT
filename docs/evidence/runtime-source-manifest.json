@@ -1,11 +1,11 @@
 {
   "deliveryBuildId": null,
   "note": "Runtime source/config/assets snapshot at generation time. Build association must be verified separately; this manifest does not claim device acceptance.",
-  "sha256": "7377d8a1b5b70978bd3078177876c97dac752717f07286a9c190f9f9c8988e35",
+  "sha256": "6bc9ce07131a9901677f58cba3d5203ca23f841f4ecacda71b92a7e6e8e1d9e7",
   "files": [
     {
       "path": "app.config.ts",
-      "sha256": "c60eee38eb3983032749c784a5cdae52e9ec61504074e2c21b2e673fe73ca784"
+      "sha256": "870e7214ee059de45659ec200e84996f1f0e6579ca8951ed6cab09cdeb683a9a"
     },
     {
       "path": "app/+not-found.tsx",
@@ -60,52 +60,44 @@
       "sha256": "2e0237d624d77d41cf2085ee2689d27884872884c1e7cd23752ba813f9712043"
     },
     {
-      "path": "assets/artworks/art-01.png",
-      "sha256": "55e1cc0efa865d4268c066d1754bb2c56d026174e38f7abfae9285539867fa26"
+      "path": "assets/artworks/samples/README.md",
+      "sha256": "08863bbf6d4daeff24d7e0940d4020519bd74cd56c7b3d2b374cb94e55ac1c6a"
     },
     {
-      "path": "assets/artworks/art-02.png",
-      "sha256": "70b80e0dc8edc30e5b16b036ee3eaf27502688b5f677d1a5c64f7e3908274520"
+      "path": "assets/artworks/samples/manifest.json",
+      "sha256": "a52c534bd69ebdce715fb4a831f37da5186e3848795db71d3792c1dad6225090"
     },
     {
-      "path": "assets/artworks/art-03.png",
-      "sha256": "cc8640d145a5d0512becd8f4bbe226c45ac6378a527d69826ce045e69c01f2c2"
+      "path": "assets/artworks/samples/sample-01.jpg",
+      "sha256": "ab92b47d31bcc90d7339a788582f672118d3724c3600ec778aa65f4c5d698402"
     },
     {
-      "path": "assets/artworks/art-04.png",
-      "sha256": "4711b29758b884307608351e81993ed09da4baee39e1b99a272bdd234b33587b"
+      "path": "assets/artworks/samples/sample-02.jpg",
+      "sha256": "67f1c0560033f18cc96093516cb55e437192b720ab412c02c984ef9d557db5be"
     },
     {
-      "path": "assets/artworks/art-05.png",
-      "sha256": "4cc23e3eb12aca158d8b4cadd313d28deb9a8e48a9b85f93270127bad8007435"
+      "path": "assets/artworks/samples/sample-03.jpg",
+      "sha256": "fb79ef3a564b03ebb307c2c5c549f3c8c243e09bd79cbf5accc0b647b00cf24d"
     },
     {
-      "path": "assets/artworks/art-06.png",
-      "sha256": "9f10999ce1fcfbd81580ae547c636c1b77bbd0806f0d73e687d75ff6cf89cb1b"
+      "path": "assets/artworks/samples/sample-04.jpg",
+      "sha256": "8d62ca9967a506833c89ec090a33e55d2614825c825782a88874804dacf33bb4"
     },
     {
-      "path": "assets/artworks/art-07.png",
-      "sha256": "328f663a725af9deac935bdeab1cd999f6831ee58e762cc4eb5929e502774e8b"
+      "path": "assets/artworks/samples/sample-05.jpg",
+      "sha256": "90c4658286f280cb5a7fb5dbb3ae8d53ab17ef87bae7afb4494272e27b146eb9"
     },
     {
-      "path": "assets/artworks/art-08.png",
-      "sha256": "c207d586ee315a0c7928e3e4f1cf0d56342b1ffc4d6e838cbdb22d5944bdaf6e"
+      "path": "assets/artworks/samples/sample-06.jpg",
+      "sha256": "c18f21d731f5a3131be0edce913ce69de39d64c8bf3355c0d8fccc3a487ed8d6"
     },
     {
-      "path": "assets/artworks/art-09.png",
-      "sha256": "264a26dc0f924491c3356a04e4e85b5bdfa11ee655e388a333108242b81f5d9c"
+      "path": "assets/artworks/samples/sample-07.jpg",
+      "sha256": "36b6894e6505665f4864a9bb9a749d1dd49ddb3160f435c36accf142e6c04102"
     },
     {
-      "path": "assets/artworks/art-10.png",
-      "sha256": "ae3d0963d7f32fcbcaefc917d8acc9bb52918e233ea48aeec33dd2d2798af2e1"
-    },
-    {
-      "path": "assets/artworks/art-11.png",
-      "sha256": "ab775f5e272728aaf8f9f8a3d0ebe9ab979310de6ffc2f2dfd4c2d5b4f0cf3f6"
-    },
-    {
-      "path": "assets/artworks/art-12.png",
-      "sha256": "bc60916b4eb595c7996b9139dc3ccc7960d36d58631624069bfa3332240e64a2"
+      "path": "assets/artworks/samples/sample-08.jpg",
+      "sha256": "1dd0daec172aaf338b786c14307189f1289d8b754512171fcb8ec294e5ae07bf"
     },
     {
       "path": "assets/favicon.png",
@@ -141,11 +133,11 @@
     },
     {
       "path": "package-lock.json",
-      "sha256": "706787777cacb193b595dea944da9bd2371ef89c1e273d701caa0665de65c38a"
+      "sha256": "8c391c97853864fc546417ade15d3925c9517ae0a5c123831a9b9eaf2098196d"
     },
     {
       "path": "package.json",
-      "sha256": "f235fa88fdbf353b03ae9e9cf9ea2795a9032843e07bbd7cbc7701538254c2c5"
+      "sha256": "7dc5ff93dfd7e0eb7fc427b02e38e42605e01e0e4e90582bec122e1bc2e0a53e"
     },
     {
       "path": "src/bootstrap/AppProviders.tsx",
@@ -157,7 +149,7 @@
     },
     {
       "path": "src/data/catalogue/artworks.ts",
-      "sha256": "87e59b7c425e43a62d40e793b6477c22ddc164a7ff53cb4a2eb1be85569d462b"
+      "sha256": "b144a6cc08a1b0af7d6851f956452091ec1ee95856f87f03fdb300e281c5f783"
     },
     {
       "path": "src/data/catalogue/rooms.ts",
@@ -177,7 +169,7 @@
     },
     {
       "path": "src/data/local/WallSpaceRepository.ts",
-      "sha256": "7ca8ed7820e3220274241d012026704529c21aa2c1074576028fbd8901b14d30"
+      "sha256": "93847916a2fcd7c3e06bd4081bd08bc80311c1cc9e844cd2cf426a83ee6cbabb"
     },
     {
       "path": "src/domain/async.ts",
@@ -197,7 +189,7 @@
     },
     {
       "path": "src/domain/spaces.ts",
-      "sha256": "474eeb957467db259197465cbb3c3ae4b075b940cbcb7c203214c8cab8535e83"
+      "sha256": "fb19a75efa5bd455689af08664e220a10bd69e3235df2486adfe912cff77bbb4"
     },
     {
       "path": "src/domain/validators.ts",
@@ -253,11 +245,11 @@
     },
     {
       "path": "src/infra/exportSpace.ts",
-      "sha256": "55d26b9910c03ac78116bf6396623b7f11a1049a474a6d1761041adc50412fa1"
+      "sha256": "b289885cb00a38c1847cb84fa3f8b1e6c4559519d68b45eb636bba4687bcf0db"
     },
     {
       "path": "src/infra/exportSpace.web.ts",
-      "sha256": "215e3ee3d8f2e46730a9af0eef39443a5650a38584038e454c7ee24221cd9f42"
+      "sha256": "ea7a7f3f0a3313e4f684497d620ea07f9599497cfae8772713f12c2c8538e221"
     },
     {
       "path": "src/infra/personalImages.ts",
@@ -270,6 +262,14 @@
     {
       "path": "src/infra/pickArtworkImage.ts",
       "sha256": "68d558820fcc9fe6987803bbee2b4694d781d2bf6a7d9ddf89a904f031d0d500"
+    },
+    {
+      "path": "src/infra/saveDesignPhoto.ts",
+      "sha256": "b9c6ce120fb7ddb68d516a0d3a4ea2109c41766ece375848451e3291a2cfc79e"
+    },
+    {
+      "path": "src/infra/saveDesignPhoto.web.ts",
+      "sha256": "9a3d2ea23545d727f500791ec0dbe971d3c7d0d1cfe7ff98f7464922f6899ac8"
     },
     {
       "path": "src/infra/spaceImages.ts",
@@ -297,11 +297,11 @@
     },
     {
       "path": "src/ui/screens/SpaceEditorScreen.tsx",
-      "sha256": "8949669da3dbe84f574b14899edd5236d3652de402bd3598666c0a5b3d9ec403"
+      "sha256": "b754089fab0ee7cbadea41292fd4247ec643743bf3601f86f828061ffe43eaa9"
     },
     {
       "path": "src/ui/screens/SpacesScreen.tsx",
-      "sha256": "dde89dcf2b4518bbd8b85eba93ec3c6af0da83602edb211a8438bfbae341ecc4"
+      "sha256": "f5db0cb0c3ea52b37f6ea7b004ea83252a72d94737d2957e914c2a4a65f2e5f8"
     },
     {
       "path": "src/ui/screens/ViewOnRoomScreen.tsx",
@@ -336,8 +336,12 @@
       "sha256": "1e71bdbc8738e10cbaeec33a8a1ab76e60aec0240c2a0ef8122f7995d32b01a3"
     },
     {
+      "path": "src/ui/studio/RoomPreview.tsx",
+      "sha256": "beae928585622d7cfbd5a3e09a924206fefb690a4220e2392f38deb8a0c6f444"
+    },
+    {
       "path": "src/ui/studio/SpaceCanvas.tsx",
-      "sha256": "35b36bf05d0a9c8d49ffd042498295dd4cebff51c7f5d8863c0cff5f9415791c"
+      "sha256": "e6217be8020ab9368ea62ca992347a39b14da454479037c14d44a5d5e2650017"
     },
     {
       "path": "src/ui/studio/StudioControl.tsx",

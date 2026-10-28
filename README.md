@@ -37,4 +37,6 @@ npm run verify
 npm run check:bundle  # requires npm start on8082
 ```
 
-The bundle check verifies SDK58, one React/RN instance, core routes,12 catalogue images and absence of old AR/companion code. Camera, native pinch/filter fidelity and OS sharing require actual phone testing. Historical guides and pre-SDK58 evidence are under `docs/history` and `docs/evidence`; they do not describe the current runtime. Migration backups are ignored under `artifacts/` and are never app modules or review deliverables.
+The bundle check verifies SDK58, one React/RN instance, core routes,8 supplied catalogue images and absence of old AR/companion code. Camera, native pinch/filter fidelity and Photos/OS sharing require actual phone testing. Historical guides and pre-SDK58 evidence are under `docs/history` and `docs/evidence`; they do not describe the current runtime. Migration backups are ignored under `artifacts/` and are never app modules or review deliverables.
+
+Interiors and Saved use a three-column grid of saved compositions. Save stores a480px composite thumbnail; older designs without one render their saved artwork layers until resaved. Download beside the room view controls saves the full design to Photos/Gallery on phones (add-only permission when required) or the browser Downloads folder on web. This does not save editable changes automatically.

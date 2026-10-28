@@ -1,0 +1,140 @@
+
+> artspace-ar@1.0.0 check:bundle
+> node scripts/check-expo-go.mjs
+
+{
+  "pass": true,
+  "utc": "2026-10-28T02:30:43.826Z",
+  "sdkVersion": "58.0.0",
+  "name": "ArtSpace",
+  "hostUri": "127.0.0.1:8082",
+  "bundleBytes": 7282210,
+  "sources": 1597,
+  "forbidden": [],
+  "react": [
+    "F:/AI_terminal/AR_mma/node_modules/react/index.js"
+  ],
+  "reactNative": [
+    "F:/AI_terminal/AR_mma/node_modules/react-native/index.js"
+  ],
+  "coreSources": [
+    "F:/AI_terminal/AR_mma/app/index.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/GalleryScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpacesScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpaceEditorScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/ImportArtworkScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/ViewOnRoomScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/ArtworkStylePanel.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/StudioControl.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useDirectManipulation.ts",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useUnsavedReloadGuard.ts",
+    "F:/AI_terminal/AR_mma/src/features/studio/rendering.ts",
+    "F:/AI_terminal/AR_mma/src/infra/analyzeRoomPhoto.ts"
+  ],
+  "pickerSources": 4,
+  "imageChecks": [
+    {
+      "id": "art-01",
+      "status": 200,
+      "bytes": 14686
+    },
+    {
+      "id": "art-02",
+      "status": 200,
+      "bytes": 14539
+    },
+    {
+      "id": "art-03",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-04",
+      "status": 200,
+      "bytes": 14695
+    },
+    {
+      "id": "art-05",
+      "status": 200,
+      "bytes": 14699
+    },
+    {
+      "id": "art-06",
+      "status": 200,
+      "bytes": 14372
+    },
+    {
+      "id": "art-07",
+      "status": 200,
+      "bytes": 14656
+    },
+    {
+      "id": "art-08",
+      "status": 200,
+      "bytes": 14653
+    },
+    {
+      "id": "art-09",
+      "status": 200,
+      "bytes": 14745
+    },
+    {
+      "id": "art-10",
+      "status": 200,
+      "bytes": 14341
+    },
+    {
+      "id": "art-11",
+      "status": 200,
+      "bytes": 14574
+    },
+    {
+      "id": "art-12",
+      "status": 200,
+      "bytes": 14589
+    },
+    {
+      "id": "sample-01",
+      "status": 200,
+      "bytes": 943295
+    },
+    {
+      "id": "sample-02",
+      "status": 200,
+      "bytes": 852030
+    },
+    {
+      "id": "sample-03",
+      "status": 200,
+      "bytes": 886998
+    },
+    {
+      "id": "sample-04",
+      "status": 200,
+      "bytes": 765151
+    },
+    {
+      "id": "sample-05",
+      "status": 200,
+      "bytes": 673557
+    },
+    {
+      "id": "sample-06",
+      "status": 200,
+      "bytes": 742329
+    },
+    {
+      "id": "sample-07",
+      "status": 200,
+      "bytes": 911596
+    },
+    {
+      "id": "sample-08",
+      "status": 200,
+      "bytes": 671143
+    }
+  ],
+  "launchStatus": 200,
+  "launchBytes": 6673731,
+  "physicalDevice": "UNVERIFIED"
+}

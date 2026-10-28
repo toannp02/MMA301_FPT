@@ -16,7 +16,10 @@ const config: ExpoConfig = {
     blockedPermissions: [
       "android.permission.RECORD_AUDIO",
       "android.permission.READ_EXTERNAL_STORAGE",
-      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.READ_MEDIA_IMAGES",
+      "android.permission.READ_MEDIA_VIDEO",
+      "android.permission.READ_MEDIA_AUDIO",
+      "android.permission.READ_MEDIA_VISUAL_USER_SELECTED",
     ],
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
@@ -24,6 +27,16 @@ const config: ExpoConfig = {
     },
   },
   plugins: [
+    [
+      "expo-media-library",
+      {
+        photosPermission: "Choose photos for your wall design.",
+        savePhotosPermission:
+          "Allow ArtSpace to save your wall design to Photos.",
+        granularPermissions: [],
+        isAccessMediaLocationEnabled: false,
+      },
+    ],
     "expo-sharing",
     "expo-router",
     "expo-asset",

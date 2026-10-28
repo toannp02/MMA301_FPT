@@ -26,11 +26,13 @@ test("gallery image errors allow retry without nested buttons or navigation", as
       <GalleryScreen />
     </AppProviders>,
   );
-  const imageLink = await view.findByLabelText("View image of Terracotta Sun");
+  const imageLink = await view.findByLabelText(
+    "View image of Chromatic Rhythm",
+  );
   await fireEvent.press(imageLink);
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/artwork/[id]",
-    params: { id: "art-01" },
+    params: { id: "sample-01" },
   });
   jest.mocked(router.push).mockClear();
   await fireEvent(view.getAllByLabelText("Artwork preview")[0], "error", {
@@ -52,9 +54,9 @@ test("gallery image errors allow retry without nested buttons or navigation", as
   await fireEvent.press(view.getByLabelText("Reload image"));
   expect(router.push).not.toHaveBeenCalled();
   expect(view.queryByText("Image unavailable")).toBeNull();
-  await fireEvent.press(view.getByLabelText("View Terracotta Sun"));
+  await fireEvent.press(view.getByLabelText("View Chromatic Rhythm"));
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/artwork/[id]",
-    params: { id: "art-01" },
+    params: { id: "sample-01" },
   });
 });

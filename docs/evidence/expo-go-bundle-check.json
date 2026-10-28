@@ -1,11 +1,11 @@
 {
   "pass": true,
-  "utc": "2026-10-28T01:40:51.631Z",
+  "utc": "2026-10-28T03:56:26.901Z",
   "sdkVersion": "58.0.0",
   "name": "ArtSpace",
   "hostUri": "127.0.0.1:8082",
-  "bundleBytes": 7274221,
-  "sources": 1588,
+  "bundleBytes": 7316730,
+  "sources": 1590,
   "forbidden": [],
   "react": [
     "F:/AI_terminal/AR_mma/node_modules/react/index.js"
@@ -30,67 +30,47 @@
   "pickerSources": 4,
   "imageChecks": [
     {
-      "id": "art-01",
+      "id": "sample-01",
       "status": 200,
-      "bytes": 14686
+      "bytes": 943295
     },
     {
-      "id": "art-02",
+      "id": "sample-02",
       "status": 200,
-      "bytes": 14539
+      "bytes": 852030
     },
     {
-      "id": "art-03",
+      "id": "sample-03",
       "status": 200,
-      "bytes": 14695
+      "bytes": 886998
     },
     {
-      "id": "art-04",
+      "id": "sample-04",
       "status": 200,
-      "bytes": 14695
+      "bytes": 765151
     },
     {
-      "id": "art-05",
+      "id": "sample-05",
       "status": 200,
-      "bytes": 14699
+      "bytes": 673557
     },
     {
-      "id": "art-06",
+      "id": "sample-06",
       "status": 200,
-      "bytes": 14372
+      "bytes": 742329
     },
     {
-      "id": "art-07",
+      "id": "sample-07",
       "status": 200,
-      "bytes": 14656
+      "bytes": 911596
     },
     {
-      "id": "art-08",
+      "id": "sample-08",
       "status": 200,
-      "bytes": 14653
-    },
-    {
-      "id": "art-09",
-      "status": 200,
-      "bytes": 14745
-    },
-    {
-      "id": "art-10",
-      "status": 200,
-      "bytes": 14341
-    },
-    {
-      "id": "art-11",
-      "status": 200,
-      "bytes": 14574
-    },
-    {
-      "id": "art-12",
-      "status": 200,
-      "bytes": 14589
+      "bytes": 671143
     }
   ],
   "launchStatus": 200,
-  "launchBytes": 6665645,
+  "launchBytes": 6697634,
   "physicalDevice": "UNVERIFIED"
 }

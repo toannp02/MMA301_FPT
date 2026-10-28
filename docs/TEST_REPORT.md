@@ -6,7 +6,7 @@ Verified on 2026-10-28 after consolidation into the root Expo Go app.
 | --- | --- | --- |
 | Clean npm ci | PASS, exit 0 | evidence/sdk58-npm-ci-clean.log |
 | Strict TypeScript / ESLint | PASS | evidence/verification.json |
-| Unit and integration tests | PASS, 109 tests / 17 suites | evidence/unit-tests.log |
+| Unit and integration tests | PASS, 115 tests / 18 suites | evidence/unit-tests.log |
 | Expo Doctor | PASS, 20/20 | evidence/doctor.log |
 | Expo managed dependency check | PASS | evidence/verification.json |
 | Complete dependency tree | PASS, no invalid dependency problems | evidence/sdk58-dependency-tree-final.log |
@@ -33,3 +33,9 @@ Editor visibility follow-up: Hide tools/Show tools and View full/Shrink view pas
 - Final TypeScript, lint,109 tests/17 suites, Doctor20/20 and managed dependency checks PASS. iOS Expo Go bundle/map/asset/launch checks and production Hermes export for both platforms PASS. Evidence: verification.json, bugfix-ios-bundle.log, bugfix-mobile-export.log. No APK release was created.
 - Browser regression: Show original -> View full shows the artwork; Shrink view restores Show design; exported a real1280×960 PNG and inspected the complete room/frame/shadow with no editor UI. Console warning/error log empty. Public sample content only, no saved design overwritten. Local proof artifacts/bugfix-full-room-proof.png and bugfix-export.png. Hardware camera/multitouch/share/back behavior remains device-unverified.
 - npm audit remains16 advisories (13 low/3 high), propagated from deepmerge4.3.1 and Expo CLI's zod3.25.76. The installed CLI declares zod^3.25.76; forcing Zod4 would cross its supported major. deepmerge has no published patched version according to the [maintainer-linked advisory](https://github.com/advisories/GHSA-gcqx-w48m-w2h4); the [Zod advisory](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5) names4.6.6 as patched. npm suggests incompatible Expo/Jest/Router downgrades. No force flags, overrides or SDK downgrades were applied. See evidence/current-audit.json. This audit does not claim zero remaining dependency vulnerabilities or complete hardware acceptance.
+
+## Interiors/download/current artwork acceptance
+
+Current validation:115 tests/18 suites, strict TS, lint with0warnings, Doctor20/20 and managed dependency check PASS. The current catalogue contains8 supplied prepared JPEGs (previous12 PNGs are absent), all below1MiB/2048px and served successfully by the native bundle check. See evidence/supplied-artwork-assets.json and interiors-ios-bundle.log. Supplied images were prepared using imagegen then encoded as JPEG, not claimed pixel-identical crops; default physical sizes are illustrative.
+
+Actual browser390x844 acceptance: a separate public/sample Demo grid room was created, supplied landscape artwork placed, Save succeeded, Download produced a real1280x960 PNG, and Interiors showed three composed tiles on one row. Cached preview loaded as480x360; pre-existing rooms without caches showed saved artwork layers rather than original empty rooms. Existing designs were not edited. Captured warnings/errors0. Proof artifacts/interiors-grid-proof.png and interiors-download-proof.png. Viewport restored. New automated cases verify cache ownership/persistence, grid size, save/download separation and native add-only permission/denial flows. No physical-device Photos success or frame-rate claim; native confirmation is still required. SDK58 MediaLibrary is an Expo Go bundled module, configured according to [versioned docs](https://docs.expo.dev/versions/v58.0.0/sdk/media-library-legacy/).

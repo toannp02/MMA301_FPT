@@ -8,6 +8,8 @@ import { ViewOnRoomScreen } from "../../src/ui/screens/ViewOnRoomScreen";
 import { SpaceEditorScreen } from "../../src/ui/screens/SpaceEditorScreen";
 import { ArtworkDetailScreen } from "../../src/ui/screens/ArtworkDetailScreen";
 import { SpacesScreen } from "../../src/ui/screens/SpacesScreen";
+import { exportSpacePNG, shareSpacePNG } from "../../src/infra/exportSpace";
+import { saveDesignPhoto } from "../../src/infra/saveDesignPhoto";
 import { newSpace } from "../../src/features/studio/createSpace";
 import { ok, type Artwork } from "../../src/domain/models";
 import type { WallSpace } from "../../src/domain/spaces";
@@ -20,6 +22,18 @@ jest.mock("../../src/infra/exportSpace", () => ({
   exportSpacePNG: jest.fn(),
   shareSpacePNG: jest.fn(),
 }));
+jest.mock("../../src/infra/saveDesignPhoto", () => ({
+  saveDesignPhoto: jest.fn(),
+}));
+jest.mock("../../src/ui/studio/SpaceCanvas", () => {
+  const React = jest.requireActual<typeof import("react")>("react");
+  const { View } =
+    jest.requireActual<typeof import("react-native")>("react-native");
+  return {
+    SpaceCanvas: (props: Record<string, unknown>) =>
+      React.createElement(View, { ...props, testID: "canvas-fixture" }),
+  };
+});
 jest.mock("react-native-safe-area-context", () => ({
   SafeAreaView: jest.requireActual("react-native").View,
   useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
@@ -85,6 +99,47 @@ function setup(count = 1) {
   };
 }
 beforeEach(() => jest.clearAllMocks());
+
+test("saving captures a small composed preview and downloading saves a full PNG separately", async () => {
+  const x = setup();
+  jest.mocked(exportSpacePNG).mockResolvedValue("file:///design.png");
+  const view = await render(
+    x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />),
+  );
+  await view.findByTestId("studio-surface");
+  await fireEvent(view.getByTestId("studio-surface"), "layout", {
+    nativeEvent: { layout: { width: 390, height: 400, x: 0, y: 0 } },
+  });
+  await fireEvent(view.getByTestId("canvas-fixture"), "ready", true);
+  await fireEvent.press(view.getByLabelText("Save"));
+  await waitFor(() => expect(x.save).toHaveBeenCalledTimes(1));
+  expect(x.save.mock.calls[0][0].previewUri).toBe("file:///design.png");
+  expect(jest.mocked(exportSpacePNG).mock.calls[0][2]).toBe(480);
+  await fireEvent.press(view.getByLabelText("Download"));
+  await waitFor(() =>
+    expect(saveDesignPhoto).toHaveBeenCalledWith("file:///design.png"),
+  );
+  expect(shareSpacePNG).not.toHaveBeenCalled();
+  expect(x.save).toHaveBeenCalledTimes(1);
+});
+
+test("Interiors uses a three-column grid of saved design previews", async () => {
+  const x = setup(2);
+  x.room.previewUri = "file:///saved-composite.jpg";
+  const view = await render(x.wrap(<SpacesScreen />));
+  await view.findByLabelText("Open room My room");
+  await fireEvent(view.getByTestId("interiors-grid"), "layout", {
+    nativeEvent: { layout: { width: 360, height: 300, x: 0, y: 0 } },
+  });
+  expect(
+    view.getByLabelText("Open room My room").parent?.props.style.width,
+  ).toBeCloseTo((360 - 16) / 3);
+  expect(view.getByLabelText("Saved design My room").props.source).toEqual([
+    {
+      uri: "file:///saved-composite.jpg",
+    },
+  ]);
+});
 
 test("tools collapse independently and full-room preview restores the editing session", async () => {
   const x = setup();

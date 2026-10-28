@@ -1,0 +1,78 @@
+{
+  "processing": "Imagegen crop/extraction followed by JPEG encoding; original inputs unchanged. Not a pixel-identical or measured-size claim.",
+  "complete": true,
+  "images": [
+    {
+      "id": "sample-01",
+      "title": "Chromatic Rhythm",
+      "width": 1111,
+      "height": 1416,
+      "bytes": 943295,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-02",
+      "title": "Midnight Tangle",
+      "width": 1110,
+      "height": 1417,
+      "bytes": 852030,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-03",
+      "title": "Love Notes",
+      "width": 1829,
+      "height": 860,
+      "bytes": 886998,
+      "jpegQuality": 94,
+      "defaultWidthCm": 90
+    },
+    {
+      "id": "sample-04",
+      "title": "Flow State",
+      "width": 1040,
+      "height": 1512,
+      "bytes": 765151,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-05",
+      "title": "Golden Balance",
+      "width": 1290,
+      "height": 1219,
+      "bytes": 673557,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-06",
+      "title": "Hopeful",
+      "width": 1045,
+      "height": 1505,
+      "bytes": 742329,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-07",
+      "title": "Twin Hearts",
+      "width": 1273,
+      "height": 1236,
+      "bytes": 911596,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    },
+    {
+      "id": "sample-08",
+      "title": "Violet Echoes",
+      "width": 1083,
+      "height": 1452,
+      "bytes": 671143,
+      "jpegQuality": 94,
+      "defaultWidthCm": 60
+    }
+  ]
+}

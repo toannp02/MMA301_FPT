@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import { View } from "react-native";
 import { Image as ReadyImage } from "expo-image";
 import Svg, {
@@ -23,7 +23,7 @@ import {
   depthFaces,
   edgeStrips,
 } from "../../features/studio/rendering";
-export function SpaceCanvas({
+export const SpaceCanvas = memo(function SpaceCanvas({
   space,
   width,
   height,
@@ -234,4 +234,4 @@ export function SpaceCanvas({
       </Svg>
     </View>
   );
-}
+});

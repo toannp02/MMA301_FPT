@@ -3,10 +3,10 @@
 > jest --runInBand
 
 
-Test Suites: 17 passed, 17 total
-Tests:       109 passed, 109 total
+Test Suites: 18 passed, 18 total
+Tests:       115 passed, 115 total
 Snapshots:   0 total
-Time:        10.11 s
+Time:        32.716 s
 Ran all test suites.
 
 EXIT_CODE=0

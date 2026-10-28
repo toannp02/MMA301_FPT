@@ -1,0 +1,80 @@
+
+> artspace-ar@1.0.0 check:bundle
+> node scripts/check-expo-go.mjs
+
+{
+  "pass": true,
+  "utc": "2026-10-28T03:56:26.901Z",
+  "sdkVersion": "58.0.0",
+  "name": "ArtSpace",
+  "hostUri": "127.0.0.1:8082",
+  "bundleBytes": 7316730,
+  "sources": 1590,
+  "forbidden": [],
+  "react": [
+    "F:/AI_terminal/AR_mma/node_modules/react/index.js"
+  ],
+  "reactNative": [
+    "F:/AI_terminal/AR_mma/node_modules/react-native/index.js"
+  ],
+  "coreSources": [
+    "F:/AI_terminal/AR_mma/app/index.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/GalleryScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpacesScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/SpaceEditorScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/ImportArtworkScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/ViewOnRoomScreen.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/ArtworkStylePanel.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/StudioControl.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useDirectManipulation.ts",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useUnsavedReloadGuard.ts",
+    "F:/AI_terminal/AR_mma/src/features/studio/rendering.ts",
+    "F:/AI_terminal/AR_mma/src/infra/analyzeRoomPhoto.ts"
+  ],
+  "pickerSources": 4,
+  "imageChecks": [
+    {
+      "id": "sample-01",
+      "status": 200,
+      "bytes": 943295
+    },
+    {
+      "id": "sample-02",
+      "status": 200,
+      "bytes": 852030
+    },
+    {
+      "id": "sample-03",
+      "status": 200,
+      "bytes": 886998
+    },
+    {
+      "id": "sample-04",
+      "status": 200,
+      "bytes": 765151
+    },
+    {
+      "id": "sample-05",
+      "status": 200,
+      "bytes": 673557
+    },
+    {
+      "id": "sample-06",
+      "status": 200,
+      "bytes": 742329
+    },
+    {
+      "id": "sample-07",
+      "status": 200,
+      "bytes": 911596
+    },
+    {
+      "id": "sample-08",
+      "status": 200,
+      "bytes": 671143
+    }
+  ],
+  "launchStatus": 200,
+  "launchBytes": 6697634,
+  "physicalDevice": "UNVERIFIED"
+}

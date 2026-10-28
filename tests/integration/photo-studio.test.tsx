@@ -22,13 +22,13 @@ beforeEach(() => jest.clearAllMocks());
 test("photo details go directly to View on room without AR or duplicate preview", async () => {
   const view = await render(
     <AppProviders>
-      <ArtworkDetailScreen id="art-01" />
+      <ArtworkDetailScreen id="sample-01" />
     </AppProviders>,
   );
   await fireEvent.press(await view.findByLabelText("View on room"));
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/view-on-room/[id]",
-    params: { id: "art-01" },
+    params: { id: "sample-01" },
   });
   expect(view.queryByLabelText("View in AR")).toBeNull();
   expect(view.queryByLabelText("2D Preview")).toBeNull();
@@ -39,7 +39,7 @@ test("the root collection exposes the three core sections without account setup"
       <GalleryScreen />
     </AppProviders>,
   );
-  expect(await view.findByLabelText("View Terracotta Sun")).toBeTruthy();
+  expect(await view.findByLabelText("View Chromatic Rhythm")).toBeTruthy();
   expect(view.getByLabelText("Add art")).toBeTruthy();
   expect(view.getByLabelText("Saved")).toBeTruthy();
   await fireEvent.press(view.getByLabelText("Interiors"));

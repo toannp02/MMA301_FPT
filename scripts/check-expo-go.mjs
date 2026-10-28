@@ -96,9 +96,11 @@ try {
     ),
   ]
     .map((m) => JSON.parse(m[1]))
-    .filter((a) => /^art-\d{2}$/.test(a.name));
-  if (assets.length !== 12)
-    throw new Error(`Expected12 catalogue assets, got ${assets.length}`);
+    .filter((a) => /^sample-\d{2}$/.test(a.name));
+  if (assets.length !== 8)
+    throw new Error(
+      `Expected8 supplied catalogue assets, got ${assets.length}`,
+    );
   const imageChecks = await Promise.all(
     assets.map(async (asset) => {
       const uri = new URL(

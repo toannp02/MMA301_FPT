@@ -7,10 +7,11 @@ import type { WallSpace } from "../domain/spaces";
 export async function exportSpacePNG(
   view: React.RefObject<React.ComponentRef<typeof View> | null>,
   space: WallSpace,
+  maxEdge = 2400,
 ) {
   const scale = Math.min(
     1,
-    2400 / Math.max(space.room.width, space.room.height),
+    maxEdge / Math.max(space.room.width, space.room.height),
   );
   await new Promise<void>((resolve) =>
     requestAnimationFrame(() => requestAnimationFrame(() => resolve())),

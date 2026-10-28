@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import {
   Modal,
+  Platform,
   BackHandler,
   ScrollView,
   Text,
@@ -21,6 +22,7 @@ import { usePreventRemove } from "expo-router/react-navigation";
 import { router, useNavigation } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useUnsavedReloadGuard } from "../studio/useUnsavedReloadGuard";
+import { saveDesignPhoto } from "../../infra/saveDesignPhoto";
 import { useApp } from "../../bootstrap/AppProviders";
 import { useResource } from "../../features/useResource";
 import {
@@ -512,8 +514,17 @@ function Editor({
     setBusy(true);
     setError(null);
     setMessage(null);
+    setExportQuality(true);
     try {
-      const result = await r.spaces.save(fitSpace(space));
+      let previewUri: string | undefined;
+      if (imagesReady) {
+        try {
+          previewUri = await exportSpacePNG(snapshot, space, 480);
+        } catch {
+          /* Save editable data; older/missing thumbnails render the design directly. */
+        }
+      }
+      const result = await r.spaces.save({ ...fitSpace(space), previewUri });
       if (!result.ok) throw new Error(result.error.message);
       setEditor((current) => ({
         ...current,
@@ -524,11 +535,12 @@ function Editor({
     } catch (e) {
       setError(e instanceof Error ? e.message : "Space could not be saved.");
     } finally {
+      setExportQuality(false);
       saving.current = false;
       setBusy(false);
     }
   }
-  async function share() {
+  async function share(download = false) {
     if (saving.current || !imagesReady) return;
     saving.current = true;
     setBusy(true);
@@ -537,9 +549,14 @@ function Editor({
     setExportQuality(true);
     try {
       const uri = await exportSpacePNG(snapshot, space);
-      await shareSpacePNG(uri);
+      if (download) await saveDesignPhoto(uri);
+      else await shareSpacePNG(uri);
       setMessage(
-        "Design image exported. Your editable wall stays in My walls after saving.",
+        download
+          ? Platform.OS === "web"
+            ? "Design downloaded to your browser's Downloads folder."
+            : "Design saved to Photos / Gallery."
+          : "Design image exported. Your editable wall stays in My walls after saving.",
       );
     } catch (e) {
       setError(e instanceof Error ? e.message : "Export failed. Please retry.");
@@ -574,7 +591,8 @@ function Editor({
         dirty: true,
       };
     });
-  const visibleSpace = compare && !fullView ? { ...space, pieces: [] } : space;
+  const visibleSpace =
+    compare && !fullView && !exportQuality ? { ...space, pieces: [] } : space;
   return (
     <View
       style={[
@@ -843,6 +861,14 @@ function Editor({
             );
           })()}
       </View>
+      {(error || message) && (
+        <View
+          accessibilityLiveRegion="polite"
+          style={{ paddingHorizontal: 12, paddingVertical: 4 }}
+        >
+          <Text style={error ? s.error : s.caption}>{error ?? message}</Text>
+        </View>
+      )}
       <View style={styles.viewControls}>
         {!fullView && (
           <Button
@@ -856,6 +882,14 @@ function Editor({
           secondary
           disabled={busy}
           onPress={() => setFullView((full) => !full)}
+        />
+        <Button
+          title="Download"
+          secondary
+          disabled={busy || !imagesReady}
+          onPress={() => {
+            void share(true);
+          }}
         />
       </View>
       <ScrollView
@@ -906,7 +940,6 @@ function Editor({
             />
           ))}
         </View>
-        {error && <ErrorState message={error} />}
         {canvasError && (
           <ErrorState
             message={canvasError}
@@ -916,11 +949,6 @@ function Editor({
               setCanvasAttempt((value) => value + 1);
             }}
           />
-        )}
-        {message && (
-          <Text accessibilityRole="alert" style={s.caption}>
-            {message}
-          </Text>
         )}
         {tab === "Art" && (
           <>

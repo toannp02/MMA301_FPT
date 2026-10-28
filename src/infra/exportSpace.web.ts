@@ -7,10 +7,11 @@ import { sceneSVG } from "../features/studio/rendering";
 export async function exportSpacePNG(
   _view: React.RefObject<React.ComponentRef<typeof View> | null>,
   space: WallSpace,
+  maxEdge = 2400,
 ) {
   const width = Math.round(
       space.room.width *
-        Math.min(1, 2400 / Math.max(space.room.width, space.room.height)),
+        Math.min(1, maxEdge / Math.max(space.room.width, space.room.height)),
     ),
     height = Math.round((width * space.room.height) / space.room.width);
   const converted = new Map<string, Promise<string>>();
@@ -40,7 +41,7 @@ export async function exportSpacePNG(
     ),
   };
   const image = new window.Image();
-  const svg = new Blob([sceneSVG(prepared, width, height, true)], {
+  const svg = new Blob([sceneSVG(prepared, width, height, maxEdge > 480)], {
     type: "image/svg+xml",
   });
   const url = URL.createObjectURL(svg);

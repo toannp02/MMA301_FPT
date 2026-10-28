@@ -1,12 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import {
-  Modal,
-  Platform,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { Modal, Platform, Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
 import * as Crypto from "expo-crypto";
 import * as ImagePicker from "expo-image-picker";
@@ -17,6 +10,7 @@ import { prepareSpaceImage } from "../../infra/spaceImages";
 import { analyzeRoomPhoto } from "../../infra/analyzeRoomPhoto";
 import { sampleRooms } from "../../data/catalogue/rooms";
 import { LibraryNavigation } from "../studio/LibraryNavigation";
+import { RoomPreview } from "../studio/RoomPreview";
 import {
   Page,
   Button,
@@ -25,7 +19,7 @@ import {
   Loading,
   ErrorState,
 } from "../components";
-import { colors, styles as s } from "../theme";
+import { styles as s } from "../theme";
 export function SpacesScreen({
   artworkId,
   savedOnly = false,
@@ -41,6 +35,7 @@ export function SpacesScreen({
     [active, setActive] = useState<string | null>(null),
     [confirm, setConfirm] = useState<string | null>(null);
   const locked = useRef(false);
+  const [gridWidth, setGridWidth] = useState(0);
   const rooms =
     spaces.data?.filter((space) => !savedOnly || space.pieces.length > 0) ?? [];
   const chosen =
@@ -160,58 +155,6 @@ export function SpacesScreen({
           {savedOnly ? "SAVED DESIGNS" : "YOUR SPACES"}
           {artworkId ? " / CHOOSE A ROOM" : ""}
         </Text>
-        {spaces.loading ? (
-          <Loading />
-        ) : spaces.error ? (
-          <ErrorState
-            message={spaces.error}
-            retry={() => {
-              void spaces.refresh();
-            }}
-          />
-        ) : chosen ? (
-          <View style={{ gap: 12 }}>
-            <ArtImage
-              uri={chosen.room.uri}
-              ratio={chosen.room.width / chosen.room.height}
-              accessibilityLabel={`Open room ${chosen.name}`}
-              onPress={() => open(chosen.id)}
-            />
-            <Text style={s.title}>{chosen.name}</Text>
-            <Text style={s.caption}>
-              {chosen.wall.photoAssist
-                ? "Photo-assisted wall position"
-                : "Saved wall"}{" "}
-              -{" "}
-              {chosen.wall.measurement === "approximate"
-                ? "size estimated"
-                : `${chosen.wall.widthCm} x ${chosen.wall.heightCm} cm`}
-            </Text>
-            <Button
-              title={
-                artworkId
-                  ? "View on this room"
-                  : savedOnly
-                    ? "Open saved design"
-                    : "Tap to hang something"
-              }
-              onPress={() => open(chosen.id)}
-            />
-          </View>
-        ) : (
-          <View style={s.card}>
-            <Text style={s.title}>
-              {savedOnly
-                ? "Your designs, kept here."
-                : "Your room. Your walls."}
-            </Text>
-            <Text style={s.body}>
-              {savedOnly
-                ? "Save a wall design to return to it here."
-                : "Photograph a wall or choose a room image. Then choose View on room from any artwork."}
-            </Text>
-          </View>
-        )}
         {!savedOnly && (
           <>
             <View style={s.row}>
@@ -226,87 +169,104 @@ export function SpacesScreen({
                 onPress={() => setSamples(true)}
               />
             </View>
-            <ScrollView horizontal contentContainerStyle={{ gap: 12 }}>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Add your room"
-                onPress={() => setAdding(true)}
-                style={{
-                  width: 130,
-                  minHeight: 150,
-                  backgroundColor: colors.surface,
-                  borderWidth: 1,
-                  borderColor: colors.line,
-                  padding: 16,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 12,
-                }}
-              >
-                <Text style={{ fontSize: 36, color: colors.accent }}>+</Text>
-                <Text style={s.body}>Add your room</Text>
-              </Pressable>
-              {samples
-                ? sampleRooms.map((room) => (
-                    <View key={room.id} style={{ width: 130, gap: 6 }}>
-                      <ArtImage
-                        uri={room.uri}
-                        ratio={0.9}
-                        onPress={() => {
-                          void create(room.id);
-                        }}
-                        accessibilityLabel={`Use sample ${room.name}`}
-                      />
-                      <Text style={s.caption}>{room.name} - illustration</Text>
-                    </View>
-                  ))
-                : rooms.map((room) => (
-                    <View
-                      key={room.id}
-                      style={{
-                        width: 130,
-                        gap: 6,
-                        borderBottomWidth: chosen?.id === room.id ? 3 : 0,
-                        borderColor: colors.accent,
-                      }}
-                    >
-                      <ArtImage
-                        uri={room.room.uri}
-                        ratio={0.9}
-                        accessibilityLabel={`Select ${room.name}`}
-                        onPress={() => {
-                          setActive(room.id);
-                          setActiveRoomId(room.id);
-                        }}
-                      />
-                      <Text style={s.caption}>{room.name}</Text>
-                    </View>
-                  ))}
-            </ScrollView>
+            <Button
+              title="Add your room"
+              onPress={() => setAdding(true)}
+              disabled={busy}
+            />
           </>
         )}
-        {savedOnly &&
-          rooms.map((room) => (
-            <View key={room.id} style={s.card}>
-              <Text style={s.heading}>{room.name}</Text>
-              <Text style={s.caption}>{room.pieces.length} artworks</Text>
-              <Button
-                title={`Edit ${room.name}`}
-                onPress={() => open(room.id)}
-              />
-            </View>
-          ))}
-        {chosen && (
+        {spaces.loading ? (
+          <Loading />
+        ) : spaces.error ? (
+          <ErrorState
+            message={spaces.error}
+            retry={() => {
+              void spaces.refresh();
+            }}
+          />
+        ) : (
+          <View
+            testID="interiors-grid"
+            onLayout={(event) => setGridWidth(event.nativeEvent.layout.width)}
+            style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}
+          >
+            {samples && !savedOnly
+              ? sampleRooms.map((room) => (
+                  <View
+                    key={room.id}
+                    style={{
+                      width: gridWidth ? (gridWidth - 16) / 3 : "31%",
+                      gap: 6,
+                    }}
+                  >
+                    <ArtImage
+                      uri={room.uri}
+                      ratio={1}
+                      onPress={() => {
+                        void create(room.id);
+                      }}
+                      accessibilityLabel={`Use sample ${room.name}`}
+                    />
+                    <Text numberOfLines={2} style={s.caption}>
+                      {room.name}
+                    </Text>
+                  </View>
+                ))
+              : rooms.map((room) => (
+                  <View
+                    key={room.id}
+                    style={{
+                      width: gridWidth ? (gridWidth - 16) / 3 : "31%",
+                      gap: 4,
+                    }}
+                  >
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={`Open room ${room.name}`}
+                      disabled={busy}
+                      onPress={() => open(room.id)}
+                      style={({ pressed }) => ({
+                        opacity: pressed ? 0.7 : 1,
+                        borderRadius: 10,
+                        overflow: "hidden",
+                      })}
+                    >
+                      <RoomPreview space={room} />
+                    </Pressable>
+                    <Text numberOfLines={1} style={s.body}>
+                      {room.name}
+                    </Text>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={`Manage room ${room.name}`}
+                      disabled={busy}
+                      onPress={() => {
+                        setActive(room.id);
+                        setConfirm(room.id);
+                      }}
+                      style={{ minHeight: 44, justifyContent: "center" }}
+                    >
+                      <Text style={s.caption}>
+                        {room.pieces.length} artworks · •••
+                      </Text>
+                    </Pressable>
+                  </View>
+                ))}
+          </View>
+        )}
+        {!spaces.loading && !spaces.error && !rooms.length && !samples && (
+          <Text style={s.body}>
+            {savedOnly
+              ? "Save a wall design to return to it here."
+              : "Add a room photo to start hanging artwork."}
+          </Text>
+        )}
+        {chosen && confirm === chosen.id && (
           <>
-            <Button
-              title="Manage this room"
-              secondary
-              onPress={() =>
-                setConfirm(confirm === chosen.id ? null : chosen.id)
-              }
-            />
             {confirm === chosen.id && (
               <View style={s.card}>
+                <Text style={s.heading}>{chosen.name}</Text>
                 <Text style={s.body}>
                   Delete this saved room and its app-owned images? Original
                   photos stay unchanged.

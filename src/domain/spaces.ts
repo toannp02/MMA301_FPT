@@ -52,6 +52,8 @@ export interface WallSpace {
   id: string;
   name: string;
   room: { uri: string; width: number; height: number };
+  /** Cached composite of the last saved design; optional for older spaces. */
+  previewUri?: string;
   wall: WallSurface;
   pieces: PlacedArtwork[];
   layout: LayoutKind;
@@ -195,6 +197,7 @@ export function validSpace(value: unknown): value is WallSpace {
     value.name.length > 80 ||
     !record(value.room) ||
     !validImageUri(value.room.uri) ||
+    (value.previewUri !== undefined && !validImageUri(value.previewUri)) ||
     !finite(value.room.width, 1, 8000) ||
     !finite(value.room.height, 1, 8000) ||
     !record(value.wall) ||

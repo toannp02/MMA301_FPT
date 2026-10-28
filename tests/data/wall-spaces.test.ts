@@ -57,6 +57,21 @@ test("saved spaces survive repository recreation with owned room/art snapshots",
     saved,
   );
 });
+
+test("saved composite preview is copied into app-owned storage with the design", async () => {
+  const x = setup();
+  const saved = await x.repo.save({
+    ...make(),
+    previewUri: "file:///cache/preview.png",
+  });
+  expect(saved).toMatchObject({
+    ok: true,
+    data: { previewUri: "file:///saved/wall1/preview.jpg" },
+  });
+  expect(await new WallSpaceRepository(x.store, x.images).get("wall1")).toEqual(
+    saved,
+  );
+});
 test("failed metadata write rolls back only newly created images", async () => {
   const x = setup();
   x.store.setItem.mockRejectedValueOnce(new Error("disk"));

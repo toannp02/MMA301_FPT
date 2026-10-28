@@ -65,6 +65,9 @@ export class WallSpaceRepository implements SpaceRepository {
             return value.uri;
           };
           const roomUri = await persist("room", input.room.uri);
+          const previewUri = input.previewUri
+            ? await persist("preview", input.previewUri)
+            : undefined;
           const pieces: WallSpace["pieces"] = [];
           const sources = new Map<string, string>();
           for (const piece of input.pieces) {
@@ -85,6 +88,7 @@ export class WallSpaceRepository implements SpaceRepository {
           const saved: WallSpace = {
             ...input,
             room: { ...input.room, uri: roomUri },
+            previewUri,
             wall: { ...input.wall, occlusionMaskUri: mask },
             pieces,
             updatedAt: new Date(
@@ -103,6 +107,7 @@ export class WallSpaceRepository implements SpaceRepository {
           await this.images
             .prune?.(input.id, [
               saved.room.uri,
+              ...(saved.previewUri ? [saved.previewUri] : []),
               ...saved.pieces.map((p) => p.artwork.imageUrl),
               ...(saved.wall.occlusionMaskUri
                 ? [saved.wall.occlusionMaskUri]
