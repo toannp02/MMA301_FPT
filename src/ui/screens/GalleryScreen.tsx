@@ -15,7 +15,6 @@ import { styles as s } from "../theme";
 import { ArtworkFilters } from "../studio/ArtworkFilters";
 import { emptyQuery, filterArtworks } from "../../features/studio/discovery";
 import { LibraryNavigation } from "../studio/LibraryNavigation";
-import { isExpoGoPreview } from "../../config/runtime";
 
 export function GalleryScreen() {
   const { repositories } = useApp();
@@ -53,9 +52,6 @@ export function GalleryScreen() {
           onPress={() => router.push("/import-artwork")}
         />
       </View>
-      {isExpoGoPreview && (
-        <Text style={s.caption}>Expo Go preview - photo studio</Text>
-      )}
       <View style={s.row}>
         <Button
           title="My artworks"

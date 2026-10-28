@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import {
   Modal,
+  BackHandler,
   ScrollView,
   Text,
   View,
@@ -24,7 +25,6 @@ import { useApp } from "../../bootstrap/AppProviders";
 import { useResource } from "../../features/useResource";
 import {
   makePiece,
-  defaultAppearance,
   validQuad,
   type WallSpace,
   type PlacedArtwork,
@@ -32,7 +32,6 @@ import {
   type Point,
   type LayoutKind,
   type ArtAppearance,
-  type StudioFrame,
 } from "../../domain/spaces";
 import type { Artwork } from "../../domain/models";
 import {
@@ -53,7 +52,8 @@ import { emptyQuery, filterArtworks } from "../../features/studio/discovery";
 import { ForegroundPainter } from "../studio/ForegroundPainter";
 import { SpaceCanvas } from "../studio/SpaceCanvas";
 import { LayoutPicker } from "../studio/LayoutPicker";
-import { FramePicker } from "../studio/FramePicker";
+import { ArtworkStylePanel } from "../studio/ArtworkStylePanel";
+import { StudioControl as Control } from "../studio/StudioControl";
 import { ArtworkDimensions } from "../studio/ArtworkDimensions";
 import {
   resizeArtwork,
@@ -143,7 +143,7 @@ export function SpaceEditorScreen({
       <ErrorState message="This artwork is no longer available." />
       <Button
         title="Choose another artwork"
-        onPress={() => router.replace("/(tabs)")}
+        onPress={() => router.replace("/")}
       />
     </Page>
   ) : !space.data ? (
@@ -198,6 +198,16 @@ function Editor({
     [exportQuality, setExportQuality] = useState(false);
   const [canvasError, setCanvasError] = useState<string | null>(null);
   const [canvasAttempt, setCanvasAttempt] = useState(0);
+  const [toolsVisible, setToolsVisible] = useState(true);
+  const [fullView, setFullView] = useState(false);
+  useEffect(() => {
+    if (!fullView) return;
+    const back = BackHandler.addEventListener("hardwareBackPress", () => {
+      setFullView(false);
+      return true;
+    });
+    return () => back.remove();
+  }, [fullView]);
   const [wallWidth, setWallWidth] = useState(String(initial.wall.widthCm)),
     [wallHeight, setWallHeight] = useState(String(initial.wall.heightCm));
   const navigation = useNavigation();
@@ -216,7 +226,7 @@ function Editor({
     }
   }, [discarding, pendingAction, navigation]);
   useUnsavedReloadGuard(editor.dirty);
-  const snapshot = useRef<View>(null);
+  const snapshot = useRef<React.ComponentRef<typeof View>>(null);
   const saving = useRef(false);
   const catalogue = useResource(
     useCallback(() => r.artworks.listPublished(), [r]),
@@ -225,17 +235,15 @@ function Editor({
     [roomPan, setRoomPan] = useState({ x: 0, y: 0 });
   const space = useMemo(() => fitSpace(editor.space), [editor.space]),
     selected = space.pieces.find((p) => p.id === editor.selected),
-    imageFit = exportQuality
-      ? fit(editor)
-      : roomViewport(
-          editor.stage,
-          space.room.width / space.room.height,
-          roomZoom,
-          roomPan,
-        );
-  const [styleTab, setStyleTab] = useState<"Frame" | "Image" | "Light">(
-    "Image",
-  );
+    imageFit =
+      exportQuality || fullView
+        ? fit(editor)
+        : roomViewport(
+            editor.stage,
+            space.room.width / space.room.height,
+            roomZoom,
+            roomPan,
+          );
   const [brush, setBrush] = useState(0.035);
   const [query, setQuery] = useState({ ...emptyQuery });
   const grouped = useMemo(
@@ -441,11 +449,13 @@ function Editor({
   const zoomResponder = useDirectManipulation({
     disabled:
       busy ||
+      fullView ||
       compare ||
       exportQuality ||
       editor.mode === "wall" ||
       editor.mode === "foreground",
     selected: editor.selected,
+    scaleOf: (id) => space.pieces.find((p) => p.id === id)?.scale ?? 1,
     zoom: roomZoom,
     pan: roomPan,
     hit: (point) => {
@@ -564,7 +574,7 @@ function Editor({
         dirty: true,
       };
     });
-  const visibleSpace = compare ? { ...space, pieces: [] } : space;
+  const visibleSpace = compare && !fullView ? { ...space, pieces: [] } : space;
   return (
     <View
       style={[
@@ -572,49 +582,57 @@ function Editor({
         { paddingTop: insets.top, paddingBottom: insets.bottom },
       ]}
     >
-      <View style={styles.header}>
-        <Button
-          title="My walls"
-          disabled={busy}
-          secondary
-          onPress={() =>
-            editor.dirty ? setLeave(true) : router.replace("/spaces")
-          }
-        />
-        <View style={{ flex: 1 }}>
-          <Text numberOfLines={1} style={s.body}>
-            {space.name}
-            {editor.dirty ? " •" : ""}
-          </Text>
-          <Text style={styles.small}>
-            {space.wall.measurement === "approximate"
-              ? space.wall.photoAssist
-                ? "Suggested wall - confirm size for scale"
-                : "Photo preview - set wall size for scale"
-              : `${space.wall.widthCm} × ${space.wall.heightCm} cm · ${space.wall.measurement}`}
-          </Text>
+      {!fullView && (
+        <View style={styles.header}>
+          <Button
+            title="My walls"
+            disabled={busy}
+            secondary
+            onPress={() =>
+              editor.dirty ? setLeave(true) : router.replace("/spaces")
+            }
+          />
+          <View style={{ flex: 1 }}>
+            <Text numberOfLines={1} style={s.body}>
+              {space.name}
+              {editor.dirty ? " •" : ""}
+            </Text>
+            <Text style={styles.small}>
+              {space.wall.measurement === "approximate"
+                ? space.wall.photoAssist
+                  ? "Suggested wall - confirm size for scale"
+                  : "Photo preview - set wall size for scale"
+                : `${space.wall.widthCm} × ${space.wall.heightCm} cm · ${space.wall.measurement}`}
+            </Text>
+          </View>
+          <Button
+            title={busy ? "Working…" : "Save"}
+            disabled={busy}
+            onPress={() => {
+              void save();
+            }}
+          />
         </View>
-        <Button
-          title={busy ? "Working…" : "Save"}
-          disabled={busy}
-          onPress={() => {
-            void save();
-          }}
-        />
-      </View>
+      )}
       <View
         style={styles.stage}
         testID="studio-surface"
         accessible
-        accessibilityRole="imagebutton"
-        accessibilityLabel="Room canvas. Tap artwork to edit"
-        accessibilityActions={[
-          ...space.pieces.map((piece) => ({
-            name: `select:${piece.id}`,
-            label: `Select ${piece.artwork.title}`,
-          })),
-          { name: "deselect", label: "Deselect artwork" },
-        ]}
+        accessibilityRole={fullView ? "image" : "imagebutton"}
+        accessibilityLabel={
+          fullView ? "Full room preview" : "Room canvas. Tap artwork to edit"
+        }
+        accessibilityActions={
+          fullView
+            ? []
+            : [
+                ...space.pieces.map((piece) => ({
+                  name: `select:${piece.id}`,
+                  label: `Select ${piece.artwork.title}`,
+                })),
+                { name: "deselect", label: "Deselect artwork" },
+              ]
+        }
         onAccessibilityAction={(event) => {
           const id = event.nativeEvent.actionName.startsWith("select:")
             ? event.nativeEvent.actionName.slice(7)
@@ -627,7 +645,7 @@ function Editor({
           }));
         }}
         {...zoomResponder}
-        pointerEvents={busy ? "none" : "auto"}
+        pointerEvents={busy || fullView ? "none" : "auto"}
         onLayout={(event) => {
           const { width, height } = event.nativeEvent.layout;
           setEditor((current) =>
@@ -661,7 +679,7 @@ function Editor({
             />
           </View>
         )}
-        {!compare && !exportQuality && !!imageFit.width && (
+        {!fullView && !compare && !exportQuality && !!imageFit.width && (
           <>
             {editor.mode === "foreground" ? (
               <ForegroundPainter
@@ -713,6 +731,7 @@ function Editor({
           </>
         )}
         {!compare &&
+          !fullView &&
           !exportQuality &&
           selected &&
           editor.mode !== "wall" &&
@@ -793,6 +812,7 @@ function Editor({
             );
           })()}
         {!space.pieces.length &&
+          !fullView &&
           editor.mode !== "wall" &&
           !!imageFit.width &&
           (() => {
@@ -823,9 +843,29 @@ function Editor({
             );
           })()}
       </View>
+      <View style={styles.viewControls}>
+        {!fullView && (
+          <Button
+            title={toolsVisible ? "Hide tools" : "Show tools"}
+            secondary
+            onPress={() => setToolsVisible((visible) => !visible)}
+          />
+        )}
+        <Button
+          title={fullView ? "Shrink view" : "View full"}
+          secondary
+          disabled={busy}
+          onPress={() => setFullView((full) => !full)}
+        />
+      </View>
       <ScrollView
+        testID="studio-tools"
         pointerEvents={busy ? "none" : "auto"}
-        style={{ maxHeight: windowHeight * 0.43, flexGrow: 0 }}
+        style={{
+          maxHeight: windowHeight * 0.43,
+          flexGrow: 0,
+          display: toolsVisible && !fullView ? "flex" : "none",
+        }}
         contentContainerStyle={styles.panel}
         keyboardShouldPersistTaps="handled"
       >
@@ -887,7 +927,7 @@ function Editor({
             {!selected && !space.pieces.length && (
               <Button
                 title="Choose from library"
-                onPress={() => router.replace("/(tabs)")}
+                onPress={() => router.replace("/")}
               />
             )}
             <View style={s.row}>
@@ -1066,228 +1106,28 @@ function Editor({
           </>
         )}
         {tab === "Frame" && selected && (
-          <>
-            <View style={s.row}>
-              {(["Frame", "Image", "Light"] as const).map((section) => (
-                <Button
-                  key={section}
-                  title={section}
-                  secondary={styleTab !== section}
-                  onPress={() => setStyleTab(section)}
-                />
-              ))}
-            </View>
-            {styleTab === "Frame" && (
-              <>
-                <FramePicker
-                  appearance={selected.appearance}
-                  onChange={appearance}
-                />
-                <View style={s.row}>
-                  {(["none", "black", "white", "wood"] as StudioFrame[]).map(
-                    (frame) => (
-                      <Button
-                        key={frame}
-                        title={frame}
-                        secondary={selected.appearance.frame !== frame}
-                        onPress={() =>
-                          appearance({ frame, frameProfile: undefined })
-                        }
-                      />
-                    ),
-                  )}
-                </View>
-                <Control
-                  label="Frame width (cm)"
-                  value={selected.appearance.frameCm}
-                  min={0}
-                  max={10}
-                  onChange={(frameCm) => appearance({ frameCm })}
-                />
-                <Control
-                  label="Mount width (cm)"
-                  value={selected.appearance.mountCm}
-                  min={0}
-                  max={20}
-                  onChange={(mountCm) => appearance({ mountCm })}
-                />
-                <Button
-                  title={
-                    selected.appearance.glazing ? "Glazing on" : "Glazing off"
-                  }
-                  secondary
-                  onPress={() =>
-                    appearance({ glazing: !selected.appearance.glazing })
-                  }
-                />
-              </>
-            )}
-            {styleTab === "Image" && (
-              <>
-                <View style={s.row}>
-                  <Button
-                    title="Reset image"
-                    secondary
-                    onPress={() =>
-                      appearance({
-                        brightness: 0,
-                        contrast: 1,
-                        saturation: 1,
-                        warmth: 0,
-                        hue: 0,
-                      })
-                    }
-                  />
-                  {space.wall.photoAssist && (
-                    <Button
-                      title="Match room tone"
-                      secondary
-                      onPress={() =>
-                        appearance({
-                          brightness: space.wall.photoAssist?.brightness ?? 0,
-                          warmth: space.wall.photoAssist?.warmth ?? 0,
-                        })
-                      }
-                    />
-                  )}
-                </View>
-                <Control
-                  label="Luminance"
-                  neutral={0}
-                  value={selected.appearance.brightness}
-                  min={-0.5}
-                  max={0.5}
-                  onChange={(brightness) => appearance({ brightness })}
-                />
-                <Control
-                  label="Contrast"
-                  neutral={1}
-                  value={selected.appearance.contrast}
-                  min={0.5}
-                  max={1.5}
-                  onChange={(contrast) => appearance({ contrast })}
-                />
-                <Control
-                  label="Saturation"
-                  neutral={1}
-                  value={selected.appearance.saturation}
-                  min={0}
-                  max={2}
-                  onChange={(saturation) => appearance({ saturation })}
-                />
-                <Control
-                  label="Warmth"
-                  neutral={0}
-                  value={selected.appearance.warmth}
-                  min={-1}
-                  max={1}
-                  onChange={(warmth) => appearance({ warmth })}
-                />
-                <Control
-                  label="Hue"
-                  neutral={0}
-                  value={selected.appearance.hue}
-                  min={-180}
-                  max={180}
-                  onChange={(hue) => appearance({ hue })}
-                />
-              </>
-            )}
-            {styleTab === "Light" && (
-              <>
-                <Button
-                  title="Reset light"
-                  secondary
-                  onPress={() =>
-                    appearance({
-                      shadow: defaultAppearance.shadow,
-                      shadowOffset: 1,
-                      shadowAngle: 56.31,
-                      shadowSoftness: 8,
-                    })
-                  }
-                />
-                <Control
-                  label="Shadow angle (degrees)"
-                  min={-180}
-                  max={180}
-                  value={selected.appearance.shadowAngle ?? 56.31}
-                  onChange={(shadowAngle) => appearance({ shadowAngle })}
-                />
-                <Control
-                  label="Shadow softness"
-                  min={0}
-                  max={40}
-                  value={selected.appearance.shadowSoftness ?? 8}
-                  onChange={(shadowSoftness) => appearance({ shadowSoftness })}
-                />
-                <Control
-                  label="Artwork depth (cm)"
-                  value={selected.appearance.depthCm ?? 1.8}
-                  min={0}
-                  max={10}
-                  onChange={(depthCm) => appearance({ depthCm })}
-                />
-                <Control
-                  label="Shadow intensity"
-                  percent
-                  value={selected.appearance.shadow}
-                  min={0}
-                  max={1}
-                  onChange={(shadow) => appearance({ shadow })}
-                />
-                <Control
-                  label="Shadow offset"
-                  percent
-                  value={selected.appearance.shadowOffset ?? 1}
-                  min={0}
-                  max={3}
-                  onChange={(shadowOffset) => appearance({ shadowOffset })}
-                />
-                <Button
-                  title={
-                    space.wall.occlusionEnabled !== false
-                      ? "Occlusion on"
-                      : "Occlusion off"
-                  }
-                  secondary
-                  onPress={() =>
-                    update((current) => ({
-                      ...current,
-                      wall: {
-                        ...current.wall,
-                        occlusionEnabled:
-                          current.wall.occlusionEnabled === false,
-                      },
-                    }))
-                  }
-                />
-                <Text style={s.caption}>
-                  {space.wall.occlusionMaskUri
-                    ? "Photo-assisted foreground mask. Review its edges for your photo."
-                    : "No automatic mask for this photo. Paint foreground objects to keep them in front of the art."}
-                </Text>
-                <Button
-                  title="Adjust foreground mask"
-                  secondary
-                  onPress={() => {
-                    setTab("Wall");
-                    setEditor((current) => ({
-                      ...current,
-                      mode: "foreground",
-                    }));
-                  }}
-                />
-              </>
-            )}
-            <Button
-              title="Done"
-              onPress={() => {
-                setTab("Art");
-                setEditor((current) => ({ ...current, mode: "move" }));
-              }}
-            />
-          </>
+          <ArtworkStylePanel
+            selected={selected}
+            wall={space.wall}
+            onChange={appearance}
+            onToggleOcclusion={() =>
+              update((current) => ({
+                ...current,
+                wall: {
+                  ...current.wall,
+                  occlusionEnabled: current.wall.occlusionEnabled === false,
+                },
+              }))
+            }
+            onMask={() => {
+              setTab("Wall");
+              setEditor((current) => ({ ...current, mode: "foreground" }));
+            }}
+            onDone={() => {
+              setTab("Art");
+              setEditor((current) => ({ ...current, mode: "move" }));
+            }}
+          />
         )}
         {tab === "Wall" && (
           <>
@@ -1562,77 +1402,6 @@ function Editor({
     </View>
   );
 }
-function Control({
-  label,
-  value,
-  min,
-  max,
-  onChange,
-  percent = false,
-  neutral,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  onChange: (value: number) => void;
-  percent?: boolean;
-  neutral?: number;
-}) {
-  const display =
-    neutral !== undefined && Math.abs(value - neutral) < 0.005
-      ? "Neutral"
-      : percent
-        ? `${Math.round(value * 100)}%`
-        : String(Math.round(value * 100) / 100);
-  return (
-    <View>
-      <Text style={s.caption}>
-        {label}: {display}
-      </Text>
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Decrease ${label}`}
-          onPress={() => onChange(clamp(value - (max - min) / 100, min, max))}
-          style={{
-            minWidth: 44,
-            minHeight: 44,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Text style={s.heading}>−</Text>
-        </Pressable>
-        <Slider
-          style={{ flex: 1, minHeight: 44 }}
-          accessibilityLabel={label}
-          accessibilityValue={{ min, max, now: value, text: display }}
-          minimumValue={min}
-          maximumValue={max}
-          value={value}
-          minimumTrackTintColor={colors.accent}
-          maximumTrackTintColor={colors.line}
-          thumbTintColor={colors.accent}
-          onValueChange={onChange}
-        />
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Increase ${label}`}
-          onPress={() => onChange(clamp(value + (max - min) / 100, min, max))}
-          style={{
-            minWidth: 44,
-            minHeight: 44,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Text style={s.heading}>+</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
-}
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   header: { padding: 8, gap: 8, flexDirection: "row", alignItems: "center" },
@@ -1644,6 +1413,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   panel: { padding: 12, gap: 10 },
+  viewControls: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    gap: 8,
+    padding: 8,
+    backgroundColor: colors.background,
+  },
   thumb: {
     width: 80,
     padding: 4,

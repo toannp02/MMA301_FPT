@@ -1,0 +1,73 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand
+
+FAIL tests/integration/view-on-room-flow.test.tsx
+  ● Test suite failed to run
+
+    Module "1" is missing from the asset registry
+
+      45 |     "An original geometric study of light, colour and balance. A quiet focal point for your space. Public domain / CC0 ArtSpace collection.",
+      46 |   categoryId: categories[i % 3].id,
+    > 47 |   imageUrl: Asset.fromModule(artAssets[i]).uri,
+         |                   ^
+      48 |   thumbnailUrl: Asset.fromModule(artAssets[i]).uri,
+      49 |   widthCm: 60,
+      50 |   heightCm: 90,
+
+      at Function.fromModule (node_modules/expo-asset/build/Asset.ts:184:13)
+      at fromModule (src/data/catalogue/artworks.ts:47:19)
+          at Array.map (<anonymous>)
+      at Object.map (src/data/catalogue/artworks.ts:41:43)
+      at Object.require (src/bootstrap/repositories.ts:5:1)
+      at Object.require (src/bootstrap/AppProviders.tsx:2:1)
+      at Object.require (tests/integration/view-on-room-flow.test.tsx:4:1)
+
+FAIL tests/integration/import-artwork.test.tsx
+  ● Test suite failed to run
+
+    Module "1" is missing from the asset registry
+
+      45 |     "An original geometric study of light, colour and balance. A quiet focal point for your space. Public domain / CC0 ArtSpace collection.",
+      46 |   categoryId: categories[i % 3].id,
+    > 47 |   imageUrl: Asset.fromModule(artAssets[i]).uri,
+         |                   ^
+      48 |   thumbnailUrl: Asset.fromModule(artAssets[i]).uri,
+      49 |   widthCm: 60,
+      50 |   heightCm: 90,
+
+      at Function.fromModule (node_modules/expo-asset/build/Asset.ts:184:13)
+      at fromModule (src/data/catalogue/artworks.ts:47:19)
+          at Array.map (<anonymous>)
+      at Object.map (src/data/catalogue/artworks.ts:41:43)
+      at Object.require (src/bootstrap/repositories.ts:5:1)
+      at Object.require (src/bootstrap/AppProviders.tsx:2:1)
+      at Object.require (tests/integration/import-artwork.test.tsx:5:1)
+
+FAIL tests/integration/gallery-image-retry.test.tsx
+  ● Test suite failed to run
+
+    Module "1" is missing from the asset registry
+
+      45 |     "An original geometric study of light, colour and balance. A quiet focal point for your space. Public domain / CC0 ArtSpace collection.",
+      46 |   categoryId: categories[i % 3].id,
+    > 47 |   imageUrl: Asset.fromModule(artAssets[i]).uri,
+         |                   ^
+      48 |   thumbnailUrl: Asset.fromModule(artAssets[i]).uri,
+      49 |   widthCm: 60,
+      50 |   heightCm: 90,
+
+      at Function.fromModule (node_modules/expo-asset/build/Asset.ts:184:13)
+      at fromModule (src/data/catalogue/artworks.ts:47:19)
+          at Array.map (<anonymous>)
+      at Object.map (src/data/catalogue/artworks.ts:41:43)
+      at Object.require (src/bootstrap/repositories.ts:5:1)
+      at Object.require (src/bootstrap/AppProviders.tsx:2:1)
+      at Object.require (tests/integration/gallery-image-retry.test.tsx:4:1)
+
+
+Test Suites: 3 failed, 12 passed, 15 total
+Tests:       77 passed, 77 total
+Snapshots:   0 total
+Time:        23.685 s
+Ran all test suites.

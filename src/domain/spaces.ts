@@ -6,13 +6,7 @@ export interface Point {
 }
 export type Quad = [Point, Point, Point, Point];
 export type LayoutKind =
-  | "single"
-  | "pair"
-  | "stack"
-  | "row"
-  | "column"
-  | "grid"
-  | "custom";
+  "single" | "pair" | "stack" | "row" | "column" | "grid" | "custom";
 export type StudioFrame = "none" | "black" | "white" | "wood";
 export interface ArtAppearance {
   depthCm?: number;
@@ -144,12 +138,36 @@ export function validQuad(value: unknown): value is Quad {
   return crosses.every((cross) => cross > 0.0001);
 }
 function validImageUri(uri: unknown): uri is string {
+  // Expo Go serves bundled assets from the current LAN host, including 10/8
+  // and 172.16/12 networks. Check the parsed host, not a hostname prefix.
+  let localHttp = false;
+  if (typeof uri === "string" && uri.startsWith("http://")) {
+    try {
+      const url = new URL(uri);
+      const host = url.hostname;
+      const octets = host.split(".").map(Number);
+      const ipv4 =
+        octets.length === 4 &&
+        octets.every((n) => Number.isInteger(n) && n >= 0 && n <= 255);
+      localHttp =
+        !url.username &&
+        !url.password &&
+        (host === "localhost" ||
+          host === "[::1]" ||
+          (ipv4 &&
+            (octets[0] === 127 ||
+              octets[0] === 10 ||
+              (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31) ||
+              (octets[0] === 192 && octets[1] === 168))));
+    } catch {
+      /* Invalid URLs are rejected below. */
+    }
+  }
   return (
     typeof uri === "string" &&
     uri.length < 6_000_000 &&
-    (/^(file:\/\/|data:image\/(png|jpeg);base64,|https:\/\/|http:\/\/localhost|http:\/\/192\.168\.)/.test(
-      uri,
-    ) ||
+    (localHttp ||
+      /^(file:\/\/|data:image\/(png|jpeg);base64,|https:\/\/)/.test(uri) ||
       /^\/assets\//.test(uri) ||
       /^[a-z0-9_]{1,200}$/.test(uri))
   );

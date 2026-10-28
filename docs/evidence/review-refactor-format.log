@@ -1,0 +1,3 @@
+src/ui/studio/ArtworkStylePanel.tsx 132ms
+src/ui/studio/StudioControl.tsx 27ms
+src/ui/screens/SpaceEditorScreen.tsx 244ms

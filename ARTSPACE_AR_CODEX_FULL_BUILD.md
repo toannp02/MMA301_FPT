@@ -1,3 +1,5 @@
+> Historical specification. On2026-10-28 the user explicitly removed native AR and authorized one SDK58 Expo Go photo-studio application. README.md, docs/ARCHITECTURE.md and docs/FIVE_MEMBER_HANDOVER.md define the current scope. Original AR/Firebase requirements below are retained as history, not instructions to restore removed features. Strict TypeScript, real test evidence and secret/private-photo protections still apply.
+
 # ARTSPACE AR — ONE-FILE CODEX MASTER BUILD SPEC
 
 > **Document ID:** `ARTSPACE_AR_CODEX_FULL_BUILD.md`  

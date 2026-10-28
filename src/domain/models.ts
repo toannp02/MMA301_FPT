@@ -1,7 +1,5 @@
 export type ArtworkStatus = "published" | "hidden";
 export type SourceKind = "catalog" | "custom";
-export type FrameStyle = "none" | "black" | "white";
-export type StorageMode = "cloud" | "local";
 export interface Category {
   id: string;
   name: string;
@@ -21,33 +19,6 @@ export interface Artwork {
   heightCm: number;
   isFeatured: boolean;
   status: ArtworkStatus;
-}
-export interface UserProfile {
-  uid: string;
-  email: string;
-  displayName: string;
-  avatarUrl: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
-export interface Favorite {
-  artworkId: string;
-  createdAt: string;
-}
-export interface SavedDesign {
-  id: string;
-  userId: string;
-  artworkId: string | null;
-  sourceKind: SourceKind;
-  sourceImageUri: string | null;
-  capturedImageUri: string;
-  imageStoragePath: string | null;
-  storageMode: StorageMode;
-  widthCm: number;
-  heightCm: number;
-  scaleFactor: number;
-  frameStyle: FrameStyle;
-  createdAt: string;
 }
 export interface AppError {
   code: string;

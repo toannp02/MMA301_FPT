@@ -6,12 +6,5 @@
     "customConditions": ["react-native"],
     "paths": { "@/*": ["./*"] }
   },
-  "exclude": [
-    "node_modules",
-    "android",
-    "ios",
-    ".expo",
-    "dist",
-    "apps/iphone-expo-go"
-  ]
+  "exclude": ["node_modules", "android", "ios", ".expo", "dist", "artifacts"]
 }

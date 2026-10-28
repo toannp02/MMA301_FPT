@@ -1,38 +1,33 @@
 {
   "pass": true,
+  "utc": "2026-10-28T01:40:51.631Z",
   "sdkVersion": "58.0.0",
-  "expoGoPreview": true,
-  "bundleBytes": 9432619,
-  "sources": 1638,
-  "viroSources": [],
+  "name": "ArtSpace",
+  "hostUri": "127.0.0.1:8082",
+  "bundleBytes": 7274221,
+  "sources": 1588,
+  "forbidden": [],
   "react": [
-    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react/index.js"
+    "F:/AI_terminal/AR_mma/node_modules/react/index.js"
   ],
   "reactNative": [
-    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/node_modules/react-native/index.js"
+    "F:/AI_terminal/AR_mma/node_modules/react-native/index.js"
   ],
-  "cameraSources": 7,
-  "previewSources": [
-    "F:/AI_terminal/AR_mma/apps/iphone-expo-go/src/Preview2DCameraScreen.tsx",
-    "F:/AI_terminal/AR_mma/src/ui/screens/Preview2DScreen.tsx"
-  ],
-  "studioSources": [
+  "coreSources": [
+    "F:/AI_terminal/AR_mma/app/index.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/screens/GalleryScreen.tsx",
     "F:/AI_terminal/AR_mma/src/ui/screens/SpacesScreen.tsx",
     "F:/AI_terminal/AR_mma/src/ui/screens/SpaceEditorScreen.tsx",
-    "F:/AI_terminal/AR_mma/src/ui/studio/ForegroundPainter.tsx",
-    "F:/AI_terminal/AR_mma/src/ui/studio/SpaceCanvas.tsx"
-  ],
-  "reloadGuardSource": "F:/AI_terminal/AR_mma/src/ui/studio/useUnsavedReloadGuard.ts",
-  "roomFlowSources": [
+    "F:/AI_terminal/AR_mma/src/ui/screens/ImportArtworkScreen.tsx",
     "F:/AI_terminal/AR_mma/src/ui/screens/ViewOnRoomScreen.tsx",
-    "F:/AI_terminal/AR_mma/src/features/studio/photoAssist.ts",
-    "F:/AI_terminal/AR_mma/src/features/studio/maskPng.ts",
-    "F:/AI_terminal/AR_mma/src/features/studio/placeArtwork.ts",
-    "F:/AI_terminal/AR_mma/src/infra/analyzeRoomPhoto.ts",
-    "F:/AI_terminal/AR_mma/src/features/studio/styleEditing.ts",
-    "F:/AI_terminal/AR_mma/src/ui/studio/FramePicker.tsx",
-    "F:/AI_terminal/AR_mma/src/ui/studio/ArtworkDimensions.tsx"
+    "F:/AI_terminal/AR_mma/src/ui/studio/ArtworkStylePanel.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/StudioControl.tsx",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useDirectManipulation.ts",
+    "F:/AI_terminal/AR_mma/src/ui/studio/useUnsavedReloadGuard.ts",
+    "F:/AI_terminal/AR_mma/src/features/studio/rendering.ts",
+    "F:/AI_terminal/AR_mma/src/infra/analyzeRoomPhoto.ts"
   ],
+  "pickerSources": 4,
   "imageChecks": [
     {
       "id": "art-01",
@@ -96,5 +91,6 @@
     }
   ],
   "launchStatus": 200,
-  "launchBytes": 8509446
+  "launchBytes": 6665645,
+  "physicalDevice": "UNVERIFIED"
 }

@@ -1,0 +1,229 @@
+{
+  "configs": [
+    {
+      "automock": false,
+      "cache": true,
+      "cacheDirectory": "C:\\Users\\toann\\AppData\\Local\\Temp\\jest",
+      "clearMocks": false,
+      "collectCoverage": false,
+      "collectCoverageFrom": [],
+      "coverageDirectory": "F:\\AI_terminal\\AR_mma\\coverage",
+      "coveragePathIgnorePatterns": [
+        "\\\\node_modules\\\\"
+      ],
+      "coverageProvider": "babel",
+      "cwd": "F:\\AI_terminal\\AR_mma",
+      "detectLeaks": false,
+      "detectOpenHandles": false,
+      "errorOnDeprecated": false,
+      "extensionsToTreatAsEsm": [],
+      "fakeTimers": {
+        "enableGlobally": false
+      },
+      "forceCoverageMatch": [],
+      "globals": {},
+      "haste": {
+        "defaultPlatform": "ios",
+        "platforms": [
+          "android",
+          "ios",
+          "native"
+        ]
+      },
+      "id": "b3581b344d3a027eba063ada86da0ba8",
+      "injectGlobals": true,
+      "moduleDirectories": [
+        "node_modules"
+      ],
+      "moduleFileExtensions": [
+        "js",
+        "mjs",
+        "cjs",
+        "jsx",
+        "ts",
+        "mts",
+        "cts",
+        "tsx",
+        "json",
+        "node"
+      ],
+      "moduleNameMapper": [
+        [
+          "^@/(.*)$",
+          "F:\\AI_terminal\\AR_mma\\$1"
+        ],
+        [
+          "^react-native/asset-registry$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\react-native\\src\\asset-registry.js"
+        ],
+        [
+          "^react-native/unstable-internals-do-not-use$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\react-native\\src\\unstable-internals-do-not-use.js"
+        ],
+        [
+          "^react-native/react-private-interface$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\react-native/src/react-private-interface.js"
+        ],
+        [
+          "^react-native/setup-env$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\react-native/src/setup-env.js"
+        ],
+        [
+          "^react-native($|/.*)",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\react-native/$1"
+        ],
+        [
+          "^react-native-vector-icons$",
+          "@expo/vector-icons"
+        ],
+        [
+          "^react-native-vector-icons/(.*)",
+          "@expo/vector-icons/$1"
+        ]
+      ],
+      "modulePathIgnorePatterns": [
+        "F:\\\\AI_terminal\\\\AR_mma\\\\artifacts\\\\",
+        "F:\\\\AI_terminal\\\\AR_mma\\\\dist\\\\"
+      ],
+      "openHandlesTimeout": 1000,
+      "prettierPath": "prettier",
+      "resetMocks": false,
+      "resetModules": false,
+      "resolver": "F:\\AI_terminal\\AR_mma\\node_modules\\@react-native\\jest-preset\\jest\\resolver.js",
+      "restoreMocks": false,
+      "rootDir": "F:\\AI_terminal\\AR_mma",
+      "roots": [
+        "F:\\AI_terminal\\AR_mma\\src",
+        "F:\\AI_terminal\\AR_mma\\app",
+        "F:\\AI_terminal\\AR_mma\\tests"
+      ],
+      "runner": "F:\\AI_terminal\\AR_mma\\node_modules\\jest-runner\\build\\index.js",
+      "runnerOptions": {},
+      "sandboxInjectedGlobals": [],
+      "setupFiles": [
+        "F:\\AI_terminal\\AR_mma\\node_modules\\@react-native\\jest-preset\\jest\\setup.js",
+        "F:\\AI_terminal\\AR_mma\\node_modules\\jest-expo\\src\\preset\\setup.js"
+      ],
+      "setupFilesAfterEnv": [],
+      "skipFilter": false,
+      "slowTestThreshold": 5,
+      "snapshotFormat": {
+        "escapeString": false,
+        "printBasicPrototype": false
+      },
+      "snapshotSerializers": [],
+      "testEnvironment": "F:\\AI_terminal\\AR_mma\\node_modules\\jest-expo\\src\\preset\\nativeEnvironment.js",
+      "testEnvironmentOptions": {
+        "customExportConditions": [
+          "node",
+          "node-addons"
+        ]
+      },
+      "testLocationInResults": false,
+      "testMatch": [
+        "F:/AI_terminal/AR_mma/tests/**/*.test.ts",
+        "F:/AI_terminal/AR_mma/tests/**/*.test.tsx"
+      ],
+      "testPathIgnorePatterns": [
+        "\\\\node_modules\\\\"
+      ],
+      "testRegex": [],
+      "testRunner": "F:\\AI_terminal\\AR_mma\\node_modules\\jest-circus\\build\\runner.js",
+      "transform": [
+        [
+          "^.+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\@react-native\\jest-preset\\jest\\assetFileTransformer.js",
+          {}
+        ],
+        [
+          "\\.[jt]sx?$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\jest-expo\\node_modules\\babel-jest\\build\\index.js",
+          {
+            "root": "F:\\AI_terminal\\AR_mma",
+            "babelrcRoots": "F:\\AI_terminal\\AR_mma",
+            "babelrc": true,
+            "configFile": true,
+            "presets": [
+              "F:\\AI_terminal\\AR_mma\\node_modules\\expo\\internal\\babel-preset.js"
+            ],
+            "caller": {
+              "name": "metro",
+              "bundler": "jest",
+              "platform": "ios"
+            }
+          }
+        ],
+        [
+          "^.+\\.(bmp|gif|jpg|jpeg|png|psd|svg|webp|xml|m4v|mov|mp4|mpeg|mpg|webm|aac|aiff|caf|m4a|mp3|wav|html|pdf|yaml|yml|otf|ttf|zip|heic|avif|db)$",
+          "F:\\AI_terminal\\AR_mma\\node_modules\\jest-expo\\src\\preset\\assetFileTransformer.js",
+          {}
+        ]
+      ],
+      "transformIgnorePatterns": [
+        "\\\\node_modules\\\\(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry\\\\react-native|native-base|standard-navigation))",
+        "\\\\node_modules\\\\react-native-reanimated\\\\plugin\\\\",
+        "\\\\node_modules\\\\@react-native\\\\babel-preset\\\\"
+      ],
+      "waitForUnhandledRejections": false,
+      "watchPathIgnorePatterns": []
+    }
+  ],
+  "globalConfig": {
+    "bail": 0,
+    "changedFilesWithAncestor": false,
+    "ci": false,
+    "collectCoverage": false,
+    "collectCoverageFrom": [],
+    "collectTests": false,
+    "coverageDirectory": "F:\\AI_terminal\\AR_mma\\coverage",
+    "coverageProvider": "babel",
+    "coverageReporters": [
+      "json",
+      "text",
+      "lcov",
+      "clover"
+    ],
+    "detectLeaks": false,
+    "detectOpenHandles": false,
+    "errorOnDeprecated": false,
+    "expand": false,
+    "findRelatedTests": false,
+    "forceExit": false,
+    "json": false,
+    "lastCommit": false,
+    "listTests": false,
+    "logHeapUsage": false,
+    "maxConcurrency": 5,
+    "maxWorkers": 15,
+    "noStackTrace": false,
+    "nonFlagArgs": [],
+    "notify": false,
+    "notifyMode": "failure-change",
+    "onlyChanged": false,
+    "onlyFailures": false,
+    "openHandlesTimeout": 1000,
+    "passWithNoTests": true,
+    "projects": [],
+    "rootDir": "F:\\AI_terminal\\AR_mma",
+    "runInBand": false,
+    "runTestsByPath": false,
+    "seed": -805893719,
+    "skipFilter": false,
+    "snapshotFormat": {
+      "escapeString": false,
+      "printBasicPrototype": false
+    },
+    "testFailureExitCode": 1,
+    "testPathPatterns": [],
+    "testSequencer": "F:\\AI_terminal\\AR_mma\\node_modules\\@jest\\test-sequencer\\build\\index.js",
+    "updateSnapshot": "new",
+    "useStderr": false,
+    "waitForUnhandledRejections": false,
+    "watch": false,
+    "watchAll": false,
+    "watchman": true,
+    "workerGracefulExitTimeout": 500,
+    "workerThreads": false
+  },
+  "version": "30.5.2"
+}

@@ -20,7 +20,7 @@ export function LibraryNavigation({
     >
       {(
         [
-          { id: "artworks", title: "Artworks", route: "/(tabs)" },
+          { id: "artworks", title: "Artworks", route: "/" },
           { id: "interiors", title: "Interiors", route: "/spaces" },
           { id: "saved", title: "Saved", route: "/saved-walls" },
         ] as const

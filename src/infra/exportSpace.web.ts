@@ -5,7 +5,7 @@ import { prepareSpaceImage } from "./spaceImages";
 import { withTimeout } from "../domain/async";
 import { sceneSVG } from "../features/studio/rendering";
 export async function exportSpacePNG(
-  _view: React.RefObject<View | null>,
+  _view: React.RefObject<React.ComponentRef<typeof View> | null>,
   space: WallSpace,
 ) {
   const width = Math.round(

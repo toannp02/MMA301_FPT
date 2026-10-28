@@ -9,7 +9,7 @@ $signer = Join-Path $BuildTools "apksigner.bat"
 $aapt = Join-Path $BuildTools "aapt.exe"
 $signature = & $signer verify --verbose --print-certs $apkPath 2>&1
 $signatureCode = $LASTEXITCODE
-$signature | Set-Content -Encoding utf8 docs/evidence/placed-apk-signature.log
+$signature | Set-Content -Encoding utf8 docs/evidence/sdk58-apk-signature.log
 if ($signatureCode -ne 0) { throw "APK signature verification failed." }
 $certPattern = 'Signer #1 certificate SHA-256 digest: ([a-fA-F0-9]+)'
 $certificate = [regex]::Match(($signature -join "`n"), $certPattern).Groups[1].Value
@@ -22,8 +22,8 @@ $badging = & $aapt dump badging $apkPath 2>&1
 if ($LASTEXITCODE -ne 0) { throw "APK metadata cannot be read." }
 $permissions = & $aapt dump permissions $apkPath 2>&1
 if ($LASTEXITCODE -ne 0) { throw "APK permissions cannot be read." }
-$badging | Set-Content -Encoding utf8 docs/evidence/placed-apk-badging.log
-$permissions | Set-Content -Encoding utf8 docs/evidence/placed-apk-permissions.log
+$badging | Set-Content -Encoding utf8 docs/evidence/sdk58-apk-badging.log
+$permissions | Set-Content -Encoding utf8 docs/evidence/sdk58-apk-permissions.log
 if (($badging -join "`n") -notmatch "package: name='com.artspacear.mma301'") { throw "Unexpected package name." }
 if (($permissions -join "`n") -notmatch "name='android.permission.CAMERA'") { throw "Camera permission is missing." }
 if (($permissions -join "`n") -match "name='android.permission.RECORD_AUDIO'") { throw "Photo-only app unexpectedly requests microphone access." }
@@ -38,12 +38,12 @@ try {
   try { $stream.CopyTo($memory); $bundle = [System.Text.Encoding]::Latin1.GetString($memory.ToArray()) }
   finally { $stream.Dispose(); $memory.Dispose() }
   $markers = [ordered]@{}
-  foreach ($marker in @("View on room", "Shadow offset", "Shadow softness", "Tap artwork to edit", "Apply artwork size", "Occlusion on", "Protect foreground objects", "Edit & save this wall", "Export / share PNG")) {
+  foreach ($marker in @("View on room", "Shadow offset", "Shadow softness", "Tap artwork to edit", "Apply artwork size", "Occlusion on", "Protect foreground objects", "Export / share PNG")) {
     $markers[$marker] = $bundle.Contains($marker)
     if (-not $markers[$marker]) { throw "Current studio marker missing: $marker" }
   }
   $nativeAR = @($zip.Entries | Where-Object { $_.FullName -match '^lib/(arm64-v8a|armeabi-v7a)/.*(viro|arcore).*\.so$' } | ForEach-Object { $_.FullName })
-  if ($nativeAR.Count -lt 2) { throw "Native ARM AR libraries missing." }
+  if ($nativeAR.Count -ne 0) { throw "Retired Viro/ARCore libraries remain in this photo-only APK." }
   $rooms = @($zip.Entries | Where-Object { $_.FullName -match '(living|bedroom|gallery).*\.png$' } | ForEach-Object { $_.FullName })
   $report = [ordered]@{
     utc = [DateTime]::UtcNow.ToString("o")
@@ -61,6 +61,6 @@ try {
     sampleRoomAssets = $rooms
     hardwareAcceptance = "UNVERIFIED"
   }
-  $report | ConvertTo-Json -Depth 5 | Set-Content -Encoding utf8 docs/evidence/placed-apk-verification.json
+  $report | ConvertTo-Json -Depth 5 | Set-Content -Encoding utf8 docs/evidence/sdk58-apk-verification.json
   $report | Select-Object pass,bytes,sha256,certificateMatchesPrevious,hardwareAcceptance | Format-List
 } finally { $zip.Dispose() }

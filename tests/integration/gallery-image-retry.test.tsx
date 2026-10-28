@@ -10,9 +10,6 @@ jest.mock("@react-native-async-storage/async-storage", () =>
     "@react-native-async-storage/async-storage/jest/async-storage-mock",
   ),
 );
-jest.mock("../../src/infra/firebase/client", () => ({
-  createFirebaseClient: jest.fn(),
-}));
 jest.mock("expo-router", () => {
   const React = jest.requireActual<typeof import("react")>("react");
   return {
@@ -24,19 +21,19 @@ jest.mock("expo-router", () => {
 });
 
 test("gallery image errors allow retry without nested buttons or navigation", async () => {
-  const view = render(
+  const view = await render(
     <AppProviders dependencies={createRepositories()}>
       <GalleryScreen />
     </AppProviders>,
   );
   const imageLink = await view.findByLabelText("View image of Terracotta Sun");
-  fireEvent.press(imageLink);
+  await fireEvent.press(imageLink);
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/artwork/[id]",
     params: { id: "art-01" },
   });
   jest.mocked(router.push).mockClear();
-  fireEvent(view.getAllByLabelText("Artwork preview")[0], "error", {
+  await fireEvent(view.getAllByLabelText("Artwork preview")[0], "error", {
     nativeEvent: { error: "Image request failed" },
   });
   expect(view.getByText("Image unavailable")).toBeTruthy();
@@ -52,10 +49,10 @@ test("gallery image errors allow retry without nested buttons or navigation", as
       ancestor = ancestor.parent;
     }
   }
-  fireEvent.press(view.getByLabelText("Reload image"));
+  await fireEvent.press(view.getByLabelText("Reload image"));
   expect(router.push).not.toHaveBeenCalled();
   expect(view.queryByText("Image unavailable")).toBeNull();
-  fireEvent.press(view.getByLabelText("View Terracotta Sun"));
+  await fireEvent.press(view.getByLabelText("View Terracotta Sun"));
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/artwork/[id]",
     params: { id: "art-01" },

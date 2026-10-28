@@ -1,6 +1,6 @@
 import type { ExpoConfig } from "expo/config";
 const config: ExpoConfig = {
-  name: "ArtSpace AR",
+  name: "ArtSpace",
   slug: "artspace-ar",
   version: "1.0.0",
   scheme: "artspace",
@@ -25,15 +25,6 @@ const config: ExpoConfig = {
   },
   plugins: [
     "expo-sharing",
-    [
-      "expo-camera",
-      {
-        cameraPermission:
-          "Allow ArtSpace to photograph your space and artwork.",
-        recordAudioAndroid: false,
-        microphonePermission: false,
-      },
-    ],
     "expo-router",
     "expo-asset",
     "expo-font",
@@ -41,7 +32,7 @@ const config: ExpoConfig = {
       "expo-image-picker",
       {
         photosPermission: "Choose a photo to preview as wall art.",
-        cameraPermission: "Allow ArtSpace to scan walls for AR placement.",
+        cameraPermission: "Allow ArtSpace to photograph your room and artwork.",
         microphonePermission: false,
       },
     ],
@@ -53,7 +44,6 @@ const config: ExpoConfig = {
         imageWidth: 160,
       },
     ],
-    ["@reactvision/react-viro", { android: { xRMode: "AR" } }],
   ],
 };
 export default config;

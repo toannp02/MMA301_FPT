@@ -1,16 +1,12 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { Buffer } from "node:buffer";
 const base = process.argv[2] || "http://localhost:8082";
+let phase = "manifest";
 const request = async (url, headers) => {
-  const response = await fetch(url, {
-    headers,
-    signal: AbortSignal.timeout(120000),
-  });
-  if (!response.ok)
-    throw new Error(
-      `HTTP ${response.status}: ${(await response.text()).slice(0, 1800)}`,
-    );
-  return response;
+  const r = await fetch(url, { headers, signal: AbortSignal.timeout(120000) });
+  if (!r.ok)
+    throw new Error(`HTTP ${r.status}: ${(await r.text()).slice(0, 1000)}`);
+  return r;
 };
 mkdirSync("docs/evidence", { recursive: true });
 try {
@@ -21,146 +17,122 @@ try {
     })
   ).json();
   const client = manifest.extra.expoClient;
-  if (client.sdkVersion !== "58.0.0" || client.extra.expoGoPreview !== true)
-    throw new Error("Not the SDK58 Expo Go preview manifest");
-  const query = "?platform=ios&dev=true&hot=true&minify=false";
-  const bundleResponse = await request(
-    `${base}/node_modules/expo-router/entry.bundle${query}`,
+  if (client.sdkVersion !== "58.0.0")
+    throw new Error("Expected the unified SDK58 app");
+  phase = "iOS bundle";
+  const query = "?platform=ios&dev=true&hot=false&minify=false";
+  const bundle = await (
+    await request(`${base}/node_modules/expo-router/entry.bundle${query}`)
+  ).text();
+  phase = "source map";
+  const map = await (
+    await request(`${base}/node_modules/expo-router/entry.map${query}`)
+  ).json();
+  const collect = (p) => [
+    ...(p.sources || []),
+    ...(p.sections || []).flatMap((s) => collect(s.map)),
+  ];
+  const sources = [
+    ...new Set(collect(map).map((s) => s.replaceAll("\\", "/"))),
+  ];
+  const forbidden = sources.filter((s) =>
+    /react-viro|\/features\/ar\/|\/screens\/ARScreen|apps\/iphone-expo-go|\/firebase\//.test(
+      s,
+    ),
   );
-  const bundle = await bundleResponse.text();
-  const artworkAssets = [
+  const react = sources.filter((s) =>
+    /node_modules\/react\/index\.js$/.test(s),
+  );
+  const reactNative = sources.filter((s) =>
+    /node_modules\/react-native\/index\.js$/.test(s),
+  );
+  if (forbidden.length || react.length !== 1 || reactNative.length !== 1)
+    throw new Error(
+      `Unexpected app graph: ${JSON.stringify({ forbidden, react, reactNative })}`,
+    );
+  const requiredFiles = [
+    "/app/index.tsx",
+    "/screens/GalleryScreen.tsx",
+    "/screens/SpacesScreen.tsx",
+    "/screens/SpaceEditorScreen.tsx",
+    "/screens/ImportArtworkScreen.tsx",
+    "/screens/ViewOnRoomScreen.tsx",
+    "/studio/ArtworkStylePanel.tsx",
+    "/studio/StudioControl.tsx",
+    "/studio/useDirectManipulation.ts",
+    "/studio/useUnsavedReloadGuard.ts",
+    "/studio/rendering.ts",
+    "/infra/analyzeRoomPhoto.ts",
+  ];
+  const coreSources = requiredFiles.map((file) =>
+    sources.find((s) => s.endsWith(file)),
+  );
+  if (coreSources.some((s) => !s))
+    throw new Error(
+      `Missing core sources: ${requiredFiles.filter((_, i) => !coreSources[i])}`,
+    );
+  for (const marker of [
+    "Tap artwork to edit",
+    "Shadow softness",
+    "Artwork depth (cm)",
+    "Apply artwork size",
+    "Export / share PNG",
+    "Add your room",
+    "View on room",
+    "Take a Photo",
+    "Choose from Photos",
+  ]) {
+    if (!bundle.includes(marker)) throw new Error(`Missing feature: ${marker}`);
+  }
+  const pickerSources = sources.filter((s) =>
+    s.includes("/expo-image-picker/"),
+  );
+  if (!pickerSources.length)
+    throw new Error("Room/art camera and photo picker missing");
+  phase = "catalogue assets";
+  const assets = [
     ...bundle.matchAll(
       /registerAsset\((\{\s*"__packager_asset"[\s\S]*?\})\);/g,
     ),
   ]
-    .map((match) => JSON.parse(match[1]))
-    .filter((asset) => /^art-\d{2}$/.test(asset.name));
-  if (artworkAssets.length !== 12)
-    throw new Error(
-      `Expected 12 bundled catalogue images, found ${artworkAssets.length}`,
-    );
+    .map((m) => JSON.parse(m[1]))
+    .filter((a) => /^art-\d{2}$/.test(a.name));
+  if (assets.length !== 12)
+    throw new Error(`Expected12 catalogue assets, got ${assets.length}`);
   const imageChecks = await Promise.all(
-    artworkAssets.map(async (asset) => {
+    assets.map(async (asset) => {
       const uri = new URL(
         `${asset.httpServerLocation}/${asset.name}.${asset.type}`,
         base,
       );
       uri.searchParams.set("platform", "ios");
       uri.searchParams.set("hash", asset.hash);
-      const image = await request(uri);
-      const bytes = (await image.arrayBuffer()).byteLength;
-      if (!image.headers.get("content-type")?.startsWith("image/") || !bytes)
-        throw new Error(`Invalid artwork image: ${asset.name}`);
-      return { id: asset.name, status: image.status, bytes };
+      const r = await request(uri);
+      const bytes = (await r.arrayBuffer()).byteLength;
+      if (!r.headers.get("content-type")?.startsWith("image/") || !bytes)
+        throw new Error(`Invalid image ${asset.name}`);
+      return { id: asset.name, status: r.status, bytes };
     }),
   );
-  const map = await (
-    await request(`${base}/node_modules/expo-router/entry.map${query}`)
-  ).json();
-  const collectSources = (part) => [
-    ...(part.sources || []),
-    ...(part.sections || []).flatMap((section) => collectSources(section.map)),
-  ];
-  const sources = [
-    ...new Set(
-      collectSources(map).map((source) => source.replaceAll("\\", "/")),
-    ),
-  ];
-  const forbidden = sources.filter((source) =>
-    /react-viro|\/features\/ar\/|\/screens\/ARScreen\.tsx/.test(source),
-  );
-  const react = sources.filter((source) =>
-    /node_modules\/react\/index\.js$/.test(source),
-  );
-  const reactNative = sources.filter((source) =>
-    /node_modules\/react-native\/index\.js$/.test(source),
-  );
-  const cameraSources = sources.filter((source) =>
-    source.includes("/expo-camera/"),
-  );
-  const previewSources = sources.filter((source) =>
-    /Preview2D(Screen|CameraScreen)\.tsx/.test(source),
-  );
-  if (
-    !cameraSources.length ||
-    previewSources.length !== 2 ||
-    !bundle.includes("Capture room") ||
-    !bundle.includes("Add your artwork")
-  )
-    throw new Error(
-      "2D camera preview route or camera implementation missing from iOS bundle",
-    );
-  const studioSources = sources.filter((source) =>
-    /\/(SpaceEditorScreen|SpacesScreen|SpaceCanvas|ForegroundPainter)\.tsx$/.test(
-      source,
-    ),
-  );
-  if (
-    studioSources.length !== 4 ||
-    !bundle.includes("Protect foreground objects") ||
-    !bundle.includes("Edit & save this wall") ||
-    !bundle.includes("Export / share PNG")
-  )
-    throw new Error(
-      "Persistent wall studio, foreground painting or export missing from iOS graph",
-    );
-  const reloadGuardSource = sources.find((source) =>
-    source.endsWith("/ui/studio/useUnsavedReloadGuard.ts"),
-  );
-  if (!reloadGuardSource)
-    throw new Error(
-      "Native-safe unsaved reload guard is missing from iOS bundle",
-    );
-  const roomFlowFiles = [
-    "/screens/ViewOnRoomScreen.tsx",
-    "/studio/photoAssist.ts",
-    "/studio/maskPng.ts",
-    "/studio/placeArtwork.ts",
-    "/infra/analyzeRoomPhoto.ts",
-    "/studio/styleEditing.ts",
-    "/studio/useDirectManipulation.ts",
-    "/studio/directManipulation.ts",
-    "/studio/FramePicker.tsx",
-    "/studio/ArtworkDimensions.tsx",
-  ];
-  const roomFlowSources = roomFlowFiles.map((file) =>
-    sources.find((source) => source.endsWith(file)),
-  );
-  if (
-    roomFlowSources.some((source) => !source) ||
-    !bundle.includes("View on room") ||
-    !bundle.includes("Shadow offset") ||
-    !bundle.includes("Occlusion on") ||
-    !bundle.includes("Tap artwork to edit") ||
-    !bundle.includes("Shadow softness") ||
-    !bundle.includes("Apply artwork size")
-  )
-    throw new Error(
-      "View-on-room photo assistance or style controls missing from iOS graph",
-    );
-  if (forbidden.length || react.length !== 1 || reactNative.length !== 1)
-    throw new Error(
-      `Unexpected native/duplicate runtime modules: ${JSON.stringify({ forbidden, react, reactNative })}`,
-    );
+  phase = "launch asset";
   const launch = await request(manifest.launchAsset.url);
-  const launchBytes = (await launch.arrayBuffer()).byteLength;
   const report = {
     pass: true,
+    utc: new Date().toISOString(),
     sdkVersion: client.sdkVersion,
-    expoGoPreview: true,
+    name: client.name,
+    hostUri: client.hostUri,
     bundleBytes: Buffer.byteLength(bundle),
     sources: sources.length,
-    viroSources: forbidden,
+    forbidden,
     react,
     reactNative,
-    cameraSources: cameraSources.length,
-    previewSources,
-    studioSources,
-    reloadGuardSource,
-    roomFlowSources,
+    coreSources,
+    pickerSources: pickerSources.length,
     imageChecks,
     launchStatus: launch.status,
-    launchBytes,
+    launchBytes: (await launch.arrayBuffer()).byteLength,
+    physicalDevice: "UNVERIFIED",
   };
   writeFileSync(
     "docs/evidence/expo-go-bundle-check.json",
@@ -170,8 +142,8 @@ try {
 } catch (error) {
   writeFileSync(
     "docs/evidence/expo-go-bundle-check.json",
-    JSON.stringify({ pass: false, error: String(error) }, null, 2),
+    JSON.stringify({ pass: false, phase, error: String(error) }, null, 2),
   );
-  console.error(error);
+  console.error(phase, error);
   process.exitCode = 1;
 }

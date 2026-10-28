@@ -5,7 +5,7 @@ import * as Sharing from "expo-sharing";
 import * as FS from "expo-file-system/legacy";
 import type { WallSpace } from "../domain/spaces";
 export async function exportSpacePNG(
-  view: React.RefObject<View | null>,
+  view: React.RefObject<React.ComponentRef<typeof View> | null>,
   space: WallSpace,
 ) {
   const scale = Math.min(

@@ -1,0 +1,10 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand tests/integration/view-on-room-flow.test.tsx tests/integration/photo-studio.test.tsx
+
+
+Test Suites: 2 passed, 2 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        7.381 s, estimated 51 s
+Ran all test suites matching tests/integration/view-on-room-flow.test.tsx|tests/integration/photo-studio.test.tsx.

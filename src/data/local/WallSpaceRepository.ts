@@ -5,7 +5,7 @@ import type {
 } from "../../domain/spaces";
 import { spaceIdValid, validSpace } from "../../domain/spaces";
 import { attempt } from "../errors";
-import type { KeyValueStore } from "./LocalSavedDesignRepository";
+import type { KeyValueStore } from "./KeyValueStore";
 const KEY = "artspace:wall-spaces:v1";
 export class WallSpaceRepository implements SpaceRepository {
   private queue: Promise<unknown> = Promise.resolve();
@@ -126,11 +126,13 @@ export class WallSpaceRepository implements SpaceRepository {
       this.serialize(async () => {
         if (!spaceIdValid(id)) throw new Error("Invalid space");
         const values = await this.read();
-        await this.images.removeSpace(id);
         await this.store.setItem(
           KEY,
           JSON.stringify(values.filter((space) => space.id !== id)),
         );
+        // Commit removal before reclaiming files: a failed metadata write
+        // must never leave a visible saved room with its images deleted.
+        await this.images.removeSpace(id).catch(() => undefined);
       }),
     );
   }

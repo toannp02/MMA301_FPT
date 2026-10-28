@@ -89,18 +89,25 @@ test("imports stay accessible independently of remote catalogue errors", async (
   expect((await x.repo.list()).ok).toBe(true);
   expect((await x.repo.getPublishedById("custom-id-1")).ok).toBe(true);
 });
-test("remove survives restart, retries file failures and rejects catalogue ids", async () => {
+test("remove survives restart and file cleanup failures, and rejects catalogue ids", async () => {
   const x = setup();
   await x.repo.add("Landscape", 90, image);
   x.images.remove.mockRejectedValueOnce(new Error("Busy file"));
+  expect((await x.repo.remove("custom-id-1")).ok).toBe(true);
+  expect(await x.make().list()).toEqual(ok([]));
+  expect((await x.repo.remove("art-01")).ok).toBe(false);
+});
+
+test("failed removal metadata commit preserves the imported image and record", async () => {
+  const x = setup();
+  await x.repo.add("Landscape", 90, image);
+  x.store.setItem.mockRejectedValueOnce(new Error("disk"));
   expect((await x.repo.remove("custom-id-1")).ok).toBe(false);
+  expect(x.images.remove).not.toHaveBeenCalled();
   expect(await x.make().list()).toMatchObject({
     ok: true,
     data: [{ id: "custom-id-1" }],
   });
-  expect((await x.repo.remove("custom-id-1")).ok).toBe(true);
-  expect(await x.make().list()).toEqual(ok([]));
-  expect((await x.repo.remove("art-01")).ok).toBe(false);
 });
 test("corrupt persisted import data is rejected rather than rendered", async () => {
   const x = setup();

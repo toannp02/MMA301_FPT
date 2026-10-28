@@ -1,11 +1,10 @@
 import React, { useCallback } from "react";
-import { Platform, Text } from "react-native";
+import { Text } from "react-native";
 import { router } from "expo-router";
 import { useApp } from "../../bootstrap/AppProviders";
 import { useResource } from "../../features/useResource";
 import { Page, ArtImage, Button, Loading, ErrorState } from "../components";
 import { styles as s } from "../theme";
-import { isExpoGoPreview } from "../../config/runtime";
 
 export function ArtworkDetailScreen({ id }: { id: string }) {
   const { repositories } = useApp();
@@ -45,26 +44,6 @@ export function ArtworkDetailScreen({ id }: { id: string }) {
               router.push({ pathname: "/view-on-room/[id]", params: { id } })
             }
           />
-          <Button
-            title={
-              isExpoGoPreview
-                ? "2D Preview"
-                : Platform.OS === "web"
-                  ? "AR availability"
-                  : "View in AR"
-            }
-            onPress={() =>
-              router.push({
-                pathname: isExpoGoPreview ? "/preview-2d/[id]" : "/ar/[id]",
-                params: { id },
-              })
-            }
-          />
-          <Text style={s.caption}>
-            {isExpoGoPreview
-              ? "Capture your space, then switch artworks to compare. 2D only; no wall tracking or real-world scale."
-              : "Wall placement needs an ARCore-supported Android phone and camera access."}
-          </Text>
           {artwork.data.sourceKind === "custom" && (
             <Button
               title="Manage imports"
@@ -75,7 +54,7 @@ export function ArtworkDetailScreen({ id }: { id: string }) {
           <Button
             title="Back to collection"
             secondary
-            onPress={() => router.replace("/(tabs)")}
+            onPress={() => router.replace("/")}
           />
         </>
       )}

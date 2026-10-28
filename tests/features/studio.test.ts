@@ -40,6 +40,41 @@ const corners: Quad = [
   { x: 0.7, y: 0.9 },
   { x: 0.2, y: 0.75 },
 ];
+
+test.each([
+  "10.33.92.163",
+  "172.16.0.2",
+  "172.31.255.254",
+  "192.168.1.5",
+  "127.0.0.1",
+  "localhost",
+  "[::1]",
+])("Expo Go LAN assets on %s can be saved", (host) => {
+  expect(
+    validSpace(
+      newSpace("lan-room", "LAN room", room, {
+        ...artwork,
+        imageUrl: `http://${host}:8082/assets/art.png?hash=1`,
+      }),
+    ),
+  ).toBe(true);
+});
+test.each([
+  "localhost.evil.test",
+  "192.168.evil.test",
+  "172.32.0.1",
+  "8.8.8.8",
+  "10.0.0.1@public.test",
+])("HTTP host %s is not accepted as a local asset", (host) => {
+  expect(
+    validSpace(
+      newSpace("lan-room", "LAN room", room, {
+        ...artwork,
+        imageUrl: `http://${host}:8082/art.png`,
+      }),
+    ),
+  ).toBe(false);
+});
 test("perspective maps all four corners and inverse recovers wall coordinates", () => {
   const m = homography(corners),
     inv = invert(m);

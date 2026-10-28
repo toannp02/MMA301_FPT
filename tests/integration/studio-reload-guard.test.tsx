@@ -31,57 +31,57 @@ afterEach(() => {
 
 test.each(["ios", "android"] as const)(
   "editing on %s never calls browser APIs on the native window",
-  (os) => {
+  async (os) => {
     jest.replaceProperty(Platform, "OS", os);
     eventMethods(undefined, undefined);
     expect(typeof window).toBe("object");
-    const hook = renderHook<void, { dirty: boolean }>(
+    const hook = await renderHook<void, { dirty: boolean }>(
       ({ dirty }) => useUnsavedReloadGuard(dirty),
       { initialProps: { dirty: false } },
     );
-    expect(() => hook.rerender({ dirty: true })).not.toThrow();
-    expect(() => hook.unmount()).not.toThrow();
+    await expect(hook.rerender({ dirty: true })).resolves.toBeUndefined();
+    await expect(hook.unmount()).resolves.toBeUndefined();
   },
 );
 
-test("native runtimes skip listeners even if a library provides event shims", () => {
+test("native runtimes skip listeners even if a library provides event shims", async () => {
   jest.replaceProperty(Platform, "OS", "ios");
   const add = jest.fn(),
     remove = jest.fn();
   eventMethods(add, remove);
-  const hook = renderHook(() => useUnsavedReloadGuard(true));
-  hook.unmount();
+  const hook = await renderHook(() => useUnsavedReloadGuard(true));
+  await hook.unmount();
   expect(add).not.toHaveBeenCalled();
   expect(remove).not.toHaveBeenCalled();
 });
 
-test("web protects dirty designs, cleans up on save and unmount, and prevents reload", () => {
+test("web protects dirty designs, cleans up on save and unmount, and prevents reload", async () => {
   jest.replaceProperty(Platform, "OS", "web");
   const add = jest.fn(),
     remove = jest.fn();
   eventMethods(add, remove);
-  const hook = renderHook<void, { dirty: boolean }>(
+  const hook = await renderHook<void, { dirty: boolean }>(
     ({ dirty }) => useUnsavedReloadGuard(dirty),
     { initialProps: { dirty: false } },
   );
   expect(add).not.toHaveBeenCalled();
-  hook.rerender({ dirty: true });
+  await hook.rerender({ dirty: true });
   const handler = add.mock.calls[0][1] as (event: BeforeUnloadEvent) => void;
   const event = { preventDefault: jest.fn(), returnValue: undefined };
   handler(event as unknown as BeforeUnloadEvent);
   expect(event.preventDefault).toHaveBeenCalledTimes(1);
   expect(event.returnValue).toBe("");
-  hook.rerender({ dirty: false });
+  await hook.rerender({ dirty: false });
   expect(remove).toHaveBeenCalledWith("beforeunload", handler);
-  hook.rerender({ dirty: true });
+  await hook.rerender({ dirty: true });
   const latest = add.mock.calls[1][1];
-  hook.unmount();
+  await hook.unmount();
   expect(remove).toHaveBeenLastCalledWith("beforeunload", latest);
 });
 
-test("web without DOM event support fails gracefully", () => {
+test("web without DOM event support fails gracefully", async () => {
   jest.replaceProperty(Platform, "OS", "web");
   eventMethods(undefined, undefined);
-  const hook = renderHook(() => useUnsavedReloadGuard(true));
-  expect(() => hook.unmount()).not.toThrow();
+  const hook = await renderHook(() => useUnsavedReloadGuard(true));
+  await expect(hook.unmount()).resolves.toBeUndefined();
 });

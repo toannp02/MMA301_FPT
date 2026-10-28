@@ -7,10 +7,7 @@ export default function NotFound() {
   return (
     <Page>
       <Text style={styles.title}>Page not found</Text>
-      <Button
-        title="Back to gallery"
-        onPress={() => router.replace("/(tabs)")}
-      />
+      <Button title="Back to gallery" onPress={() => router.replace("/")} />
     </Page>
   );
 }

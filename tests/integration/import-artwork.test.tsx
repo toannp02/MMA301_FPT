@@ -11,9 +11,6 @@ jest.mock("@react-native-async-storage/async-storage", () =>
     "@react-native-async-storage/async-storage/jest/async-storage-mock",
   ),
 );
-jest.mock("../../src/infra/firebase/client", () => ({
-  createFirebaseClient: jest.fn(),
-}));
 jest.mock("../../src/infra/pickArtworkImage", () => ({
   pickArtworkImage: jest.fn(),
 }));
@@ -39,9 +36,9 @@ beforeEach(async () => {
   jest.clearAllMocks();
   await AsyncStorage.clear();
 });
-function setup() {
+async function setup() {
   const repositories = createRepositories();
-  const view = render(
+  const view = await render(
     <AppProviders dependencies={repositories}>
       <ImportArtworkScreen />
     </AppProviders>,
@@ -52,11 +49,11 @@ test("cancel and picker failure do not create an imported artwork", async () => 
   pick
     .mockResolvedValueOnce(null)
     .mockRejectedValueOnce(new Error("Unsupported image"));
-  const { view, repositories } = setup();
-  fireEvent.press(view.getByLabelText("Choose image"));
+  const { view, repositories } = await setup();
+  await fireEvent.press(view.getByLabelText("Choose image"));
   await waitFor(() => expect(view.getByLabelText("Choose image")).toBeTruthy());
   expect(view.queryByLabelText("Save imported artwork")).toBeNull();
-  fireEvent.press(view.getByLabelText("Choose image"));
+  await fireEvent.press(view.getByLabelText("Choose image"));
   expect(await view.findByText("Unsupported image")).toBeTruthy();
   expect(await repositories.customArtworks.list()).toEqual({
     ok: true,
@@ -70,20 +67,20 @@ test("pick, validate and save routes to a durable custom artwork with locked pro
     height: 800,
     bytes: 10000,
   });
-  const { view, repositories } = setup();
-  fireEvent.press(view.getByLabelText("Choose image"));
+  const { view, repositories } = await setup();
+  await fireEvent.press(view.getByLabelText("Choose image"));
   await view.findByLabelText("Artwork title");
-  fireEvent.changeText(view.getByLabelText("Artwork title"), "");
-  fireEvent.press(view.getByLabelText("Save imported artwork"));
+  await fireEvent.changeText(view.getByLabelText("Artwork title"), "");
+  await fireEvent.press(view.getByLabelText("Save imported artwork"));
   expect(
     await view.findByText("Use a title with 2–60 characters."),
   ).toBeTruthy();
-  fireEvent.changeText(
+  await fireEvent.changeText(
     view.getByLabelText("Artwork title"),
     "Personal landscape",
   );
-  fireEvent.changeText(view.getByLabelText("Width (cm)"), "90");
-  fireEvent.press(view.getByLabelText("Save imported artwork"));
+  await fireEvent.changeText(view.getByLabelText("Width (cm)"), "90");
+  await fireEvent.press(view.getByLabelText("Save imported artwork"));
   await waitFor(() =>
     expect(router.replace).toHaveBeenCalledWith({
       pathname: "/artwork/[id]",
@@ -108,8 +105,8 @@ test("taking an artwork photo uses the camera source and handles permission deni
   const denied = new Error("Allow camera access in Settings.");
   denied.name = "CameraPermissionError";
   pick.mockRejectedValueOnce(denied);
-  const { view } = setup();
-  fireEvent.press(view.getByLabelText("Take artwork photo"));
+  const { view } = await setup();
+  await fireEvent.press(view.getByLabelText("Take artwork photo"));
   expect(
     await view.findByText("Allow camera access in Settings."),
   ).toBeTruthy();

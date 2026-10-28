@@ -15,7 +15,7 @@ import { useResource } from "../../features/useResource";
 import { newSpace } from "../../features/studio/createSpace";
 import { prepareSpaceImage } from "../../infra/spaceImages";
 import { analyzeRoomPhoto } from "../../infra/analyzeRoomPhoto";
-import { sampleRooms } from "../../data/mock/rooms";
+import { sampleRooms } from "../../data/catalogue/rooms";
 import { LibraryNavigation } from "../studio/LibraryNavigation";
 import {
   Page,

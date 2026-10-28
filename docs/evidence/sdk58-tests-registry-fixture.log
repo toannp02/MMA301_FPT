@@ -1,0 +1,33 @@
+
+> artspace-ar@1.0.0 test
+> jest --runInBand
+
+FAIL tests/integration/view-on-room-flow.test.tsx (50.708 s)
+  ● art details offer View on room with the selected artwork identity
+
+    thrown: "Exceeded timeout of 5000 ms for a test.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      at _getError (node_modules/jest-circus/build/jestAdapterInit.js:1985:12)
+          at Array.map (<anonymous>)
+
+    Cause:
+        thrown: "Exceeded timeout of 5000 ms for a test.
+        Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+          85 | }
+          86 | beforeEach(() => jest.clearAllMocks());
+        > 87 | test("art details offer View on room with the selected artwork identity", async () => {
+             | ^
+          88 |   const x = setup(),
+          89 |     view = await render(x.wrap(<ArtworkDetailScreen id={art.id} />));
+          90 |   await fireEvent.press(await view.findByLabelText("View on room"));
+
+          at Object.test (tests/integration/view-on-room-flow.test.tsx:87:1)
+
+
+Test Suites: 1 failed, 14 passed, 15 total
+Tests:       1 failed, 86 passed, 87 total
+Snapshots:   0 total
+Time:        61.112 s
+Ran all test suites.

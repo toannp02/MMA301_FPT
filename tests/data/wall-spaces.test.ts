@@ -104,11 +104,20 @@ test("removing a space deletes only its app-owned folder", async () => {
   expect(x.images.removeSpace).toHaveBeenCalledWith("wall1");
   expect(await x.repo.get("wall1")).toEqual({ ok: true, data: null });
 });
-test("file deletion failure keeps metadata available for retry", async () => {
+test("file cleanup failure does not resurrect a deleted room", async () => {
   const x = setup();
   await x.repo.save(make());
   x.images.removeSpace.mockRejectedValueOnce(new Error("busy"));
+  expect((await x.repo.remove("wall1")).ok).toBe(true);
+  expect(await x.repo.get("wall1")).toEqual({ ok: true, data: null });
+});
+
+test("failed removal metadata commit leaves the room and every image intact", async () => {
+  const x = setup();
+  await x.repo.save(make());
+  x.store.setItem.mockRejectedValueOnce(new Error("storage full"));
   expect((await x.repo.remove("wall1")).ok).toBe(false);
+  expect(x.images.removeSpace).not.toHaveBeenCalled();
   expect(await x.repo.get("wall1")).toMatchObject({
     ok: true,
     data: { id: "wall1" },

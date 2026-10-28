@@ -1,71 +1,31 @@
 {
-  "deliveryBuildId": "94d63e79-b901-4c29-a59c-515cc6eba13e",
+  "deliveryBuildId": null,
   "note": "Runtime source/config/assets snapshot at generation time. Build association must be verified separately; this manifest does not claim device acceptance.",
-  "sha256": "0bfaa0ad841948db39ac29d76302a6309677a817de097fa71c4a68bd10bd9f9d",
+  "sha256": "7377d8a1b5b70978bd3078177876c97dac752717f07286a9c190f9f9c8988e35",
   "files": [
     {
       "path": "app.config.ts",
-      "sha256": "b581afbadb22f6739b3d6c66d0a0f35ba3c7a5030b37d5b455d2c327b189ce15"
-    },
-    {
-      "path": "app/(tabs)/_layout.tsx",
-      "sha256": "8a345c9e31246a583749e5667fd18eae6cf996c44586fb43fda12a67025b6d51"
-    },
-    {
-      "path": "app/(tabs)/favorites.tsx",
-      "sha256": "4af0c454334b0e575d5c7862e1b81c2daba852a914ce857ee7b24c52911b0959"
-    },
-    {
-      "path": "app/(tabs)/index.tsx",
-      "sha256": "0e970bf20872df26c4fee5077f6f3e7c6d8f3777065bc0e8fc42fd97efd0031b"
-    },
-    {
-      "path": "app/(tabs)/profile.tsx",
-      "sha256": "7d2110396b47213b53fd41a2fe65ca789921bd5403989c45be31b4ec04669abd"
-    },
-    {
-      "path": "app/(tabs)/saved.tsx",
-      "sha256": "cd7362e4d180aad3be48dca3816255f4f02ad912af293e650831b7f1de4d2f70"
+      "sha256": "c60eee38eb3983032749c784a5cdae52e9ec61504074e2c21b2e673fe73ca784"
     },
     {
       "path": "app/+not-found.tsx",
-      "sha256": "75aab0f2ea57d6be99aa7595d9507e61e8d6a0adbbcc5fb9631e3c0f228284ce"
+      "sha256": "22da36b7e40f376d0767681bc3d783bc45b8acc392d06b0901b80e224eaee0b0"
     },
     {
       "path": "app/_layout.tsx",
-      "sha256": "34fc29abdca80868a170b47bfd56ef8d0dada92b8d4ce45925bb27db0cde4306"
-    },
-    {
-      "path": "app/ar/[id].tsx",
-      "sha256": "ad780c0d3dbb3320be5d488b758f85c24617a78e32576cf4f469229009b8774f"
+      "sha256": "da5f19bc9aed629fcabaeac47d4510a5f9b51144a5a82b71a1e23c3cf79c4009"
     },
     {
       "path": "app/artwork/[id].tsx",
       "sha256": "5128d0b2ac9e84060d88a5d057af6804379414f4758de2bc12fa8095b940c662"
     },
     {
-      "path": "app/capture-preview.tsx",
-      "sha256": "9f713731f134da3813f7d9d59f430d71884a15ed2fa9b26bde8cf40d733f6b9b"
-    },
-    {
-      "path": "app/design/[id].tsx",
-      "sha256": "b7d7e2494edf99ad99a5749297d1f3e2710f3efaa8676e9ea4d7a9cef1c208b2"
-    },
-    {
       "path": "app/import-artwork.tsx",
       "sha256": "f24c426166148a2a1ca171a864dd6190b2ad597acdc6aa23730c8af95024be9e"
     },
     {
-      "path": "app/login.tsx",
-      "sha256": "ee7947685754aa3c006a8e9f473d6ffc321ca6d324c0f19934e62c9fbb539727"
-    },
-    {
-      "path": "app/preview-2d/[id].tsx",
-      "sha256": "24e77aea0d538f6515207d6398f331a007ff66b987f64d512f6788ff9393e010"
-    },
-    {
-      "path": "app/register.tsx",
-      "sha256": "ac6acc48640c90526246f59adfc24dfa00d66e885302bb9c605abb0b59b08463"
+      "path": "app/index.tsx",
+      "sha256": "004d3f0272aae5821d116e130aae2cdd27bdee65d943d8dd54d40eee1d219efc"
     },
     {
       "path": "app/saved-walls.tsx",
@@ -176,104 +136,48 @@
       "sha256": "216acc269a77310fd4024555ff136ab3d03b2375431ecf87013127d05d94bf55"
     },
     {
-      "path": "firebase.json",
-      "sha256": "dfa10ff65f85dc13e1dd7c1d632a5c87a753ea2d6dece46a252f2caba78f809c"
-    },
-    {
-      "path": "firebase/firestore.indexes.json",
-      "sha256": "02040af729e3fe3eeeb8a5b6e8c357f65b97078a14f884106377d7af7869dff0"
-    },
-    {
-      "path": "firebase/firestore.rules",
-      "sha256": "e685fb92712c084c678f814d3876bb75231824622341004768e2ae0fc1e612f1"
-    },
-    {
-      "path": "firebase/storage.rules",
-      "sha256": "39d5c371630674541d347c905e59634d92436217e1f1ef945118a9f68dcce542"
+      "path": "metro.config.js",
+      "sha256": "a67e22af01377d9184864097fbd7b09dac1b732d36193f3b4e2670d8fd1d3c82"
     },
     {
       "path": "package-lock.json",
-      "sha256": "4d1208f7f63b3456ab56f4dbb9e5d8e711ea86b7a8d071381d62e14d4a78ea12"
+      "sha256": "706787777cacb193b595dea944da9bd2371ef89c1e273d701caa0665de65c38a"
     },
     {
       "path": "package.json",
-      "sha256": "670c75960ab06a08e13535399f93078ca0dead8377a575618f9fefa479b9918e"
+      "sha256": "f235fa88fdbf353b03ae9e9cf9ea2795a9032843e07bbd7cbc7701538254c2c5"
     },
     {
       "path": "src/bootstrap/AppProviders.tsx",
-      "sha256": "1f0d03a9f4b7306fcab56a52b7025f68986eb8d209dd80889c4c0d0969683448"
+      "sha256": "281f87402d218131578d02b2338ad945d254ec19d5cec7d84f4e3b691fed2f3d"
     },
     {
       "path": "src/bootstrap/repositories.ts",
-      "sha256": "f1793903ad552ec9581c0ca2b5335961bb752037fdf3c3a85f8ba3f2d6f8e986"
+      "sha256": "86738140247ae6481863dd01d82aac62524b8a847fa2d88040030b0cf70f4f52"
     },
     {
-      "path": "src/config/env.ts",
-      "sha256": "ed101c417830889cfd4fa3e08d3b1a2e58c0c3d0ce7309adcbbf5d775dc0c05b"
+      "path": "src/data/catalogue/artworks.ts",
+      "sha256": "87e59b7c425e43a62d40e793b6477c22ddc164a7ff53cb4a2eb1be85569d462b"
     },
     {
-      "path": "src/config/runtime.ts",
-      "sha256": "d4ee49fdf86af24cd3ede148e0f95404b1164c6ed645d7dda337673b2a1059d9"
-    },
-    {
-      "path": "src/data/UnavailableAuthRepository.ts",
-      "sha256": "8437a7005996a5b41252d47450b77f4e41a2999e935eff762ebd7bc4cecc8f6d"
+      "path": "src/data/catalogue/rooms.ts",
+      "sha256": "aed9288c32260cfc3e6d1d0860b70114234425d324c97ac9953230d8ea8634a1"
     },
     {
       "path": "src/data/errors.ts",
-      "sha256": "c2f626870710736050bda9cd95df8fa7df4d0d8508649b4a72db77a557cbc42e"
+      "sha256": "c76c0ddbcae38cc3ed58e72c8ca5cacc32c04244f1b3a69880d9baaef51cb48c"
     },
     {
-      "path": "src/data/firebase/FirebaseArtworkRepository.ts",
-      "sha256": "2d17e1d0717b6caba3298a6ef1e2f0e54ea4fc865a7a9f80416740fca8e4cddb"
-    },
-    {
-      "path": "src/data/firebase/FirebaseAuthRepository.ts",
-      "sha256": "3b91d665d8c6f1c4216c6e45a0df1a87bb35ba06dc8a9d9a5f4804f9d5a4249d"
-    },
-    {
-      "path": "src/data/firebase/FirebaseCaptureStorage.ts",
-      "sha256": "b51714a2187c69c79c6568832370aa5b53cbc48adda4fc112aebab82b6cccff1"
-    },
-    {
-      "path": "src/data/firebase/FirebaseFavoriteRepository.ts",
-      "sha256": "579d0e8070523fb9a6d3b9e05b0b5f211ae3a3ab906ecb169592598f2bc5266a"
-    },
-    {
-      "path": "src/data/firebase/FirebaseSavedDesignRepository.ts",
-      "sha256": "a21ff189556ffc4cd8600cf0e1f6751e2dad7890e611835fa3bbd234c13bd92b"
-    },
-    {
-      "path": "src/data/local/CombinedSavedDesignRepository.ts",
-      "sha256": "dc776604404e3809af0fe8202649f69575f2616d8d5a61687aaa703046ff6536"
-    },
-    {
-      "path": "src/data/local/LocalCaptureStorage.ts",
-      "sha256": "aecdfb405a0991627d44540af63a5b92638208c846d67400d4999e23d19582c6"
-    },
-    {
-      "path": "src/data/local/LocalSavedDesignRepository.ts",
-      "sha256": "bd8e280352919ac5751e8abf62efbeea3339e588dec5831186618a7486222724"
+      "path": "src/data/local/KeyValueStore.ts",
+      "sha256": "b11f4c8bc6df493c4c1652a9eeaa713d961fc1befb0ed80dee0942859a51826e"
     },
     {
       "path": "src/data/local/PersonalArtworkRepository.ts",
-      "sha256": "a7d9bd96d101eff58dcfb90cdc07d70d4199ebcb5bc59945f261024de6bd27ac"
+      "sha256": "5d5b9878d4af5c95190a4a73c754a6e2b030e629c9a6b279c6f849ef9b0da446"
     },
     {
       "path": "src/data/local/WallSpaceRepository.ts",
-      "sha256": "1ec646d3bbcf3369ecf1db47bdf98b5ba37c882f9187976644b58b12942dafa4"
-    },
-    {
-      "path": "src/data/mappers/index.ts",
-      "sha256": "2cbf0324ec9cd6b27c05d2e9aafdb21f9dfc4bba72d04c4668424e887889f9a8"
-    },
-    {
-      "path": "src/data/mock/catalogue.ts",
-      "sha256": "6490a37bd89e3f92891ef55ceefd87124d1841affb3cb5dab29814d2ce08da21"
-    },
-    {
-      "path": "src/data/mock/rooms.ts",
-      "sha256": "aed9288c32260cfc3e6d1d0860b70114234425d324c97ac9953230d8ea8634a1"
+      "sha256": "7ca8ed7820e3220274241d012026704529c21aa2c1074576028fbd8901b14d30"
     },
     {
       "path": "src/domain/async.ts",
@@ -285,63 +189,27 @@
     },
     {
       "path": "src/domain/models.ts",
-      "sha256": "fec2f3add471e8d1dce9ccfcc79e25b417e56311af07697471b47f2b0ffc6956"
+      "sha256": "e83cd5aa9c7eda8bf12b17f5a697cda149eb8cbb803782ddfe5c49a12faf1b59"
     },
     {
       "path": "src/domain/repositories/index.ts",
-      "sha256": "740c9d1f355abc389fdbc44c81511a7d7ceec1062079fe0a88a346c862c1fa93"
+      "sha256": "cc08090fb5bac4a1e9fb777d6339c60389c683c25db13e0483d3a777babd822a"
     },
     {
       "path": "src/domain/spaces.ts",
-      "sha256": "9e41a7191d909689beb10e3e4ce27859bc1798d18fdb2fd5229918a38f461bad"
+      "sha256": "474eeb957467db259197465cbb3c3ae4b075b940cbcb7c203214c8cab8535e83"
     },
     {
       "path": "src/domain/validators.ts",
-      "sha256": "25210ec919b54bae3d02b45a9587f5ee61a426eae8541cf58d257840e2387422"
-    },
-    {
-      "path": "src/features/ar/ARScene.tsx",
-      "sha256": "70616e9265eab3dfe7f053d3be2d49fdfa209a474066ed11803eccdd674310f9"
-    },
-    {
-      "path": "src/features/ar/ARViewer.tsx",
-      "sha256": "c740f03c231403f6a40831aeb4ea58e44c0b28f8f100dc714e9666aa579e386c"
-    },
-    {
-      "path": "src/features/ar/WallPlaneSelector.tsx",
-      "sha256": "9cd686669491e79c0056876ad92d5809b46855b7d5a21b10f905a8a9c4e95e64"
-    },
-    {
-      "path": "src/features/ar/arAssetResolver.ts",
-      "sha256": "8844dda75788ee79f7404b552a94f98494c92aaf7ba3350f63def8e753b98784"
-    },
-    {
-      "path": "src/features/ar/arCapture.ts",
-      "sha256": "5b1e9f4703f1497263f99e63012396ff1ef96bb80bdc7b82a54f4ecac5831f34"
-    },
-    {
-      "path": "src/features/ar/arSupport.ts",
-      "sha256": "e5513464d72070b9d838ed40490ca19f85b2f4d0cea2c5f52755599f5ff1bb54"
-    },
-    {
-      "path": "src/features/ar/arTypes.ts",
-      "sha256": "9664a1a31d9d2ab7d54a196da6fe38f71f065164a4c8aa03b79475b1b473ef03"
-    },
-    {
-      "path": "src/features/auth/authUseCases.ts",
-      "sha256": "3fad58c541bda26af0ef473180eaafa63d3905b0a5da5849b6fca2f22a5f1a2e"
-    },
-    {
-      "path": "src/features/designs/designUseCases.ts",
-      "sha256": "fb6d37f807059e438c8208c60c0dfadc8d1d5dc26a1ea321c5244fc414b22e5d"
-    },
-    {
-      "path": "src/features/preview2d/geometry.ts",
-      "sha256": "a6cd92044bdf0fee663b5c3a925b14751377615735e8dc3ed80d96787ac2fbf8"
+      "sha256": "c61a9d8f518b2ab82c6d44f99b6cc303c97352a0d567f17ba650b8673985804e"
     },
     {
       "path": "src/features/studio/createSpace.ts",
       "sha256": "874adef7ef9d00f397f0333e4e2440d8201dafab5ccada3234b458a7703edf6c"
+    },
+    {
+      "path": "src/features/studio/directManipulation.ts",
+      "sha256": "ac1af82176ef738ab62473739b67d477877a5032628959a02b35a98ddc99440a"
     },
     {
       "path": "src/features/studio/discovery.ts",
@@ -349,7 +217,7 @@
     },
     {
       "path": "src/features/studio/editorState.ts",
-      "sha256": "11e86c81541cc20be96a51716a5f64112677d3b00934ce77e6f3cab53aa67521"
+      "sha256": "ade4b9ecf22067b9285d1c15c49ed7847706a31f3c52b39cc12692c9757838d8"
     },
     {
       "path": "src/features/studio/geometry.ts",
@@ -369,11 +237,11 @@
     },
     {
       "path": "src/features/studio/rendering.ts",
-      "sha256": "1a314af5bcce320b2506ed7367f5ff57aa0c4af0f71e79923731f871def9f0b5"
+      "sha256": "8c9e555eefb78e31fdaa8a0dec9207ffe3b9f0fac348d2676d5ccd142c584b9c"
     },
     {
       "path": "src/features/studio/styleEditing.ts",
-      "sha256": "6e245acf7eb9fe4f54d1b7590f4492cc7a8c7100c7e6e0f331d79b9bf3da089a"
+      "sha256": "5a24c07eb14947dbc9bd0962a46a0e0f94a88e43b34edfa36a86deed6e4d0753"
     },
     {
       "path": "src/features/useResource.ts",
@@ -385,19 +253,11 @@
     },
     {
       "path": "src/infra/exportSpace.ts",
-      "sha256": "d0196b05cdbd2d2d34e118a23b5be9d5c05014b9954e59f3772afb3db78fe4f1"
+      "sha256": "55d26b9910c03ac78116bf6396623b7f11a1049a474a6d1761041adc50412fa1"
     },
     {
       "path": "src/infra/exportSpace.web.ts",
-      "sha256": "8028d7c93ea890ade2b31b8f0f8f4367b6049d57ecfd7526600120285c8c3333"
-    },
-    {
-      "path": "src/infra/firebase/auth-native.d.ts",
-      "sha256": "b01f6b917cb2ad993ed25ac38d404c3cc3f91aa65272ce16392dfcd494537f57"
-    },
-    {
-      "path": "src/infra/firebase/client.ts",
-      "sha256": "7f56969dc3c17af650688b4dc69f6a08a28eb9ee496409e9fb4beaab954eeba0"
+      "sha256": "215e3ee3d8f2e46730a9af0eef39443a5650a38584038e454c7ee24221cd9f42"
     },
     {
       "path": "src/infra/personalImages.ts",
@@ -424,60 +284,24 @@
       "sha256": "b9d19d067439c33c01ac83aa64380a9dffd430cdcc700f9152a691533d30aa4e"
     },
     {
-      "path": "src/ui/screens/ARScreen.tsx",
-      "sha256": "e62264d632ae6f6093e3f58c4c21418e0d65ec10718a206fd16bd10712f2fb7f"
-    },
-    {
-      "path": "src/ui/screens/ARScreen.web.tsx",
-      "sha256": "f0f18b82d4b3bae650a203509a2bb12a910322c42e423efacff989f569067b1c"
-    },
-    {
-      "path": "src/ui/screens/ARUnavailableScreen.tsx",
-      "sha256": "8efa52925fec44092a728bcc2999d270087923976bcd974df4442a06cd4a401f"
-    },
-    {
       "path": "src/ui/screens/ArtworkDetailScreen.tsx",
-      "sha256": "9c8603d8af4fb1a099958de34c007e242725a82f2b75a0f6c65fa57ee9a55bf6"
-    },
-    {
-      "path": "src/ui/screens/AuthScreen.tsx",
-      "sha256": "2855df90408b6d0c2956c44e4e5400c32f5c7100f25e89f51f333b6cf1b810a7"
-    },
-    {
-      "path": "src/ui/screens/DesignScreens.tsx",
-      "sha256": "9e3e134a7ea334074d07adc7e65b46435e3738b4c5f5206a7dbcae7b7a89b76f"
-    },
-    {
-      "path": "src/ui/screens/FavoritesScreen.tsx",
-      "sha256": "80bd470b42cb8644e9e9a8364aff533351d3b88c09ef70c5f5a4806c9eb6318d"
+      "sha256": "61636a083efea8e946d73ed58ef466022595be57dbc6e0a8c777b7edc7eadec6"
     },
     {
       "path": "src/ui/screens/GalleryScreen.tsx",
-      "sha256": "cb96d9a11a7c81a9d1f57a085a39969add87aae6023136e925231f55d62e0a4d"
+      "sha256": "6cd55487603628ce59f2745636aa5f54b3705c74ecb23bab236e5a9dafbb13b0"
     },
     {
       "path": "src/ui/screens/ImportArtworkScreen.tsx",
-      "sha256": "517f8d5ac3750d3107a5083442f171e3ee1c94f4044e842fde911c99586a8e48"
-    },
-    {
-      "path": "src/ui/screens/Preview2DCameraScreen.tsx",
-      "sha256": "664913f0f49c56e79441c8ec4574b3f2a88127cb6d4e87a025019bcd727b34eb"
-    },
-    {
-      "path": "src/ui/screens/Preview2DScreen.tsx",
-      "sha256": "d8a59ba64453dbfb80aef86dd899b968685c81ada8ba881cb1f55df951237883"
-    },
-    {
-      "path": "src/ui/screens/ProfileScreen.tsx",
-      "sha256": "9edae4c54c727544deff8787b69246ae2eea7ec30774b151eba4173f30f3f9e9"
+      "sha256": "a752bb50ed6e4109ebc27d25b5d862bb37e49967ce74d69b8ffd7663a42028b0"
     },
     {
       "path": "src/ui/screens/SpaceEditorScreen.tsx",
-      "sha256": "c0a13c6a02751fc9325e62ea589dafcd58307b32241f8036278d546ce18c6e9b"
+      "sha256": "8949669da3dbe84f574b14899edd5236d3652de402bd3598666c0a5b3d9ec403"
     },
     {
       "path": "src/ui/screens/SpacesScreen.tsx",
-      "sha256": "2f45dfb9d8fe28671ec3715749993504b128724a691f493ea4bc34733b383e9a"
+      "sha256": "dde89dcf2b4518bbd8b85eba93ec3c6af0da83602edb211a8438bfbae341ecc4"
     },
     {
       "path": "src/ui/screens/ViewOnRoomScreen.tsx",
@@ -490,6 +314,10 @@
     {
       "path": "src/ui/studio/ArtworkFilters.tsx",
       "sha256": "6c8bd1ae3b64d3434544a7dbf30f2a2cb9bf24c67c6e63902816336f617fc914"
+    },
+    {
+      "path": "src/ui/studio/ArtworkStylePanel.tsx",
+      "sha256": "10f0725802ebe23f60ebc0e8d8297da8a9dc7b726c75f3ba64cd0e4382a8a1b3"
     },
     {
       "path": "src/ui/studio/ForegroundPainter.tsx",
@@ -505,15 +333,23 @@
     },
     {
       "path": "src/ui/studio/LibraryNavigation.tsx",
-      "sha256": "8f4a098b3e85bf8fcaaad31aba48891d7503f0be7173ccfbdbfbac060780f27c"
+      "sha256": "1e71bdbc8738e10cbaeec33a8a1ab76e60aec0240c2a0ef8122f7995d32b01a3"
     },
     {
       "path": "src/ui/studio/SpaceCanvas.tsx",
-      "sha256": "935099b9dc593a2044ce25f18e2cd4507d1bfcb3e3522baa950bfc1605de95f8"
+      "sha256": "35b36bf05d0a9c8d49ffd042498295dd4cebff51c7f5d8863c0cff5f9415791c"
+    },
+    {
+      "path": "src/ui/studio/StudioControl.tsx",
+      "sha256": "28ff3a74f2d48079e3fab1334af7bff86600d7a207332751a5dc01cf351a359c"
     },
     {
       "path": "src/ui/studio/StudioDragArea.tsx",
       "sha256": "e3441059e988a92f06dda679e13f72eed6641ad101f28fc58aaeda85778fb71c"
+    },
+    {
+      "path": "src/ui/studio/useDirectManipulation.ts",
+      "sha256": "1cb346380474ceec405cb9796ad907b335a2c088167374050a39fbe793ec78a5"
     },
     {
       "path": "src/ui/studio/useUnsavedReloadGuard.ts",
@@ -525,7 +361,7 @@
     },
     {
       "path": "tsconfig.json",
-      "sha256": "a7f325026058a9c81960c24aa41e601ceae017d4944cc65225381239f225569f"
+      "sha256": "0fc62bce2226e5b837da7f7702d57dbffccb9d2560fe29ea0d324d410388c2c1"
     }
   ]
 }

@@ -20,15 +20,6 @@ export function normalizeError(e: unknown): Result<never> {
       "You can keep up to 10 imported artworks. Remove one before importing another.",
     "import-storage-full":
       "Device storage is full. Free some space and retry. Existing saved data has been kept.",
-    "auth/invalid-credential": "Email or password is incorrect.",
-    "auth/email-already-in-use":
-      "This email is already registered. Try signing in.",
-    "auth/weak-password": "Choose a stronger password.",
-    "auth/too-many-requests": "Too many attempts. Please wait and retry.",
-    "auth/network-request-failed": "Check your connection and retry.",
-    "permission-denied": "Access denied. Check your account and project rules.",
-    "storage/unauthorized": "Image access denied. Check Storage rules.",
-    unavailable: "Service unavailable. Check your connection and retry.",
     "invalid-data": "Stored data could not be read safely.",
   };
   return fail(

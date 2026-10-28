@@ -17,25 +17,7 @@ export default function Layout() {
             headerTintColor: colors.text,
             contentStyle: { backgroundColor: colors.background },
           }}
-        >
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="ar/[id]" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="artwork/[id]"
-            options={{ title: "The collection" }}
-          />
-          <Stack.Screen name="capture-preview" options={{ title: "Preview" }} />
-          <Stack.Screen
-            name="design/[id]"
-            options={{ title: "Saved design" }}
-          />
-          <Stack.Screen name="login" options={{ title: "Sign in" }} />
-          <Stack.Screen
-            name="import-artwork"
-            options={{ title: "Import artwork" }}
-          />
-          <Stack.Screen name="register" options={{ title: "Join ArtSpace" }} />
-        </Stack>
+        />
       </AppProviders>
     </SafeAreaProvider>
   );

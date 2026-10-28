@@ -18,6 +18,7 @@ interface Options {
   move: (dx: number, dy: number) => void;
   finish: () => void;
   scale: (id: string, scale: number) => void;
+  scaleOf: (id: string) => number;
   view: (zoom: number, pan: Point) => void;
 }
 interface Gesture {
@@ -38,11 +39,11 @@ interface Gesture {
   scale: number;
 }
 const TAP_SLOP = 4;
-const centroid = (touches: NativeTouchEvent[]) => ({
+const centroid = (touches: readonly NativeTouchEvent[]) => ({
   x: touches.reduce((sum, t) => sum + t.pageX, 0) / Math.max(1, touches.length),
   y: touches.reduce((sum, t) => sum + t.pageY, 0) / Math.max(1, touches.length),
 });
-const spread = (touches: NativeTouchEvent[]) =>
+const spread = (touches: readonly NativeTouchEvent[]) =>
   touches.length >= 2
     ? Math.hypot(
         touches[1].pageX - touches[0].pageX,
@@ -62,7 +63,10 @@ export function useDirectManipulation(o: Options) {
     optionsRef.current = o;
   }, [o]);
   const enabled = () => !optionsRef.current.disabled;
-  const translation = (gesture: Gesture, touches: NativeTouchEvent[]) => {
+  const translation = (
+    gesture: Gesture,
+    touches: readonly NativeTouchEvent[],
+  ) => {
     const c = centroid(touches);
     return {
       x: gesture.offset.x + c.x - gesture.origin.x,
@@ -73,7 +77,13 @@ export function useDirectManipulation(o: Options) {
     const gesture = gestureRef.current,
       options = optionsRef.current;
     gestureRef.current = null;
-    if (gesture && !cancelled && !gesture.pinched && !gesture.moved)
+    if (
+      gesture &&
+      !options.disabled &&
+      !cancelled &&
+      !gesture.pinched &&
+      !gesture.moved
+    )
       options.select(toggledSelection(gesture.selected, gesture.id));
     options.finish();
   };
@@ -86,6 +96,7 @@ export function useDirectManipulation(o: Options) {
     onResponderGrant: (event: GestureResponderEvent) => {
       const options = optionsRef.current,
         touches = event.nativeEvent.touches;
+      if (options.disabled || !touches.length) return;
       const target = options.hit({
         x: event.nativeEvent.locationX,
         y: event.nativeEvent.locationY,
@@ -112,15 +123,15 @@ export function useDirectManipulation(o: Options) {
     onResponderMove: (event: GestureResponderEvent) => {
       const gesture = gestureRef.current,
         options = optionsRef.current;
-      if (!gesture) return;
+      if (!gesture || options.disabled) return;
       const touches = event.nativeEvent.touches;
       if (touches.length !== gesture.touches) {
-        // A finger was added or lifted: keep the accumulated pan continuous.
-        const offset = translation(gesture, touches.slice(0, gesture.touches));
-        const added = touches.length >= 2 && gesture.distance === 0;
+        // Re-base every new pinch segment on the current rendered scale/view.
+        // Reusing the first spread after lifting/replacing a finger jumps size.
+        const added = touches.length >= 2;
         gestureRef.current = {
           ...gesture,
-          offset: added ? { x: 0, y: 0 } : offset,
+          offset: { x: 0, y: 0 },
           origin: centroid(touches),
           touches: touches.length,
           ...(added
@@ -129,6 +140,7 @@ export function useDirectManipulation(o: Options) {
                 distance: spread(touches),
                 zoom: options.zoom,
                 pan: options.pan,
+                scale: gesture.id ? options.scaleOf(gesture.id) : gesture.scale,
               }
             : {}),
         };

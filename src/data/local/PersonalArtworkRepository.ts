@@ -12,7 +12,7 @@ import {
   MAX_IMPORTED_BYTES,
 } from "../../domain/customArtworks";
 import { cleanName, positiveDimension } from "../../domain/validators";
-import type { KeyValueStore } from "./LocalSavedDesignRepository";
+import type { KeyValueStore } from "./KeyValueStore";
 import { attempt, unwrap } from "../errors";
 export const PERSONAL_ARTWORKS_KEY = "artspace:personal-artworks:v1";
 export class PersonalArtworkRepository
@@ -126,12 +126,13 @@ export class PersonalArtworkRepository
       this.serialize(async () => {
         if (!customArtworkId(id)) throw new Error("Invalid import");
         const items = await this.read();
-        // Retain metadata on file deletion failure so users can retry.
-        await this.images.remove(id);
         await this.store.setItem(
           PERSONAL_ARTWORKS_KEY,
           JSON.stringify(items.filter((a) => a.id !== id)),
         );
+        // A cleanup failure can leave an orphan, but never a broken visible
+        // artwork. Metadata failure leaves both the record and file intact.
+        await this.images.remove(id).catch(() => undefined);
       }),
     );
   }

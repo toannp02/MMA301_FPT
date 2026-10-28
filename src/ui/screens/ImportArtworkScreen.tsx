@@ -231,7 +231,7 @@ export function ImportArtworkScreen({
         title={onClose ? "Back to preview" : "Back to collection"}
         secondary
         disabled={busy}
-        onPress={onClose ?? (() => router.replace("/(tabs)"))}
+        onPress={onClose ?? (() => router.replace("/"))}
       />
       {imports.loading ? (
         <Loading />

@@ -1,0 +1,39 @@
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: expo-router@58.0.27
+npm error Found: @testing-library/react-native@13.3.3
+npm error node_modules/@testing-library/react-native
+npm error   dev @testing-library/react-native@"^13.3.3" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peerOptional @testing-library/react-native@">= 14.0.0" from expo-router@58.0.27
+npm error node_modules/expo-router
+npm error   expo-router@"~58.0.27" from the root project
+npm error   peerOptional expo-router@"*" from @expo/cli@58.1.16
+npm error   node_modules/expo/node_modules/@expo/cli
+npm error     @expo/cli@"^58.1.16" from expo@58.0.20
+npm error     node_modules/expo
+npm error       expo@"58.0.20" from the root project
+npm error       24 more (expo-asset, expo-constants, expo-crypto, ...)
+npm error
+npm error Conflicting peer dependency: @testing-library/react-native@14.1.0
+npm error node_modules/@testing-library/react-native
+npm error   peerOptional @testing-library/react-native@">= 14.0.0" from expo-router@58.0.27
+npm error   node_modules/expo-router
+npm error     expo-router@"~58.0.27" from the root project
+npm error     peerOptional expo-router@"*" from @expo/cli@58.1.16
+npm error     node_modules/expo/node_modules/@expo/cli
+npm error       @expo/cli@"^58.1.16" from expo@58.0.20
+npm error       node_modules/expo
+npm error         expo@"58.0.20" from the root project
+npm error         24 more (expo-asset, expo-constants, expo-crypto, ...)
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error C:\Users\toann\AppData\Local\npm-cache\_logs\2026-10-28T00_53_53_802Z-eresolve-report.txt
+npm error A complete log of this run can be found in: C:\Users\toann\AppData\Local\npm-cache\_logs\2026-10-28T00_53_53_802Z-debug-0.log

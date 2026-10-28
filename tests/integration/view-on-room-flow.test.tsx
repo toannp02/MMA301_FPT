@@ -1,5 +1,6 @@
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react-native";
+import { BackHandler } from "react-native";
+import { act, render, fireEvent, waitFor } from "@testing-library/react-native";
 import { router } from "expo-router";
 import { AppProviders } from "../../src/bootstrap/AppProviders";
 import { createRepositories } from "../../src/bootstrap/repositories";
@@ -15,9 +16,6 @@ jest.mock("@react-native-async-storage/async-storage", () =>
     "@react-native-async-storage/async-storage/jest/async-storage-mock",
   ),
 );
-jest.mock("../../src/infra/firebase/client", () => ({
-  createFirebaseClient: jest.fn(),
-}));
 jest.mock("../../src/infra/exportSpace", () => ({
   exportSpacePNG: jest.fn(),
   shareSpacePNG: jest.fn(),
@@ -87,10 +85,72 @@ function setup(count = 1) {
   };
 }
 beforeEach(() => jest.clearAllMocks());
+
+test("tools collapse independently and full-room preview restores the editing session", async () => {
+  const x = setup();
+  const view = await render(
+    x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />),
+  );
+  const surface = await view.findByTestId("studio-surface");
+  const selectAction = surface.props.accessibilityActions.find(
+    (action: { name: string }) => action.name.startsWith("select:"),
+  );
+  await fireEvent(surface, "accessibilityAction", {
+    nativeEvent: { actionName: selectAction.name },
+  });
+  await fireEvent.press(view.getByLabelText("Style"));
+  await fireEvent.press(view.getByLabelText("Light"));
+  await fireEvent.press(view.getByLabelText("Increase Artwork depth (cm)"));
+  await fireEvent.press(view.getByLabelText("Hide tools"));
+  expect(view.queryByTestId("studio-tools")).toBeNull();
+  await fireEvent.press(view.getByLabelText("View full"));
+  expect(view.queryByLabelText("My walls")).toBeNull();
+  expect(view.getByTestId("studio-surface").props.pointerEvents).toBe("none");
+  expect(x.save).not.toHaveBeenCalled();
+  await fireEvent.press(view.getByLabelText("Shrink view"));
+  expect(view.queryByTestId("studio-tools")).toBeNull();
+  await fireEvent.press(view.getByLabelText("Show tools"));
+  expect(view.getByLabelText("Increase Artwork depth (cm)")).toBeTruthy();
+  await fireEvent.press(view.getByLabelText("Save"));
+  await waitFor(() => expect(x.save).toHaveBeenCalledTimes(1));
+  expect(x.save.mock.calls[0][0].pieces).toHaveLength(1);
+  expect(x.save.mock.calls[0][0].pieces[0].appearance.depthCm).toBeGreaterThan(
+    0,
+  );
+});
+
+test("Android Back shrinks full-room preview before leaving the editor", async () => {
+  const remove = jest.fn();
+  const back = jest
+    .spyOn(BackHandler, "addEventListener")
+    .mockReturnValue({ remove });
+  try {
+    const x = setup();
+    const view = await render(
+      x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />),
+    );
+    await fireEvent.press(await view.findByLabelText("View full"));
+    const callback = back.mock.calls.find(
+      ([event]) => event === "hardwareBackPress",
+    )?.[1];
+    expect(callback).toBeDefined();
+    await act(() => {
+      expect(
+        callback?.({ type: "hardwareBackPress", timeStamp: Date.now() }),
+      ).toBe(true);
+    });
+    expect(view.getByLabelText("View full")).toBeTruthy();
+    expect(view.queryByLabelText("Shrink view")).toBeNull();
+    expect(remove).toHaveBeenCalled();
+    expect(router.replace).not.toHaveBeenCalled();
+  } finally {
+    back.mockRestore();
+  }
+});
 test("art details offer View on room with the selected artwork identity", async () => {
   const x = setup(),
-    view = render(x.wrap(<ArtworkDetailScreen id={art.id} />));
-  fireEvent.press(await view.findByLabelText("View on room"));
+    view = await render(x.wrap(<ArtworkDetailScreen id={art.id} />));
+  await fireEvent.press(await view.findByLabelText("View on room"));
   expect(router.push).toHaveBeenCalledWith({
     pathname: "/view-on-room/[id]",
     params: { id: art.id },
@@ -98,8 +158,8 @@ test("art details offer View on room with the selected artwork identity", async 
 });
 test("room selection forwards artwork and room without overwriting stored design", async () => {
   const x = setup(2),
-    view = render(x.wrap(<ViewOnRoomScreen artworkId={art.id} />));
-  fireEvent.press(await view.findByLabelText("View on My room"));
+    view = await render(x.wrap(<ViewOnRoomScreen artworkId={art.id} />));
+  await fireEvent.press(await view.findByLabelText("View on My room"));
   expect(router.replace).toHaveBeenCalledWith({
     pathname: "/space/[id]",
     params: { id: "room1", artworkId: "a2" },
@@ -109,22 +169,24 @@ test("room selection forwards artwork and room without overwriting stored design
 });
 test("native editor applies selected artwork and saves Light controls only on Save", async () => {
   const x = setup(),
-    view = render(x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />));
+    view = await render(
+      x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />),
+    );
   await view.findByTestId("studio-surface");
   expect(view.getByTestId("studio-surface").props.accessibilityActions).toEqual(
     expect.arrayContaining([
       { name: "select:room1_art0", label: "Select New artwork" },
     ]),
   );
-  fireEvent(view.getByTestId("studio-surface"), "accessibilityAction", {
+  await fireEvent(view.getByTestId("studio-surface"), "accessibilityAction", {
     nativeEvent: { actionName: "select:room1_art0" },
   });
   await view.findByText(/New artwork.*drag to position/);
   expect(x.save).not.toHaveBeenCalled();
-  fireEvent.press(view.getByLabelText("Style"));
-  fireEvent.press(view.getByLabelText("Light"));
-  fireEvent(view.getByLabelText("Shadow offset"), "valueChange", 1.27);
-  fireEvent.press(view.getByLabelText("Save"));
+  await fireEvent.press(view.getByLabelText("Style"));
+  await fireEvent.press(view.getByLabelText("Light"));
+  await fireEvent(view.getByLabelText("Shadow offset"), "valueChange", 1.27);
+  await fireEvent.press(view.getByLabelText("Save"));
   await waitFor(() => expect(x.save).toHaveBeenCalled());
   const saved = x.save.mock.calls[0][0];
   expect(saved.pieces[0].artwork.id).toBe("a2");
@@ -133,8 +195,8 @@ test("native editor applies selected artwork and saves Light controls only on Sa
 });
 test("Interiors add-room sheet exposes camera and photo library without permission on mount", async () => {
   const x = setup(),
-    view = render(x.wrap(<SpacesScreen />));
-  fireEvent.press(await view.findByLabelText("Add your room"));
+    view = await render(x.wrap(<SpacesScreen />));
+  await fireEvent.press(await view.findByLabelText("Add your room"));
   expect(view.getByLabelText("Take a Photo")).toBeTruthy();
   expect(view.getByLabelText("Choose from Photos")).toBeTruthy();
   expect(x.save).not.toHaveBeenCalled();
@@ -142,33 +204,39 @@ test("Interiors add-room sheet exposes camera and photo library without permissi
 
 test("dimensions, image/light and visual frame edits persist while room zoom stays view-only", async () => {
   const x = setup(),
-    view = render(x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />));
+    view = await render(
+      x.wrap(<SpaceEditorScreen id="room1" artworkId="a2" />),
+    );
   await view.findByTestId("studio-surface");
   expect(view.getByTestId("studio-surface").props.accessibilityActions).toEqual(
     expect.arrayContaining([
       { name: "select:room1_art0", label: "Select New artwork" },
     ]),
   );
-  fireEvent(view.getByTestId("studio-surface"), "accessibilityAction", {
+  await fireEvent(view.getByTestId("studio-surface"), "accessibilityAction", {
     nativeEvent: { actionName: "select:room1_art0" },
   });
   await view.findByText(/New artwork.*drag to position/);
-  fireEvent.press(view.getByLabelText("Style"));
-  fireEvent.press(view.getByLabelText("Light"));
-  fireEvent(view.getByLabelText("Shadow angle (degrees)"), "valueChange", -22);
-  fireEvent(view.getByLabelText("Shadow softness"), "valueChange", 14);
-  fireEvent.press(view.getByLabelText("Image"));
-  fireEvent.press(view.getByLabelText("Increase Luminance"));
-  fireEvent.press(view.getByLabelText("Frame"));
-  fireEvent.press(view.getByLabelText("Classic frame"));
-  fireEvent.press(view.getByLabelText("Keep proportions on"));
-  fireEvent.changeText(view.getByLabelText("Artwork width (cm)"), "78,4");
-  fireEvent.changeText(view.getByLabelText("Artwork height (cm)"), "66");
-  fireEvent.press(view.getByLabelText("Apply artwork size"));
+  await fireEvent.press(view.getByLabelText("Style"));
+  await fireEvent.press(view.getByLabelText("Light"));
+  await fireEvent(
+    view.getByLabelText("Shadow angle (degrees)"),
+    "valueChange",
+    -22,
+  );
+  await fireEvent(view.getByLabelText("Shadow softness"), "valueChange", 14);
+  await fireEvent.press(view.getByLabelText("Image"));
+  await fireEvent.press(view.getByLabelText("Increase Luminance"));
+  await fireEvent.press(view.getByLabelText("Frame"));
+  await fireEvent.press(view.getByLabelText("Classic frame"));
+  await fireEvent.press(view.getByLabelText("Keep proportions on"));
+  await fireEvent.changeText(view.getByLabelText("Artwork width (cm)"), "78,4");
+  await fireEvent.changeText(view.getByLabelText("Artwork height (cm)"), "66");
+  await fireEvent.press(view.getByLabelText("Apply artwork size"));
   expect(view.queryByLabelText("Zoom room")).toBeNull();
   expect(view.queryByLabelText("Zoom artwork")).toBeNull();
   expect(x.save).not.toHaveBeenCalled();
-  fireEvent.press(view.getByLabelText("Save"));
+  await fireEvent.press(view.getByLabelText("Save"));
   await waitFor(() => expect(x.save).toHaveBeenCalledTimes(1));
   const saved = x.save.mock.calls[0][0];
   expect(saved.pieces[0].appearance).toMatchObject({
@@ -187,7 +255,7 @@ test("dimensions, image/light and visual frame edits persist while room zoom sta
 
 test("View on room automatically applies to the only saved room", async () => {
   const x = setup();
-  render(x.wrap(<ViewOnRoomScreen artworkId={art.id} />));
+  await render(x.wrap(<ViewOnRoomScreen artworkId={art.id} />));
   await waitFor(() =>
     expect(router.replace).toHaveBeenCalledWith({
       pathname: "/space/[id]",
